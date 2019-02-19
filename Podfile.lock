@@ -1,0 +1,18 @@
+PODS:
+  - Modernistik (0.4.8):
+    - Modernistik/Core (= 0.4.8)
+  - Modernistik/Core (0.4.8)
+
+DEPENDENCIES:
+  - Modernistik (~> 0.4)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Modernistik
+
+SPEC CHECKSUMS:
+  Modernistik: 04b4ce921a4e86431a9ea9b787632ad3c6ac35fe
+
+PODFILE CHECKSUM: 2e53f8d7b0f511b61b462b1c6594b2e0d7aff6f4
+
+COCOAPODS: 1.5.3
