@@ -10,9 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var sentence: SUIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        sentence += "boom"
+        sentence += " it's working "
+        let audience = SUIDropdown()
+        audience.options = ["bitch", "friend!"]
+        sentence += audience
+        //sentence += "bitch!"
+        //sentence.addUI()
     }
 
 
