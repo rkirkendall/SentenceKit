@@ -19,6 +19,7 @@
 		E983ADFE221BD0B700BC526A /* SentenceKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADFD221BD0B700BC526A /* SentenceKitUITests.swift */; };
 		E983AE0C221BD1A000BC526A /* SEKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983AE0B221BD1A000BC526A /* SEKView.swift */; };
 		E9C588352234F1EB000349A6 /* SUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C588342234F1EB000349A6 /* SUIView.swift */; };
+		E9C588372236207F000349A6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C588362236207F000349A6 /* Extensions.swift */; };
 		E9D7EF302223DA7200975C26 /* SEKTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D7EF2F2223DA7200975C26 /* SEKTextView.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		E983ADFF221BD0B700BC526A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E983AE0B221BD1A000BC526A /* SEKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEKView.swift; sourceTree = "<group>"; };
 		E9C588342234F1EB000349A6 /* SUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIView.swift; sourceTree = "<group>"; };
+		E9C588362236207F000349A6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E9D7EF2F2223DA7200975C26 /* SEKTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEKTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 				E983AE0B221BD1A000BC526A /* SEKView.swift */,
 				E9C588342234F1EB000349A6 /* SUIView.swift */,
 				E9D7EF2F2223DA7200975C26 /* SEKTextView.swift */,
+				E9C588362236207F000349A6 /* Extensions.swift */,
 			);
 			path = SentenceKit;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E983ADE0221BD0B600BC526A /* ViewController.swift in Sources */,
+				E9C588372236207F000349A6 /* Extensions.swift in Sources */,
 				E983ADDE221BD0B600BC526A /* AppDelegate.swift in Sources */,
 				E983AE0C221BD1A000BC526A /* SEKView.swift in Sources */,
 				E9D7EF302223DA7200975C26 /* SEKTextView.swift in Sources */,

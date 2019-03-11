@@ -27,26 +27,22 @@ import Modernistik
  
  */
 
-extension UIButton {
-    
-    var titleIsTruncated: Bool {
-        
-        guard let labelText = titleLabel?.attributedText else {
-            return false
-        }
-        print("label width: \(labelText.size().width)")
-        print("frame width: \(frame.width)")
-        return labelText.size().width > frame.width
-    }
-}
-
 protocol SUIComponent {
     var stringValue: String {get}
     var isInput: Bool {get}
-    // will extend
 }
 
-class SUIDropdown:SUIComponent {
+protocol SUIInputControl: SUIComponent {
+    func tooWide(styleContext: SUIStyleContext, frame: CGRect) -> Bool
+    func view(styleContext: SUIStyleContext, frame: CGRect) -> UIView
+}
+extension SUIInputControl {
+    var isInput: Bool { return true }
+    var arrow:String { return "▾"}
+}
+
+class SUIDropdown: SUIInputControl {
+
     var options: [String] = [String]()
     var stringValue:String {
         return options.count > 0 ? options[0] : "    "
@@ -54,23 +50,45 @@ class SUIDropdown:SUIComponent {
     var isInput: Bool {
         return true
     }
+
+    func tooWide(styleContext: SUIStyleContext, frame: CGRect) -> Bool {
+        let button = view(styleContext: styleContext, frame: frame) as? UIButton
+        return button?.titleIsTruncated ?? false
+    }
+    
+    func view(styleContext: SUIStyleContext, frame: CGRect) -> UIView {
+        let button = UIButton(frame: frame)
+        
+        var attributes = [NSAttributedString.Key:Any]()
+        attributes[NSAttributedString.Key.font] = styleContext.font
+        attributes[NSAttributedString.Key.underlineStyle] =  NSUnderlineStyle.single.rawValue
+        attributes[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
+        let attButtonTitle = NSMutableAttributedString(string: stringValue, attributes: attributes)
+        let arrowFontSize = CGFloat(styleContext.font.pointSize * 0.5)
+        
+        // construct arrow att string and append
+        let blueArrowAtts = [NSAttributedString.Key.foregroundColor: styleContext.controlColor,
+                             NSAttributedString.Key.font: UIFont.systemFont(ofSize: arrowFontSize),
+                             NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
+        attButtonTitle.append(NSAttributedString(string: arrow, attributes: blueArrowAtts))
+        
+        button.setAttributedTitle(attButtonTitle, for: .normal)
+        return button
+    }
 }
 
-extension String: SUIComponent {
-    var stringValue: String {
-        return self
-    }
-    var isInput: Bool {
-        return false
-    }
+struct SUIStyleContext {
+    let font: UIFont
+    let controlColor: UIColor
+    let textColor: UIColor
 }
 
 public class SUIView: ModernView, UITextViewDelegate {
     
     var components:[SUIComponent] = [SUIComponent]()
-    var font = UIFont.boldSystemFont(ofSize: 35)
-    var inputColor:UIColor = UIColor.blue
-    var textColor:UIColor = UIColor.black
+    let styleContext = SUIStyleContext(font: UIFont.boldSystemFont(ofSize: 35),
+                                       controlColor: UIColor.blue,
+                                       textColor: UIColor.black)
     
     static func += (left: SUIView, right: SUIComponent) {
         left.components.append(right)
@@ -100,8 +118,8 @@ public class SUIView: ModernView, UITextViewDelegate {
             
             // form sentence text
             var attributes = [NSAttributedString.Key : Any]()
-            attributes[NSAttributedString.Key.font] = self.font
-            attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : self.textColor
+            attributes[NSAttributedString.Key.font] = styleContext.font
+            attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : styleContext.textColor
             var componentString:String = component.isInput ? component.stringValue + arrow : component.stringValue
             if counter == newLineNeeded {
                 componentString += "\n"
@@ -117,7 +135,6 @@ public class SUIView: ModernView, UITextViewDelegate {
         self.textView.layoutSubviews()
         
         // create controls
-        //var newLinesNeededIx = -1
         counter = 0
         for component in self.components {
             
@@ -126,29 +143,22 @@ public class SUIView: ModernView, UITextViewDelegate {
                 continue
             }
             
+            guard let inputControl = component as? SUIInputControl else {
+                return
+            }
+            
             let range: NSRange = (self.textView.text as NSString).range(of: component.stringValue + arrow)
             let rect = self.frameOfTextRange(range: range)
             
+            // debugging
             let v = UIView(frame: rect)
             v.backgroundColor = UIColor.green.opacity(0.2)
             self.textView.addSubview(v)
             
-            let button = UIButton(frame: rect)
-            var buttonAtts = self.textView.attributedText.attributes(at: 0, effectiveRange: nil)
-            buttonAtts[NSAttributedString.Key.underlineStyle] =  (NSUnderlineStyle.single.rawValue | NSUnderlineStyle.patternDot.rawValue)
-            buttonAtts[NSAttributedString.Key.foregroundColor] = UIColor.blue
-            let attButtonTitle = NSMutableAttributedString(string: component.stringValue, attributes: buttonAtts)
-            let arrowFontSize = CGFloat(self.font.pointSize * 0.5)
-            // construct arrow att string and append
-            let blueArrowAtts = [NSAttributedString.Key.foregroundColor: UIColor.blue,
-                                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: arrowFontSize),
-                                 NSAttributedString.Key.underlineStyle: (NSUnderlineStyle.single.rawValue | NSUnderlineStyle.patternDot.rawValue)] as [NSAttributedString.Key : Any]
-            attButtonTitle.append(NSAttributedString(string: arrow, attributes: blueArrowAtts))
-
-            button.setAttributedTitle(attButtonTitle, for: .normal)
+            let controlView = inputControl.view(styleContext: styleContext, frame: rect)
             
             // determine if rect is too long for textview
-            if button.titleIsTruncated{
+            if inputControl.tooWide(styleContext: styleContext, frame: rect) {
                 print("rect too big needs new line")
                 if counter-1 >= 0 {
                     return layoutComponents(newLineNeeded: counter-1)
@@ -156,7 +166,7 @@ public class SUIView: ModernView, UITextViewDelegate {
                     print("first component does not fit on screen")
                 }
             }
-            self.textView.addSubview(button)
+            self.textView.addSubview(controlView)
             counter += 1
         }
     }
