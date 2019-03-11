@@ -35,8 +35,7 @@ protocol SUIComponent {
 protocol SUIInputControl: SUIComponent {
     func tooWide(styleContext: SUIStyleContext, frame: CGRect) -> Bool
     func view(styleContext: SUIStyleContext, frame: CGRect) -> UIView
-}
-extension SUIInputControl {
+}; extension SUIInputControl {
     var isInput: Bool { return true }
     var arrow:String { return "▾"}
 }
