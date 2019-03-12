@@ -125,7 +125,7 @@ class SUIDropdown: SUIInputControl {
             atts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
             let optAttString = NSAttributedString(string: opt, attributes: atts)
             var rect = CGRect.zero
-            rect.origin.x = dropdownFrame.origin.x
+            rect.origin.x =  5 
             rect.origin.y = 0 + 5 + (CGFloat(count) * button.frame.height)
             rect.size = optAttString.size()
             let optButton = UIButton(frame: rect)
