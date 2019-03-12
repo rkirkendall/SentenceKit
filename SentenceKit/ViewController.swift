@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         let audience = SUIDropdown()
         audience.options = ["bitch", "friend!"]
         sentence += audience
+        sentence += " so fresh!"
         //sentence += "bitch!"
         //sentence.addUI()
     }

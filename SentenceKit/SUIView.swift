@@ -30,6 +30,7 @@ import Modernistik
 protocol SUIComponent {
     var stringValue: String {get}
     var isInput: Bool {get}
+    var superview: UIView? {set get}
 }
 
 protocol SUIInputControl: SUIComponent {
@@ -38,6 +39,9 @@ protocol SUIInputControl: SUIComponent {
 }; extension SUIInputControl {
     var isInput: Bool { return true }
     var arrow:String { return "▾"}
+}
+
+protocol SUIInputControlDelegate {
 }
 
 class SUIDropdown: SUIInputControl {
@@ -49,6 +53,13 @@ class SUIDropdown: SUIInputControl {
     var isInput: Bool {
         return true
     }
+    
+    private var dropdownOptionsShowing = false
+    
+    var styleContext:SUIStyleContext?
+    private var button: UIButton?
+    private var dropdown: UIView?
+    weak var superview:UIView?
 
     func tooWide(styleContext: SUIStyleContext, frame: CGRect) -> Bool {
         let button = view(styleContext: styleContext, frame: frame) as? UIButton
@@ -57,7 +68,7 @@ class SUIDropdown: SUIInputControl {
     
     func view(styleContext: SUIStyleContext, frame: CGRect) -> UIView {
         let button = UIButton(frame: frame)
-        
+        self.styleContext = styleContext
         var attributes = [NSAttributedString.Key:Any]()
         attributes[NSAttributedString.Key.font] = styleContext.font
         attributes[NSAttributedString.Key.underlineStyle] =  NSUnderlineStyle.single.rawValue
@@ -72,7 +83,59 @@ class SUIDropdown: SUIInputControl {
         attButtonTitle.append(NSAttributedString(string: arrow, attributes: blueArrowAtts))
         
         button.setAttributedTitle(attButtonTitle, for: .normal)
+        
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        self.button = button
         return button
+    }
+    
+    @objc func buttonTapped(){
+        print("hello there")
+        toggleDropdown()
+    }
+    
+    func toggleDropdown(){
+        // todo: find longest option and base size off that
+        
+        dropdownOptionsShowing = !dropdownOptionsShowing
+        dropdown?.isHidden = !dropdownOptionsShowing
+        if dropdown != nil{
+            return
+        }
+        
+        guard let button = self.button,
+        let styleContext = self.styleContext else {
+            return
+        }
+        
+        var dropdownFrame = CGRect.zero
+        dropdownFrame.size.height = button.frame.height * CGFloat(options.count) + 10
+        dropdownFrame.size.width = button.frame.width
+        dropdownFrame.origin.y = dropdownFrame.origin.y + dropdownFrame.size.height
+        dropdownFrame.origin.x = button.frame.origin.x
+        
+        let dropdownView = UIView(frame: dropdownFrame)
+        dropdownView.layer.borderWidth = 1
+        
+        var count = 0
+        for opt in options {
+            var atts = [NSAttributedString.Key:Any]()
+            atts[NSAttributedString.Key.font] = styleContext.font
+            atts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
+            let optAttString = NSAttributedString(string: opt, attributes: atts)
+            var rect = CGRect.zero
+            rect.origin.x = dropdownFrame.origin.x
+            rect.origin.y = 0 + 5 + (CGFloat(count) * button.frame.height)
+            rect.size = optAttString.size()
+            let optButton = UIButton(frame: rect)
+            optButton.setAttributedTitle(optAttString, for: .normal)
+            dropdownView.addSubview(optButton)
+            count += 1
+        }
+        self.dropdown = dropdownView
+        
+        superview?.addSubview(dropdownView)
+        
     }
 }
 
@@ -142,7 +205,7 @@ public class SUIView: ModernView, UITextViewDelegate {
                 continue
             }
             
-            guard let inputControl = component as? SUIInputControl else {
+            guard var inputControl = component as? SUIInputControl else {
                 return
             }
             
@@ -166,6 +229,7 @@ public class SUIView: ModernView, UITextViewDelegate {
                 }
             }
             self.textView.addSubview(controlView)
+            inputControl.superview = self.textView
             counter += 1
         }
     }
@@ -173,6 +237,7 @@ public class SUIView: ModernView, UITextViewDelegate {
     public override func setupView() {
         super.setupView()
         textView.isEditable = false
+        textView.isSelectable = false
         textView.delegate = self
         //textView.font = font
         addSubview(textView)

@@ -22,10 +22,16 @@ extension UIButton {
 }
 
 extension String: SUIComponent {
+    var superview: UIView? {
+        get { return nil }
+        set {}
+    }
+    
     var stringValue: String {
         return self
     }
     var isInput: Bool {
         return false
     }
+    
 }
