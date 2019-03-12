@@ -16,17 +16,28 @@ class ViewController: UIViewController {
         
     }
     
+    let nameDropdown = SUIDropdown()
+    let addressDropdown = SUIDropdown()
+    let visitReasonDropdown = SUIDropdown()
+    let dateDropdown = SUIDropdown()
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        sentence += "boom"
-        sentence += " it's working "
-        let audience = SUIDropdown()
-        audience.options = ["bitch", "friend!"]
-        sentence += audience
-        sentence += " so fresh!"
-        //sentence += "bitch!"
-        //sentence.addUI()
+        nameDropdown.options = ["Ricky", "Tenny"]
+        addressDropdown.options = ["1755 Glendon Ave"]
+        visitReasonDropdown.options = ["annual physical", "sick visit"]
+        dateDropdown.options = ["Mar 13 at 4 PM"]
+        
+        
+        sentence += nameDropdown
+        sentence += " needs a doctor at "
+        sentence += addressDropdown
+        sentence += " for a "
+        sentence += visitReasonDropdown
+        sentence += " on "
+        sentence += dateDropdown
+        sentence += "."
     }
 
 

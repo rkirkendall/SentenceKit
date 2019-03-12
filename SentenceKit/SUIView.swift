@@ -111,10 +111,11 @@ class SUIDropdown: SUIInputControl {
         var dropdownFrame = CGRect.zero
         dropdownFrame.size.height = button.frame.height * CGFloat(options.count) + 10
         dropdownFrame.size.width = button.frame.width
-        dropdownFrame.origin.y = dropdownFrame.origin.y + dropdownFrame.size.height
+        dropdownFrame.origin.y = button.frame.origin.y + button.frame.size.height
         dropdownFrame.origin.x = button.frame.origin.x
         
         let dropdownView = UIView(frame: dropdownFrame)
+        dropdownView.backgroundColor = .white
         dropdownView.layer.borderWidth = 1
         
         var count = 0
@@ -211,11 +212,6 @@ public class SUIView: ModernView, UITextViewDelegate {
             
             let range: NSRange = (self.textView.text as NSString).range(of: component.stringValue + arrow)
             let rect = self.frameOfTextRange(range: range)
-            
-            // debugging
-            let v = UIView(frame: rect)
-            v.backgroundColor = UIColor.green.opacity(0.2)
-            self.textView.addSubview(v)
             
             let controlView = inputControl.view(styleContext: styleContext, frame: rect)
             
