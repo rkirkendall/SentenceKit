@@ -38,6 +38,8 @@ class ViewController: UIViewController {
         sentence += " on "
         sentence += dateDropdown
         sentence += "."
+        
+        sentence.layoutComponents()
     }
 
 

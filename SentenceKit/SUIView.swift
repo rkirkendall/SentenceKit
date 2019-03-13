@@ -95,6 +95,9 @@ class SUIDropdown: SUIInputControl {
     }
     
     func toggleDropdown(){
+        
+        // todo: component should close all other UI open / edit states
+        
         // todo: find longest option and base size off that
         
         dropdownOptionsShowing = !dropdownOptionsShowing
@@ -125,7 +128,7 @@ class SUIDropdown: SUIInputControl {
             atts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
             let optAttString = NSAttributedString(string: opt, attributes: atts)
             var rect = CGRect.zero
-            rect.origin.x =  5 
+            rect.origin.x =  5
             rect.origin.y = 0 + 5 + (CGFloat(count) * button.frame.height)
             rect.size = optAttString.size()
             let optButton = UIButton(frame: rect)
@@ -144,20 +147,18 @@ struct SUIStyleContext {
     let font: UIFont
     let controlColor: UIColor
     let textColor: UIColor
+    let paragraphStyle: NSParagraphStyle
 }
 
 public class SUIView: ModernView, UITextViewDelegate {
     
     var components:[SUIComponent] = [SUIComponent]()
-    let styleContext = SUIStyleContext(font: UIFont.boldSystemFont(ofSize: 35),
-                                       controlColor: UIColor.blue,
-                                       textColor: UIColor.black)
+    let paragraphStyle = NSMutableParagraphStyle()
+    var styleContext: SUIStyleContext?
     
     static func += (left: SUIView, right: SUIComponent) {
         left.components.append(right)
-        left.layoutComponents()
     }
-    
     
     func frameOfTextRange(range:NSRange) -> CGRect {
         let beg = textView.beginningOfDocument
@@ -172,6 +173,10 @@ public class SUIView: ModernView, UITextViewDelegate {
     }
     
     func layoutComponents(newLineNeeded:Int) {
+        
+        guard let styleContext = self.styleContext else {
+            return
+        }
     
         // variables
         let mutableAttString = NSMutableAttributedString()
@@ -183,6 +188,7 @@ public class SUIView: ModernView, UITextViewDelegate {
             var attributes = [NSAttributedString.Key : Any]()
             attributes[NSAttributedString.Key.font] = styleContext.font
             attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : styleContext.textColor
+            attributes[NSAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
             var componentString:String = component.isInput ? component.stringValue + arrow : component.stringValue
             if counter == newLineNeeded {
                 componentString += "\n"
@@ -201,7 +207,7 @@ public class SUIView: ModernView, UITextViewDelegate {
         counter = 0
         for component in self.components {
             
-            if (!component.isInput){
+            if (!component.isInput || counter < newLineNeeded){
                 counter += 1
                 continue
             }
@@ -211,7 +217,20 @@ public class SUIView: ModernView, UITextViewDelegate {
             }
             
             let range: NSRange = (self.textView.text as NSString).range(of: component.stringValue + arrow)
-            let rect = self.frameOfTextRange(range: range)
+            var rect = self.frameOfTextRange(range: range)
+            
+            // Remove line spacing from rect, save for last line
+            // find last character y value
+            let lastCharRange = NSRange(location: textView.text.count-1, length: 1)
+            let lastCharRect = self.frameOfTextRange(range: lastCharRange)
+            let lastCharY = lastCharRect.origin.y
+            
+            
+            let lineSpacing = paragraphStyle.lineSpacing
+            if rect.origin.y < lastCharY {
+                rect.size.height = rect.size.height - lineSpacing
+            }
+            
             
             let controlView = inputControl.view(styleContext: styleContext, frame: rect)
             
@@ -219,19 +238,30 @@ public class SUIView: ModernView, UITextViewDelegate {
             if inputControl.tooWide(styleContext: styleContext, frame: rect) {
                 print("rect too big needs new line")
                 if counter-1 >= 0 {
-                    return layoutComponents(newLineNeeded: counter-1)
+                    layoutComponents(newLineNeeded: counter-1)
+                    return
                 }else{
                     print("first component does not fit on screen")
                 }
-            }
-            self.textView.addSubview(controlView)
-            inputControl.superview = self.textView
+            }else{
+                // debugging
+                let v = UIView(frame: rect)
+                v.backgroundColor = UIColor.green.opacity(0.2)
+                self.textView.addSubview(v)
+                self.textView.addSubview(controlView)
+                inputControl.superview = self.textView
+            }            
             counter += 1
         }
     }
     
     public override func setupView() {
         super.setupView()
+        paragraphStyle.lineSpacing = 80
+        styleContext = SUIStyleContext(font: UIFont.boldSystemFont(ofSize: 35),
+                                       controlColor: UIColor.blue,
+                                       textColor: UIColor.black,
+                                       paragraphStyle:paragraphStyle)
         textView.isEditable = false
         textView.isSelectable = false
         textView.delegate = self

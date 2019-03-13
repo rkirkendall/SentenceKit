@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-wq-OYQ" customClass="SUIView" customModule="SentenceKit" customModuleProvider="target">
-                                <rect key="frame" x="16" y="41" width="343" height="233"/>
+                                <rect key="frame" x="16" y="41" width="343" height="586"/>
                                 <color key="backgroundColor" red="0.93857270077720212" green="0.93857270077720212" blue="0.93857270077720212" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="233" id="7al-3I-FiS"/>
+                                    <constraint firstAttribute="height" constant="586" id="7al-3I-FiS"/>
                                 </constraints>
                             </view>
                         </subviews>
