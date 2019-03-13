@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         visitReasonDropdown.options = ["annual physical", "sick visit"]
         dateDropdown.options = ["Mar 13 at 4 PM"]
         
-        
+        // todo: encapsulate this content into own object
         sentence += nameDropdown
         sentence += " needs a doctor at "
         sentence += addressDropdown
