@@ -89,22 +89,19 @@ public class SUIView: ModernView, UITextViewDelegate {
             var attString:NSMutableAttributedString
             
             // form sentence text
+            var attributes = [NSAttributedString.Key : Any]()
+            attributes[NSAttributedString.Key.font] = styleContext.font
+            attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : styleContext.textColor
+            attributes[NSAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
+            
             if component.isInput{
-                guard var inputControl = component as? SUIInputControl else {
+                guard let inputControl = component as? SUIInputControl else {
                     return
                 }
                 attString = inputControl.attributedString(styleContext: styleContext)
                 let wholeRange = NSRange(location: 0, length: attString.string.count-1)
-                var attributes = [NSAttributedString.Key : Any]()
-                attributes[NSAttributedString.Key.font] = styleContext.font
-                attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : styleContext.textColor
-                attributes[NSAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
                 attString.setAttributes(attributes, range: wholeRange)
             }else{
-                var attributes = [NSAttributedString.Key : Any]()
-                attributes[NSAttributedString.Key.font] = styleContext.font
-                attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : styleContext.textColor
-                attributes[NSAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
                 attString = NSMutableAttributedString(string: component.stringValue, attributes: attributes)
             }
             
