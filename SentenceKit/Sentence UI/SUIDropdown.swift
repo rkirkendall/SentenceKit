@@ -31,22 +31,26 @@ class SUIDropdown: SUIInputControl {
         return button?.titleIsTruncated ?? false
     }
     
-    func view(styleContext: SUIStyleContext, frame: CGRect) -> UIView {
-        let button = UIButton(frame: frame)
+    func attributedString(styleContext: SUIStyleContext) -> NSMutableAttributedString {
         self.styleContext = styleContext
         var attributes = [NSAttributedString.Key:Any]()
         attributes[NSAttributedString.Key.font] = styleContext.font
         attributes[NSAttributedString.Key.underlineStyle] =  NSUnderlineStyle.single.rawValue
         attributes[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
-        let attButtonTitle = NSMutableAttributedString(string: stringValue, attributes: attributes)
-        let arrowFontSize = CGFloat(styleContext.font.pointSize * 0.5)
+        let attString = NSMutableAttributedString(string: stringValue, attributes: attributes)
+        let arrowFontSize = CGFloat(styleContext.font.pointSize * 0.7)
         
         // construct arrow att string and append
         let blueArrowAtts = [NSAttributedString.Key.foregroundColor: styleContext.controlColor,
                              NSAttributedString.Key.font: UIFont.systemFont(ofSize: arrowFontSize),
                              NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
-        attButtonTitle.append(NSAttributedString(string: arrow, attributes: blueArrowAtts))
-        
+        attString.append(NSAttributedString(string: arrow, attributes: blueArrowAtts))
+        return attString
+    }
+    
+    func view(styleContext: SUIStyleContext, frame: CGRect) -> UIView {
+        let button = UIButton(frame: frame)
+        let attButtonTitle = attributedString(styleContext: styleContext)
         button.setAttributedTitle(attButtonTitle, for: .normal)
         
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)

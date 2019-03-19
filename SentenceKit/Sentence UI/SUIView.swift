@@ -42,8 +42,8 @@ public class SUIView: ModernView, UITextViewDelegate {
         super.setupView()
         
         // todo: line spacing should be a function of font size
-        paragraphStyle.lineSpacing = 30
-        styleContext = SUIStyleContext(font: UIFont.boldSystemFont(ofSize: 35),
+        paragraphStyle.lineSpacing = 20
+        styleContext = SUIStyleContext(font: UIFont.boldSystemFont(ofSize: 20),
                                        controlColor: UIColor.blue,
                                        textColor: UIColor.black,
                                        paragraphStyle:paragraphStyle)
@@ -67,8 +67,14 @@ public class SUIView: ModernView, UITextViewDelegate {
     }
     
     // recursive
-    func layoutComponents(){ layoutComponents(newLineNeeded: -1) }
-    func layoutComponents(newLineNeeded:Int) {
+    
+    
+    func layoutComponents(){
+        var nl = NSMutableIndexSet()
+        layoutComponents(newLines: &nl)
+        
+    }
+    func layoutComponents(newLines: inout NSMutableIndexSet) {
         
         guard let styleContext = self.styleContext else {
             return
@@ -76,20 +82,36 @@ public class SUIView: ModernView, UITextViewDelegate {
     
         // variables
         let mutableAttString = NSMutableAttributedString()
-        let arrow = "▾"
+        let arrow = "⌄"//"▾"
         var counter = 0
         for component in self.components {
             
+            var attString:NSMutableAttributedString
+            
             // form sentence text
-            var attributes = [NSAttributedString.Key : Any]()
-            attributes[NSAttributedString.Key.font] = styleContext.font
-            attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : styleContext.textColor
-            attributes[NSAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
-            var componentString:String = component.isInput ? component.stringValue + arrow : component.stringValue
-            if counter == newLineNeeded {
-                componentString += "\n"
+            if component.isInput{
+                guard var inputControl = component as? SUIInputControl else {
+                    return
+                }
+                attString = inputControl.attributedString(styleContext: styleContext)
+                let wholeRange = NSRange(location: 0, length: attString.string.count-1)
+                var attributes = [NSAttributedString.Key : Any]()
+                attributes[NSAttributedString.Key.font] = styleContext.font
+                attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : styleContext.textColor
+                attributes[NSAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
+                attString.setAttributes(attributes, range: wholeRange)
+            }else{
+                var attributes = [NSAttributedString.Key : Any]()
+                attributes[NSAttributedString.Key.font] = styleContext.font
+                attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : styleContext.textColor
+                attributes[NSAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
+                attString = NSMutableAttributedString(string: component.stringValue, attributes: attributes)
             }
-            let attString = NSAttributedString(string: componentString, attributes: attributes)
+            
+            if newLines.contains(counter) { //counter == newLineNeeded {
+                attString.append(NSAttributedString(string: "\n"))
+            }
+            
             mutableAttString.append(attString)
             counter += 1
         }
@@ -101,9 +123,14 @@ public class SUIView: ModernView, UITextViewDelegate {
         
         // create controls
         counter = 0
+        
+        let maxNewLine = newLines.max() ?? 0
         for component in self.components {
             
-            if (!component.isInput || counter < newLineNeeded){
+            var range:NSRange = NSRange()
+            var rect:CGRect = CGRect.zero
+            if (!component.isInput || counter < maxNewLine){
+                
                 counter += 1
                 continue
             }
@@ -112,8 +139,8 @@ public class SUIView: ModernView, UITextViewDelegate {
                 return
             }
             
-            let range: NSRange = (self.textView.text as NSString).range(of: component.stringValue + arrow)
-            var rect = self.frameOfTextRange(range: range)
+            range = (self.textView.text as NSString).range(of: component.stringValue + arrow)
+            rect = self.frameOfTextRange(range: range)
             
             // Remove line spacing from rect, save for last line
             // find last character y value
@@ -130,9 +157,10 @@ public class SUIView: ModernView, UITextViewDelegate {
             
             // determine if rect is too long for textview
             if inputControl.tooWide(styleContext: styleContext, frame: rect) {
-                print("rect too big needs new line")
+                print("\(component.stringValue) rect too big needs new line")
                 if counter-1 >= 0 {
-                    layoutComponents(newLineNeeded: counter-1)
+                    newLines.add(counter-1)
+                    layoutComponents(newLines: &newLines)
                     return
                 }else{
                     print("first component does not fit on screen")
