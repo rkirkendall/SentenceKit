@@ -10,16 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var sentenceView: SUIView!
+    @IBOutlet weak var sentenceView: View!
     let sentence = Sentence()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    let nameDropdown = SUIMultiChoice()
-    let addressDropdown = SUIMultiChoice()
-    let visitReasonDropdown = SUIMultiChoice()
-    let dateDropdown = SUIMultiChoice()
+    let nameDropdown = MultiChoice()
+    let addressDropdown = MultiChoice()
+    let visitReasonDropdown = MultiChoice()
+    let dateDropdown = MultiChoice()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
