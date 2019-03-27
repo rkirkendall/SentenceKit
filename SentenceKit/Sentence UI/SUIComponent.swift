@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+class SUISentence {
+    var components:[SUIComponent] = [SUIComponent]()
+    
+    static func += (left: SUISentence, right: SUIComponent) {
+        left.components.append(right)
+    }
+}
+
 struct SUIStyleContext {
     let font: UIFont
     let controlColor: UIColor
@@ -16,14 +24,13 @@ struct SUIStyleContext {
     let paragraphStyle: NSParagraphStyle
 }
 
-protocol SUIInputControlDelegate {}
-
 protocol SUIComponent {
     var stringValue: String {get}
     var isInput: Bool {get}
     var superview: UIView? {set get}
 }
 
+protocol SUIInputControlDelegate {}
 protocol SUIInputControl: SUIComponent {
     func tooWide(styleContext: SUIStyleContext, frame: CGRect) -> Bool
     func attributedString(styleContext: SUIStyleContext) -> NSMutableAttributedString

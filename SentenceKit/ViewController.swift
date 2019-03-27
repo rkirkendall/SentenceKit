@@ -9,11 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var sentence: SUIView!
+    
+    @IBOutlet weak var sentenceView: SUIView!
+    let sentence = SUISentence()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     let nameDropdown = SUIMultiChoice()
@@ -39,7 +39,8 @@ class ViewController: UIViewController {
         sentence += dateDropdown
         sentence += "."
         
-        sentence.layoutComponents()
+        sentenceView.sentence = sentence
+        sentenceView.layoutComponents()
     }
 
 

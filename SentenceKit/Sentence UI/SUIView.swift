@@ -32,7 +32,7 @@ public class SUIView: ModernView, UITextViewDelegate {
     var textView = UITextView(autolayout: true)
     
     // todo: separate content of view into its own object that can be passed in
-    var components:[SUIComponent] = [SUIComponent]()
+    var sentence: SUISentence?
     
     // todo: by default the font should autosize based the view's frame
     let paragraphStyle = NSMutableParagraphStyle()
@@ -53,11 +53,6 @@ public class SUIView: ModernView, UITextViewDelegate {
         addSubview(textView)
     }
     
-    
-    static func += (left: SUIView, right: SUIComponent) {
-        left.components.append(right)
-    }
-    
     func frameOfTextRange(range:NSRange) -> CGRect {
         let beg = textView.beginningOfDocument
         let start = textView.position(from: beg, offset: range.location)
@@ -75,14 +70,15 @@ public class SUIView: ModernView, UITextViewDelegate {
     }
     func layoutComponents(newLines: inout NSMutableIndexSet) {
         
-        guard let styleContext = self.styleContext else {
+        guard let styleContext = self.styleContext,
+        let sentence = self.sentence else {
             return
         }
     
         // variables
         let mutableAttString = NSMutableAttributedString()
         var counter = 0
-        for component in self.components {
+        for component in sentence.components {
             
             var attString:NSMutableAttributedString
             
@@ -120,7 +116,7 @@ public class SUIView: ModernView, UITextViewDelegate {
         counter = 0
         
         let maxNewLine = newLines.max() ?? 0
-        for component in self.components {
+        for component in sentence.components {
             
             var range:NSRange = NSRange()
             var rect:CGRect = CGRect.zero
