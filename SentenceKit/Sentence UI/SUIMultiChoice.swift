@@ -1,5 +1,5 @@
 //
-//  SUIMultiAnswer.swift
+//  SUIMultiChoice.swift
 //  SentenceKit
 //
 //  Created by Ricky Kirkendall on 3/12/19.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SUIMultiAnswer: SUIInputControl {
+class SUIMultiChoice: SUIInputControl {
     
     weak var superview:UIView?
     var styleContext:SUIStyleContext?
@@ -63,7 +63,7 @@ class SUIMultiAnswer: SUIInputControl {
     
     func toggleShowOptions(){
         
-        // todo: component should close all other UI open / edit states        
+        // todo: component should close all other UI open / edit states
         // todo: find longest option and base size off that
         
         optionsShowing = !optionsShowing
