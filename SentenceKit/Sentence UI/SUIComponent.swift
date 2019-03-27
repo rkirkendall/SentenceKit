@@ -16,8 +16,7 @@ struct SUIStyleContext {
     let paragraphStyle: NSParagraphStyle
 }
 
-protocol SUIInputControlDelegate {
-}
+protocol SUIInputControlDelegate {}
 
 protocol SUIComponent {
     var stringValue: String {get}
@@ -31,5 +30,7 @@ protocol SUIInputControl: SUIComponent {
     func view(styleContext: SUIStyleContext, frame: CGRect) -> UIView
 }; extension SUIInputControl {
     var isInput: Bool { return true }
-    var arrow:String { return "⌄"}
+    
 }
+
+let arrow:String = "⌄"

@@ -1,5 +1,5 @@
 //
-//  SUIDropdown.swift
+//  SUIMultiAnswer.swift
 //  SentenceKit
 //
 //  Created by Ricky Kirkendall on 3/12/19.
@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
-class SUIDropdown: SUIInputControl {
+class SUIMultiAnswer: SUIInputControl {
     
+    weak var superview:UIView?
+    var styleContext:SUIStyleContext?
     var options: [String] = [String]()
     var stringValue:String {
         return options.count > 0 ? options[0] : "    "
@@ -19,12 +21,9 @@ class SUIDropdown: SUIInputControl {
         return true
     }
     
-    private var dropdownOptionsShowing = false
-    
-    var styleContext:SUIStyleContext?
+    private var optionsShowing = false
     private var button: UIButton?
-    private var dropdown: UIView?
-    weak var superview:UIView?
+    private var optionsView: UIView?
     
     func tooWide(styleContext: SUIStyleContext, frame: CGRect) -> Bool {
         let button = view(styleContext: styleContext, frame: frame) as? UIButton
@@ -59,19 +58,17 @@ class SUIDropdown: SUIInputControl {
     }
     
     @objc func buttonTapped(){
-        print("hello there")
-        toggleDropdown()
+        toggleShowOptions()
     }
     
-    func toggleDropdown(){
+    func toggleShowOptions(){
         
-        // todo: component should close all other UI open / edit states
-        
+        // todo: component should close all other UI open / edit states        
         // todo: find longest option and base size off that
         
-        dropdownOptionsShowing = !dropdownOptionsShowing
-        dropdown?.isHidden = !dropdownOptionsShowing
-        if dropdown != nil{
+        optionsShowing = !optionsShowing
+        optionsView?.isHidden = !optionsShowing
+        if optionsView != nil{
             return
         }
         
@@ -80,15 +77,15 @@ class SUIDropdown: SUIInputControl {
                 return
         }
         
-        var dropdownFrame = CGRect.zero
-        dropdownFrame.size.height = button.frame.height * CGFloat(options.count) + 10
-        dropdownFrame.size.width = button.frame.width
-        dropdownFrame.origin.y = button.frame.origin.y + button.frame.size.height
-        dropdownFrame.origin.x = button.frame.origin.x
+        var optionsFrame = CGRect.zero
+        optionsFrame.size.height = button.frame.height * CGFloat(options.count) + 10
+        optionsFrame.size.width = button.frame.width
+        optionsFrame.origin.y = button.frame.origin.y + button.frame.size.height
+        optionsFrame.origin.x = button.frame.origin.x
         
-        let dropdownView = UIView(frame: dropdownFrame)
-        dropdownView.backgroundColor = .white
-        dropdownView.layer.borderWidth = 1
+        let view = UIView(frame: optionsFrame)
+        view.backgroundColor = .white
+        view.layer.borderWidth = 1
         
         var count = 0
         for opt in options {
@@ -102,12 +99,12 @@ class SUIDropdown: SUIInputControl {
             rect.size = optAttString.size()
             let optButton = UIButton(frame: rect)
             optButton.setAttributedTitle(optAttString, for: .normal)
-            dropdownView.addSubview(optButton)
+            view.addSubview(optButton)
             count += 1
         }
-        self.dropdown = dropdownView
+        optionsView = view
         
-        superview?.addSubview(dropdownView)
+        superview?.addSubview(view)
         
     }
 }

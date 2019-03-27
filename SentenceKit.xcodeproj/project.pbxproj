@@ -18,7 +18,7 @@
 		E983ADF3221BD0B700BC526A /* SentenceKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADF2221BD0B700BC526A /* SentenceKitTests.swift */; };
 		E983ADFE221BD0B700BC526A /* SentenceKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADFD221BD0B700BC526A /* SentenceKitUITests.swift */; };
 		E9A1AB892238D5AE00EFF65E /* SUIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1AB882238D5AE00EFF65E /* SUIComponent.swift */; };
-		E9A1AB8B2238D5F400EFF65E /* SUIDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1AB8A2238D5F400EFF65E /* SUIDropdown.swift */; };
+		E9A1AB8B2238D5F400EFF65E /* SUIMultiAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1AB8A2238D5F400EFF65E /* SUIMultiAnswer.swift */; };
 		E9C588352234F1EB000349A6 /* SUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C588342234F1EB000349A6 /* SUIView.swift */; };
 		E9C588372236207F000349A6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C588362236207F000349A6 /* Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -64,7 +64,7 @@
 		E983ADFD221BD0B700BC526A /* SentenceKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceKitUITests.swift; sourceTree = "<group>"; };
 		E983ADFF221BD0B700BC526A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9A1AB882238D5AE00EFF65E /* SUIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIComponent.swift; sourceTree = "<group>"; };
-		E9A1AB8A2238D5F400EFF65E /* SUIDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIDropdown.swift; sourceTree = "<group>"; };
+		E9A1AB8A2238D5F400EFF65E /* SUIMultiAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIMultiAnswer.swift; sourceTree = "<group>"; };
 		E9C588342234F1EB000349A6 /* SUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIView.swift; sourceTree = "<group>"; };
 		E9C588362236207F000349A6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,7 +180,7 @@
 			children = (
 				E9C588342234F1EB000349A6 /* SUIView.swift */,
 				E9A1AB882238D5AE00EFF65E /* SUIComponent.swift */,
-				E9A1AB8A2238D5F400EFF65E /* SUIDropdown.swift */,
+				E9A1AB8A2238D5F400EFF65E /* SUIMultiAnswer.swift */,
 			);
 			path = "Sentence UI";
 			sourceTree = "<group>";
@@ -411,7 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9A1AB8B2238D5F400EFF65E /* SUIDropdown.swift in Sources */,
+				E9A1AB8B2238D5F400EFF65E /* SUIMultiAnswer.swift in Sources */,
 				E9A1AB892238D5AE00EFF65E /* SUIComponent.swift in Sources */,
 				E983ADE0221BD0B600BC526A /* ViewController.swift in Sources */,
 				E9C588372236207F000349A6 /* Extensions.swift in Sources */,

@@ -16,10 +16,10 @@ class ViewController: UIViewController {
         
     }
     
-    let nameDropdown = SUIDropdown()
-    let addressDropdown = SUIDropdown()
-    let visitReasonDropdown = SUIDropdown()
-    let dateDropdown = SUIDropdown()
+    let nameDropdown = SUIMultiAnswer()
+    let addressDropdown = SUIMultiAnswer()
+    let visitReasonDropdown = SUIMultiAnswer()
+    let dateDropdown = SUIMultiAnswer()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

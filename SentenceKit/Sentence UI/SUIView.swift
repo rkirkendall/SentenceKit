@@ -68,7 +68,6 @@ public class SUIView: ModernView, UITextViewDelegate {
     
     // recursive
     
-    
     func layoutComponents(){
         var nl = NSMutableIndexSet()
         layoutComponents(newLines: &nl)
@@ -82,7 +81,6 @@ public class SUIView: ModernView, UITextViewDelegate {
     
         // variables
         let mutableAttString = NSMutableAttributedString()
-        let arrow = "⌄"//"▾"
         var counter = 0
         for component in self.components {
             
