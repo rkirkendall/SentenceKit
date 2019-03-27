@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var sentenceView: SUIView!
-    let sentence = SUISentence()
+    let sentence = Sentence()
     override func viewDidLoad() {
         super.viewDidLoad()
     }

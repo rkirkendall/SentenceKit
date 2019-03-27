@@ -21,7 +21,7 @@ extension UIButton {
     }
 }
 
-extension String: SUIComponent {
+extension String: Component {
     var superview: UIView? {
         get { return nil }
         set {}
