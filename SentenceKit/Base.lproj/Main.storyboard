@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-wq-OYQ" customClass="SUIView" customModule="SentenceKit" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-wq-OYQ" customClass="View" customModule="SentenceKit" customModuleProvider="target">
                                 <rect key="frame" x="16" y="41" width="343" height="586"/>
                                 <color key="backgroundColor" red="0.93857270077720212" green="0.93857270077720212" blue="0.93857270077720212" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>

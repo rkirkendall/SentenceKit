@@ -12,9 +12,7 @@ import Modernistik
 
 public class View: ModernView, UITextViewDelegate {
     
-    var textView = UITextView(autolayout: true)
-    
-    // todo: separate content of view into its own object that can be passed in
+    var textView = UITextView(autolayout: true)        
     var sentence: Sentence?
     
     // todo: by default the font should autosize based the view's frame

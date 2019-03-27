@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     let visitReasonDropdown = MultiChoice()
     let dateDropdown = MultiChoice()
     
+    let label = UILabel()
+    let textField = UITextField()
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -41,6 +44,15 @@ class ViewController: UIViewController {
         
         sentenceView.sentence = sentence
         sentenceView.layoutComponents()
+        
+        view.addSubview(textField)
+        textField.addSubview(label)
+        textField.frame = CGRect(x: 10, y: 400, width: 300, height: 50)
+        textField.backgroundColor = .lightGray
+        label.frame = CGRect(origin: CGPoint.zero, size: textField.frame.size)
+        label.text = "Test label"
+        
+        
     }
 
 

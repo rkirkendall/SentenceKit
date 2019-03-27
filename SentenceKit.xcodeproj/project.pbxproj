@@ -12,6 +12,7 @@
 		7E8393DE74D455E52ABC57B5 /* Pods_SentenceKitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099404DBBCD69D44681148FE /* Pods_SentenceKitUITests.framework */; };
 		E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926B224B04BB00EA2EDB /* MultiChoice.swift */; };
 		E968926E224B04CC00EA2EDB /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926D224B04CC00EA2EDB /* View.swift */; };
+		E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926F224B08DD00EA2EDB /* FreeEntry.swift */; };
 		E983ADDE221BD0B600BC526A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADDD221BD0B600BC526A /* AppDelegate.swift */; };
 		E983ADE0221BD0B600BC526A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADDF221BD0B600BC526A /* ViewController.swift */; };
 		E983ADE3221BD0B600BC526A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E983ADE1221BD0B600BC526A /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		BFDDD6C8F327DF45A06DEFB0 /* Pods-SentenceKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentenceKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SentenceKitTests/Pods-SentenceKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		E968926B224B04BB00EA2EDB /* MultiChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiChoice.swift; sourceTree = "<group>"; };
 		E968926D224B04CC00EA2EDB /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		E968926F224B08DD00EA2EDB /* FreeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeEntry.swift; sourceTree = "<group>"; };
 		E983ADDA221BD0B600BC526A /* SentenceKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentenceKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E983ADDD221BD0B600BC526A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E983ADDF221BD0B600BC526A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				E968926B224B04BB00EA2EDB /* MultiChoice.swift */,
 				E968926D224B04CC00EA2EDB /* View.swift */,
+				E968926F224B08DD00EA2EDB /* FreeEntry.swift */,
 				E9A1AB882238D5AE00EFF65E /* Component.swift */,
 			);
 			path = "Sentence UI";
@@ -415,6 +418,7 @@
 				E9A1AB892238D5AE00EFF65E /* Component.swift in Sources */,
 				E983ADE0221BD0B600BC526A /* ViewController.swift in Sources */,
 				E9C588372236207F000349A6 /* Extensions.swift in Sources */,
+				E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */,
 				E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */,
 				E983ADDE221BD0B600BC526A /* AppDelegate.swift in Sources */,
 			);
