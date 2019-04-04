@@ -37,13 +37,16 @@ class MultiChoice: InputControl {
         attributes[NSAttributedString.Key.underlineStyle] =  NSUnderlineStyle.single.rawValue
         attributes[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
         let attString = NSMutableAttributedString(string: stringValue, attributes: attributes)
-        let arrowFontSize = CGFloat(styleContext.font.pointSize * 0.7)
         
         // construct arrow att string and append
-        let blueArrowAtts = [NSAttributedString.Key.foregroundColor: styleContext.controlColor,
-                             NSAttributedString.Key.font: UIFont.systemFont(ofSize: arrowFontSize),
-                             NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
-        attString.append(NSAttributedString(string: arrow, attributes: blueArrowAtts))
+        if styleContext.showsArrow {
+            let arrowFontSize = CGFloat(styleContext.font.pointSize * 0.7)
+            let blueArrowAtts = [NSAttributedString.Key.foregroundColor: styleContext.controlColor,
+                                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: arrowFontSize),
+                                 NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
+            attString.append(NSAttributedString(string: arrow, attributes: blueArrowAtts))
+        }
+        
         return attString
     }
     
@@ -59,6 +62,10 @@ class MultiChoice: InputControl {
     
     @objc func buttonTapped(){
         toggleShowOptions()
+    }
+    
+    func toggleShowOptionsFullScreen(){
+        
     }
     
     func toggleShowOptions(){

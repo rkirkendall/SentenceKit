@@ -12,7 +12,7 @@ import Modernistik
 
 public class View: ModernView, UITextViewDelegate {
     
-    var textView = UITextView(autolayout: true)        
+    var textView = UITextView(autolayout: true)
     var sentence: Sentence?
     
     // todo: by default the font should autosize based the view's frame
@@ -36,10 +36,12 @@ public class View: ModernView, UITextViewDelegate {
     
     func frameOfTextRange(range:NSRange) -> CGRect {
         let beg = textView.beginningOfDocument
-        let start = textView.position(from: beg, offset: range.location)
-        let end = textView.position(from: start!, offset: range.length)
-        let textRange = textView.textRange(from: start!, to: end!)
-        return textView.firstRect(for: textRange!)
+        
+        guard let start = textView.position(from: beg, offset: range.location),
+        let end = textView.position(from: start, offset: range.length),
+        let textRange = textView.textRange(from: start, to: end) else { return CGRect.zero }
+        
+        return textView.firstRect(for: textRange)
     }
     
     // recursive
@@ -74,7 +76,7 @@ public class View: ModernView, UITextViewDelegate {
                     return
                 }
                 attString = inputControl.attributedString(styleContext: styleContext)
-                let wholeRange = NSRange(location: 0, length: attString.string.count-1)
+                let wholeRange = NSRange(location: 0, length: attString.string.count)
                 attString.setAttributes(attributes, range: wholeRange)
             }else{
                 attString = NSMutableAttributedString(string: component.stringValue, attributes: attributes)
@@ -111,7 +113,7 @@ public class View: ModernView, UITextViewDelegate {
                 return
             }
             
-            range = (self.textView.text as NSString).range(of: component.stringValue + arrow)
+            range = styleContext.showsArrow ? (self.textView.text as NSString).range(of: component.stringValue + arrow) : (self.textView.text as NSString).range(of: component.stringValue)
             rect = self.frameOfTextRange(range: range)
             
             // Remove line spacing from rect, save for last line

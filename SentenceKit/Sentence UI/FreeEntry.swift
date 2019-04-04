@@ -27,7 +27,18 @@ class FreeEntry: InputControl {
     }
     
     func view(styleContext: StyleContext, frame: CGRect) -> UIView {
+        textField.frame = frame
+        textField.addSubview(backgroundLabel)
+        backgroundLabel.frame = CGRect(origin: CGPoint.zero, size: textField.frame.size)
+        
         return UIView()
     }
+    
+//    view.addSubview(textField)
+//    textField.addSubview(label)
+//    textField.frame = CGRect(x: 10, y: 400, width: 300, height: 50)
+//    textField.backgroundColor = .lightGray
+//    label.frame = CGRect(origin: CGPoint.zero, size: textField.frame.size)
+//    label.text = "Test label"
     
 }

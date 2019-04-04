@@ -22,6 +22,7 @@ struct StyleContext {
     let controlColor: UIColor
     let textColor: UIColor
     let paragraphStyle: NSParagraphStyle
+    let showsArrow = false
 }
 
 protocol Component {
