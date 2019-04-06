@@ -31,10 +31,14 @@ protocol Component {
     var superview: UIView? {set get}
 }
 
-protocol InputControlDelegate {
+protocol InputControlDelegate: class {
+    func shouldEdit(control: InputControl) -> Bool
     func valueDidChange(control: InputControl, newValue: String)
 }
+
 protocol InputControl: Component {
+    var delegate: InputControlDelegate? {get set} // should be weak
+    
     func tooWide(styleContext: StyleContext, frame: CGRect) -> Bool
     func attributedString(styleContext: StyleContext) -> NSMutableAttributedString
     func view(styleContext: StyleContext, frame: CGRect) -> UIView

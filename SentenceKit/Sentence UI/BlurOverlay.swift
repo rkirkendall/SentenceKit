@@ -46,6 +46,11 @@ class BlurOverlay: ModernView {
     
     override func setupConstraints() {
         super.setupConstraints()
+        let views = ["close": closeButton]
+        var layoutConstraints = [NSLayoutConstraint]()
+        layoutConstraints += "V:|-close(40)".constraints(views: views)
+        layoutConstraints += "H:|-close(40)".constraints(views: views)
+        addConstraints(layoutConstraints)
     }
     
 }
