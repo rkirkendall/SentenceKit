@@ -20,11 +20,6 @@ class SentenceViewController: ModernViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(sentenceView)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         nameDropdown.options = ["Ricky", "Tenny"]
         addressDropdown.options = ["1755 Glendon Ave"]
@@ -41,7 +36,13 @@ class SentenceViewController: ModernViewController {
         sentence += "."
         
         sentenceView.sentence = sentence
-        sentenceView.layoutComponents()
+        
+        view.addSubview(sentenceView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateInterface()
     }
     
     override func setupConstraints() {
@@ -55,6 +56,7 @@ class SentenceViewController: ModernViewController {
     
     override func updateInterface() {
         super.updateInterface()
+        sentenceView.layoutComponents()
     }
 
 

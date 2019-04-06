@@ -10,8 +10,9 @@
 		2224C31D575EED32C9CC030F /* Pods_SentenceKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE10A8DCF1C5DD3D8D5CA08 /* Pods_SentenceKitTests.framework */; };
 		657EC48A0C5CDBEEDC547644 /* Pods_SentenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C093EE3BF77C3877A5478DE /* Pods_SentenceKit.framework */; };
 		7E8393DE74D455E52ABC57B5 /* Pods_SentenceKitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099404DBBCD69D44681148FE /* Pods_SentenceKitUITests.framework */; };
+		E93AADD322592E6600FD971C /* BlurOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AADD222592E6600FD971C /* BlurOverlay.swift */; };
 		E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926B224B04BB00EA2EDB /* MultiChoice.swift */; };
-		E968926E224B04CC00EA2EDB /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926D224B04CC00EA2EDB /* View.swift */; };
+		E968926E224B04CC00EA2EDB /* SentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926D224B04CC00EA2EDB /* SentenceView.swift */; };
 		E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926F224B08DD00EA2EDB /* FreeEntry.swift */; };
 		E983ADDE221BD0B600BC526A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADDD221BD0B600BC526A /* AppDelegate.swift */; };
 		E983ADE0221BD0B600BC526A /* SentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADDF221BD0B600BC526A /* SentenceViewController.swift */; };
@@ -51,8 +52,9 @@
 		968D41E808B70D6694AB6E3F /* Pods-SentenceKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentenceKitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SentenceKitUITests/Pods-SentenceKitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ACE10A8DCF1C5DD3D8D5CA08 /* Pods_SentenceKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentenceKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFDDD6C8F327DF45A06DEFB0 /* Pods-SentenceKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentenceKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SentenceKitTests/Pods-SentenceKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		E93AADD222592E6600FD971C /* BlurOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurOverlay.swift; sourceTree = "<group>"; };
 		E968926B224B04BB00EA2EDB /* MultiChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiChoice.swift; sourceTree = "<group>"; };
-		E968926D224B04CC00EA2EDB /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		E968926D224B04CC00EA2EDB /* SentenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceView.swift; sourceTree = "<group>"; };
 		E968926F224B08DD00EA2EDB /* FreeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeEntry.swift; sourceTree = "<group>"; };
 		E983ADDA221BD0B600BC526A /* SentenceKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentenceKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E983ADDD221BD0B600BC526A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,7 +151,6 @@
 			children = (
 				E9A1AB872238D58B00EFF65E /* Sentence UI */,
 				E983ADDD221BD0B600BC526A /* AppDelegate.swift */,
-				E983ADDF221BD0B600BC526A /* SentenceViewController.swift */,
 				E983ADE1221BD0B600BC526A /* Main.storyboard */,
 				E983ADE4221BD0B700BC526A /* Assets.xcassets */,
 				E983ADE6221BD0B700BC526A /* LaunchScreen.storyboard */,
@@ -181,9 +182,11 @@
 			isa = PBXGroup;
 			children = (
 				E968926B224B04BB00EA2EDB /* MultiChoice.swift */,
-				E968926D224B04CC00EA2EDB /* View.swift */,
+				E968926D224B04CC00EA2EDB /* SentenceView.swift */,
 				E968926F224B08DD00EA2EDB /* FreeEntry.swift */,
 				E9A1AB882238D5AE00EFF65E /* Component.swift */,
+				E983ADDF221BD0B600BC526A /* SentenceViewController.swift */,
+				E93AADD222592E6600FD971C /* BlurOverlay.swift */,
 			);
 			path = "Sentence UI";
 			sourceTree = "<group>";
@@ -414,10 +417,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E968926E224B04CC00EA2EDB /* View.swift in Sources */,
+				E968926E224B04CC00EA2EDB /* SentenceView.swift in Sources */,
 				E9A1AB892238D5AE00EFF65E /* Component.swift in Sources */,
 				E983ADE0221BD0B600BC526A /* SentenceViewController.swift in Sources */,
 				E9C588372236207F000349A6 /* Extensions.swift in Sources */,
+				E93AADD322592E6600FD971C /* BlurOverlay.swift in Sources */,
 				E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */,
 				E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */,
 				E983ADDE221BD0B600BC526A /* AppDelegate.swift in Sources */,

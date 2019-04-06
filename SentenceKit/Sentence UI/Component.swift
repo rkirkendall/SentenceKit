@@ -31,14 +31,15 @@ protocol Component {
     var superview: UIView? {set get}
 }
 
-protocol InputControlDelegate {}
+protocol InputControlDelegate {
+    func valueDidChange(control: InputControl, newValue: String)
+}
 protocol InputControl: Component {
     func tooWide(styleContext: StyleContext, frame: CGRect) -> Bool
     func attributedString(styleContext: StyleContext) -> NSMutableAttributedString
     func view(styleContext: StyleContext, frame: CGRect) -> UIView
 }; extension InputControl {
     var isInput: Bool { return true }
-    
 }
 
 let arrow:String = "⌄"
