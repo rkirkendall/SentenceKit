@@ -82,7 +82,7 @@ public class View: ModernView, UITextViewDelegate {
                 attString = NSMutableAttributedString(string: component.stringValue, attributes: attributes)
             }
             
-            if newLines.contains(counter) { //counter == newLineNeeded {
+            if newLines.contains(counter) {
                 attString.append(NSAttributedString(string: "\n"))
             }
             

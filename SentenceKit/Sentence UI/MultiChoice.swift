@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MultiChoice: InputControl {
+class MultiChoice: NSObject, InputControl {
     
     weak var superview:UIView?
     var styleContext:StyleContext?
@@ -24,6 +24,7 @@ class MultiChoice: InputControl {
     private var optionsShowing = false
     private var button: UIButton?
     private var optionsView: UIView?
+    private var optionsTableView: UITableView?
     
     func tooWide(styleContext: StyleContext, frame: CGRect) -> Bool {
         let button = view(styleContext: styleContext, frame: frame) as? UIButton
@@ -61,12 +62,50 @@ class MultiChoice: InputControl {
     }
     
     @objc func buttonTapped(){
-        toggleShowOptions()
+        //toggleShowOptions()
+        toggleShowOptionsFullScreen()
     }
     
     func toggleShowOptionsFullScreen(){
+        optionsShowing = !optionsShowing
+        optionsView?.isHidden = !optionsShowing
+        if optionsView != nil{
+            return
+        }
+        
+        guard let button = self.button,
+            let styleContext = self.styleContext,
+            let superview = superview else { return}
+        
+        var optionsFrame = CGRect.zero
+        optionsFrame.size = superview.frame.size
+        
+        optionsTableView = UITableView(frame: optionsFrame)
+        guard let optionsTableView = optionsTableView else { return }
+        optionsTableView.dataSource = self
+        optionsTableView.backgroundColor = .clear
+        optionsTableView.separatorStyle = .none
+        optionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        //only apply the blur if the user hasn't disabled transparency effects
+        if !UIAccessibility.isReduceTransparencyEnabled {
+            // todo: make blur effect part of style context
+            let blurEffect = UIBlurEffect(style: .extraLight)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = optionsFrame
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            
+            superview.addSubview(blurEffectView) //if you have more UIViews, use an insertSubview API to place it where needed
+        }else {
+            // todo: add behavior if blur is disabled.
+        }
+        
+        superview.addSubview(optionsTableView)
         
     }
+    
+    
     
     func toggleShowOptions(){
         
@@ -114,4 +153,36 @@ class MultiChoice: InputControl {
         superview?.addSubview(view)
         
     }
+}
+
+extension MultiChoice: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return options.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let optString = options[indexPath.row]
+        cell.textLabel?.text = optString
+        cell.backgroundColor = .clear
+        cell.textLabel?.textAlignment = .center
+        
+        guard let styleContext = self.styleContext else { return cell }
+        var atts = [NSAttributedString.Key:Any]()
+        atts[NSAttributedString.Key.font] = styleContext.font
+        atts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
+        let optAttString = NSAttributedString(string: optString, attributes: atts)
+        cell.textLabel?.attributedText = optAttString
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.button?.frame.height ?? 30
+    }
+    
+}
+
+extension MultiChoice: UITableViewDelegate {
+    
 }
