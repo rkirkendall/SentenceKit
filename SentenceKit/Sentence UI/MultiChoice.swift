@@ -106,7 +106,7 @@ class MultiChoice: NSObject, InputControl {
     }
     
     
-    
+    // deprecated
     func toggleShowOptions(){
         
         // todo: component should close all other UI open / edit states
@@ -150,8 +150,7 @@ class MultiChoice: NSObject, InputControl {
         }
         optionsView = view
         
-        superview?.addSubview(view)
-        
+        superview?.addSubview(view)        
     }
 }
 

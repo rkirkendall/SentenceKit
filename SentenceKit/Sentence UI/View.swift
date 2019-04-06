@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Modernistik
 
-public class View: ModernView, UITextViewDelegate {
+public class SentenceView: ModernView, UITextViewDelegate {
     
     var textView = UITextView(autolayout: true)
     var sentence: Sentence?

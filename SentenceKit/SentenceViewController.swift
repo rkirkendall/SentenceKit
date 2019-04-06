@@ -7,20 +7,22 @@
 //
 
 import UIKit
+import Modernistik
 
-class ViewController: UIViewController {
+class SentenceViewController: ModernViewController {
     
-    @IBOutlet weak var sentenceView: View!
     let sentence = Sentence()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    let sentenceView = SentenceView(autolayout: true)
     let nameDropdown = MultiChoice()
     let addressDropdown = MultiChoice()
     let visitReasonDropdown = MultiChoice()
     let dateDropdown = MultiChoice()
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(sentenceView)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -29,7 +31,6 @@ class ViewController: UIViewController {
         visitReasonDropdown.options = ["annual physical", "sick visit"]
         dateDropdown.options = ["Mar 13 at 4 PM"]
         
-        // todo: encapsulate this content into own object
         sentence += nameDropdown
         sentence += " needs a doctor at "
         sentence += addressDropdown
@@ -41,8 +42,19 @@ class ViewController: UIViewController {
         
         sentenceView.sentence = sentence
         sentenceView.layoutComponents()
-        
-        
+    }
+    
+    override func setupConstraints() {
+        super.setupConstraints()
+        let views = ["sentenceView":sentenceView]
+        var layoutConstraints = [NSLayoutConstraint]()
+        layoutConstraints += "H:|[sentenceView]|".constraints(views: views)
+        layoutConstraints += "V:|[sentenceView]|".constraints(views: views)
+        view.addConstraints(layoutConstraints)
+    }
+    
+    override func updateInterface() {
+        super.updateInterface()
     }
 
 
