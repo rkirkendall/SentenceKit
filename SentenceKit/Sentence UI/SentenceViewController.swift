@@ -34,6 +34,10 @@ class SentenceViewController: ModernViewController {
         sentence += " on "
         sentence += dateDropdown
         sentence += "."
+
+        //var resolutions = [Resolution]()
+        //resolutions += { if self.nameDropdown.stringValue == "Ricky" {/* change something}; change something else */ }
+        //sentence.addResolutions(resolutions)
         
         sentenceView.sentence = sentence
         

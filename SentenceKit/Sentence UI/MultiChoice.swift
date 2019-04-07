@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class MultiChoice: NSObject, InputControl {
+    var delegate: InputControlDelegate?
+    
     
     weak var superview:UIView?
     var styleContext:StyleContext?
