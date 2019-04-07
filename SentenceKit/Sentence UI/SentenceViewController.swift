@@ -35,6 +35,7 @@ class SentenceViewController: ModernViewController {
         sentence += dateDropdown
         sentence += "."
 
+        //typealias Resolution = () -> Void
         //var resolutions = [Resolution]()
         //resolutions += { if self.nameDropdown.stringValue == "Ricky" {/* change something}; change something else */ }
         //sentence.addResolutions(resolutions)
