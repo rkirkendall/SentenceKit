@@ -65,7 +65,8 @@ extension SentenceViewController: InputControlDelegate {
     func showEditModal(control: InputControl) {
         let editVC = control.editView
         editVC.styleContext = sentenceView.styleContext
-        present(editVC, animated: true)
+        editVC.modalPresentationStyle = .overCurrentContext
+        present(editVC, animated: false)
     }
     
     

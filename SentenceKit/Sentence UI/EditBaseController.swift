@@ -16,7 +16,7 @@ class BlurOverlay: ModernViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .clear
         if !UIAccessibility.isReduceTransparencyEnabled {
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             blurEffectView.frame = view.frame
@@ -35,8 +35,9 @@ class BlurOverlay: ModernViewController {
         view.addSubview(closeButton)
     }
     
+    
     @objc func closeTapped(){
-        dismiss(animated: true)
+        dismiss(animated: false)
     }
 
     override func setupConstraints() {

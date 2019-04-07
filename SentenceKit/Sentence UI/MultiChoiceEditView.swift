@@ -85,7 +85,7 @@ extension MultiChoiceEditViewController: UITableViewDataSource, UITableViewDeleg
         guard let choices = choices else { return }
         let optString = choices[indexPath.row]
         delegate?.stringValueDidChange(newStringValue: optString)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
     
     
