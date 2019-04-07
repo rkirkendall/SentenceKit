@@ -64,6 +64,7 @@ extension MultiChoiceEditViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.selectionStyle = .none
         guard let choices = choices else { return cell }
         let optString = choices[indexPath.row]
         cell.textLabel?.text = optString
@@ -78,6 +79,13 @@ extension MultiChoiceEditViewController: UITableViewDataSource, UITableViewDeleg
         cell.textLabel?.attributedText = optAttString
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let choices = choices else { return }
+        let optString = choices[indexPath.row]
+        delegate?.stringValueDidChange(newStringValue: optString)
+        dismiss(animated: true, completion: nil)
     }
     
     

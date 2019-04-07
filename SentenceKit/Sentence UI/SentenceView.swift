@@ -10,9 +10,24 @@ import Foundation
 import UIKit
 import Modernistik
 
+class SentenceTextView: UITextView {
+    var sentenceComponents = [UIView]()
+    
+    func addSentenceComponentView(view: UIView) {
+        sentenceComponents.append(view)
+        addSubview(view)
+    }
+    
+    func clearSentenceViews(){
+        for c in sentenceComponents {
+            c.removeFromSuperview()
+        }
+    }
+}
+
 public class SentenceView: ModernView, UITextViewDelegate {
     
-    var textView = UITextView(autolayout: true)
+    var textView = SentenceTextView(autolayout: true)
     var sentence: Sentence? {
         didSet {
             guard let sentence = sentence else { return }
@@ -58,6 +73,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
     // recursive
     
     func layoutComponents(){
+        self.textView.clearSentenceViews()
         var nl = NSMutableIndexSet()
         layoutComponents(newLines: &nl)
         
@@ -154,8 +170,8 @@ public class SentenceView: ModernView, UITextViewDelegate {
                 // debugging
                 let v = UIView(frame: rect)
                 v.backgroundColor = UIColor.green.opacity(0.2)
-                self.textView.addSubview(v)
-                self.textView.addSubview(controlView)
+                self.textView.addSentenceComponentView(view: v)
+                self.textView.addSentenceComponentView(view: controlView)
                 inputControl.superview = self.textView
             }            
             counter += 1

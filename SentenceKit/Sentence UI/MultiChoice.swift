@@ -19,11 +19,14 @@ class MultiChoice: NSObject, InputControl {
     var editView: EditBaseController {
         get {
             _editViewController.choices = options
+            _editViewController.delegate = self
             return _editViewController
         }
     }
-    var stringValue:String {
-        return options.count > 0 ? options[0] : "    "
+    private var _stringValue: String?
+    var stringValue: String {
+        if let s = _stringValue { return s }
+        return options.count > 0 ? options[0] : "      "
     }
     var isInput: Bool {
         return true
@@ -71,4 +74,13 @@ class MultiChoice: NSObject, InputControl {
     @objc func buttonTapped(){
         delegate?.showEditModal(control: self)
     }
+}
+
+extension MultiChoice: EditVariableTextDelegate {
+    func stringValueDidChange(newStringValue: String) {
+        _stringValue = newStringValue        
+        delegate?.valueDidChange(control: self, newValue: newStringValue)
+    }
+    
+    
 }

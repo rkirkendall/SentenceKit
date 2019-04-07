@@ -34,11 +34,6 @@ class SentenceViewController: ModernViewController {
         sentence += " on "
         sentence += dateDropdown
         sentence += "."
-
-        //typealias Resolution = () -> Void
-        //var resolutions = [Resolution]()
-        //resolutions += { if self.nameDropdown.stringValue == "Ricky" {/* change something}; change something else */ }
-        //sentence.addResolutions(resolutions)
         
         sentenceView.sentence = sentence
         sentenceView.delegate = self
@@ -75,6 +70,6 @@ extension SentenceViewController: InputControlDelegate {
     
     
     func valueDidChange(control: InputControl, newValue: String) {
-        
+        updateInterface()
     }
 }

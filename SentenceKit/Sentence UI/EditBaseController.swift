@@ -30,7 +30,7 @@ class BlurOverlay: ModernViewController {
             view.addSubview(transluscentView)
         }
         
-        closeButton.setImage(UIImage(named: "close-white"), for: .normal)
+        closeButton.setImage(UIImage(named: "close-black"), for: .normal)
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         view.addSubview(closeButton)
     }
@@ -50,6 +50,11 @@ class BlurOverlay: ModernViewController {
     
 }
 
+protocol EditVariableTextDelegate: class {
+    func stringValueDidChange(newStringValue: String)
+}
+
 class EditBaseController: BlurOverlay {
     var styleContext:StyleContext?
+    weak var delegate: EditVariableTextDelegate?
 }
