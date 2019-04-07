@@ -15,11 +15,11 @@ class MultiChoice: NSObject, InputControl {
     weak var superview:UIView? // marked for removal
     var styleContext:StyleContext?
     var options: [String] = [String]()
-    private var _editView = MultiChoiceEditView(autolayout: true)
-    var editView: BlurOverlay {
+    private var _editViewController = MultiChoiceEditViewController()
+    var editView: EditBaseController {
         get {
-            _editView.choices = options
-            return _editView
+            _editViewController.choices = options
+            return _editViewController
         }
     }
     var stringValue:String {

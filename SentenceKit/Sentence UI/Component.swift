@@ -39,7 +39,7 @@ protocol InputControlDelegate: class {
 protocol InputControl: Component {
     var delegate: InputControlDelegate? {get set} // should be weak
     
-    var editView: BlurOverlay { get }
+    var editView: EditBaseController { get }
     
     func tooWide(styleContext: StyleContext, frame: CGRect) -> Bool
     func attributedString(styleContext: StyleContext) -> NSMutableAttributedString

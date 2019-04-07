@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class FreeEntry: InputControl {
-    var editView: BlurOverlay { get{
-        return BlurOverlay()
+    var editView: EditBaseController { get{
+        return EditBaseController()
         }}
     
     weak var delegate: InputControlDelegate?

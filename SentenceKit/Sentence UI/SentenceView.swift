@@ -32,7 +32,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
     
     public override func setupView() {
         super.setupView()
-        
+        textView.backgroundColor = .clear
         // todo: line spacing should be a function of font size
         paragraphStyle.lineSpacing = 20
         styleContext = StyleContext(font: UIFont.boldSystemFont(ofSize: 20),

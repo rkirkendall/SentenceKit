@@ -14,37 +14,37 @@ class SizableTableView: UITableView {
     
     override var intrinsicContentSize: CGSize {
         let height = min(contentSize.height, maxHeight)
-        return CGSize(width: contentSize.width, height: height)
+        
+        return CGSize(width: UIScreen.main.bounds.size.width, height: height)
     }
 }
 
-class MultiChoiceEditView: BlurOverlay {
+class MultiChoiceEditViewController: EditBaseController {
     
     let tableView = SizableTableView(autolayout: true)
-    var choices:[String]?
-    var styleContext:StyleContext?
+    var choices:[String]?    
     
-    override func setupView() {
-        super.setupView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        addSubview(tableView)
+        view.addSubview(tableView)
         
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
-        let layoutConstraints = [tableView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-                                 tableView.centerYAnchor.constraint(equalTo: self.centerYAnchor)]
-        addConstraints(layoutConstraints)
+        let layoutConstraints = [tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                 tableView.centerYAnchor.constraint(equalTo: view.centerYAnchor)]
+        view.addConstraints(layoutConstraints)
     }
 }
-extension MultiChoiceEditView: UITableViewDataSource, UITableViewDelegate {
+extension MultiChoiceEditViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let choices = choices,

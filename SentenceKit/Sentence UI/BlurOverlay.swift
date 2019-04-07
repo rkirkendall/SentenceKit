@@ -9,56 +9,47 @@
 import Foundation
 import Modernistik
 
-class BlurOverlay: ModernView {
+class BlurOverlay: ModernViewController {
     
     let closeButton = UIButton(autolayout: true)
     var blurEffect = UIBlurEffect(style: .extraLight)
-    override func setupView() {
-        super.setupView()
-        
-        closeButton.setImage(UIImage(named: "close-white"), for: .normal)
-        addSubview(closeButton)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         if !UIAccessibility.isReduceTransparencyEnabled {
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = frame
+            blurEffectView.frame = view.frame
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            addSubview(blurEffectView)
+            view.addSubview(blurEffectView)
         }else {
             let transluscentView = UIVisualEffectView(effect: blurEffect)
-            transluscentView.frame = frame
+            transluscentView.frame = view.frame
             transluscentView.layer.opacity = 0.5
             transluscentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            addSubview(transluscentView)
+            view.addSubview(transluscentView)
         }
+        
+        closeButton.setImage(UIImage(named: "close-white"), for: .normal)
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        view.addSubview(closeButton)
     }
     
     @objc func closeTapped(){
-        dismiss(animate: true)
+        dismiss(animated: true)
     }
-    
-    func dismiss(animate: Bool) {
-        if animate {
-            fadeOut { self.isHidden = true }
-        }else {
-            self.isHidden = true
-        }
-    }
-    
-    func show(animate: Bool) {
-        isHidden = false
-        if animate {
-            fadeIn()
-        }
-    }
-    
+
     override func setupConstraints() {
         super.setupConstraints()
         let views = ["close": closeButton]
         var layoutConstraints = [NSLayoutConstraint]()
         layoutConstraints += "V:|-[close(40)]".constraints(views: views)
         layoutConstraints += "H:|-[close(40)]".constraints(views: views)
-        addConstraints(layoutConstraints)
+        view.addConstraints(layoutConstraints)
     }
     
+}
+
+class EditBaseController: BlurOverlay {
+    var styleContext:StyleContext?
 }
