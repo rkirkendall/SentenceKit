@@ -33,23 +33,31 @@ class BlurOverlay: ModernView {
         }
     }
     
+    @objc func closeTapped(){
+        dismiss(animate: true)
+    }
+    
     func dismiss(animate: Bool) {
-        fadeOut {
+        if animate {
+            fadeOut { self.isHidden = true }
+        }else {
             self.isHidden = true
         }
     }
     
     func show(animate: Bool) {
         isHidden = false
-        fadeIn()
+        if animate {
+            fadeIn()
+        }
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         let views = ["close": closeButton]
         var layoutConstraints = [NSLayoutConstraint]()
-        layoutConstraints += "V:|-close(40)".constraints(views: views)
-        layoutConstraints += "H:|-close(40)".constraints(views: views)
+        layoutConstraints += "V:|-[close(40)]".constraints(views: views)
+        layoutConstraints += "H:|-[close(40)]".constraints(views: views)
         addConstraints(layoutConstraints)
     }
     

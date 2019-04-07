@@ -182,8 +182,8 @@ public class SentenceView: ModernView, UITextViewDelegate {
 }
 
 extension SentenceView: InputControlDelegate {
-    func showEditModal() {
-        
+    func showEditModal(control: InputControl) {
+        delegate?.showEditModal(control: control)
     }
     
     func valueDidChange(control: InputControl, newValue: String) {

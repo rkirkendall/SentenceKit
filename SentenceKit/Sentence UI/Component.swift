@@ -32,12 +32,14 @@ protocol Component {
 }
 
 protocol InputControlDelegate: class {
-    func showEditModal()
+    func showEditModal(control: InputControl)
     func valueDidChange(control: InputControl, newValue: String)
 }
 
 protocol InputControl: Component {
     var delegate: InputControlDelegate? {get set} // should be weak
+    
+    var editView: BlurOverlay { get }
     
     func tooWide(styleContext: StyleContext, frame: CGRect) -> Bool
     func attributedString(styleContext: StyleContext) -> NSMutableAttributedString

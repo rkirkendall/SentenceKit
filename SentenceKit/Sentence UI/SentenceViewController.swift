@@ -18,6 +18,8 @@ class SentenceViewController: ModernViewController {
     let visitReasonDropdown = MultiChoice()
     let dateDropdown = MultiChoice()
     
+    var editView = BlurOverlay(autolayout: true)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,8 +43,11 @@ class SentenceViewController: ModernViewController {
         //sentence.addResolutions(resolutions)
         
         sentenceView.sentence = sentence
+        sentenceView.delegate = self
         
         view.addSubview(sentenceView)
+        editView.isHidden = true
+        view.addSubview(editView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,10 +57,12 @@ class SentenceViewController: ModernViewController {
     
     override func setupConstraints() {
         super.setupConstraints()
-        let views = ["sentenceView":sentenceView]
+        let views = ["sentenceView":sentenceView, "edit":editView]
         var layoutConstraints = [NSLayoutConstraint]()
         layoutConstraints += "H:|[sentenceView]|".constraints(views: views)
         layoutConstraints += "V:|[sentenceView]|".constraints(views: views)
+        layoutConstraints += "H:|[edit]|".constraints(views: views)
+        layoutConstraints += "V:|[edit]|".constraints(views: views)
         view.addConstraints(layoutConstraints)
     }
     
@@ -66,8 +73,9 @@ class SentenceViewController: ModernViewController {
 }
 
 extension SentenceViewController: InputControlDelegate {
-    func showEditModal() {
-        
+    func showEditModal(control: InputControl) {
+        editView = control.editView
+        editView.show(animate: true)
     }
     
     

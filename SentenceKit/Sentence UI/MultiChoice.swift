@@ -10,11 +10,18 @@ import Foundation
 import UIKit
 
 class MultiChoice: NSObject, InputControl {
-    
+
     weak var delegate: InputControlDelegate?
     weak var superview:UIView? // marked for removal
     var styleContext:StyleContext?
     var options: [String] = [String]()
+    private var _editView = MultiChoiceEditView(autolayout: true)
+    var editView: BlurOverlay {
+        get {
+            _editView.choices = options
+            return _editView
+        }
+    }
     var stringValue:String {
         return options.count > 0 ? options[0] : "    "
     }
@@ -62,126 +69,6 @@ class MultiChoice: NSObject, InputControl {
     }
     
     @objc func buttonTapped(){
-        //toggleShowOptions()
-        toggleShowOptionsFullScreen()
+        delegate?.showEditModal(control: self)
     }
-    
-    func toggleShowOptionsFullScreen(){
-        optionsShowing = !optionsShowing
-        optionsView?.isHidden = !optionsShowing
-        if optionsView != nil{
-            return
-        }
-        
-        guard let button = self.button,
-            let styleContext = self.styleContext,
-            let superview = superview else { return}
-        
-        var optionsFrame = CGRect.zero
-        optionsFrame.size = superview.frame.size
-        
-        optionsTableView = UITableView(frame: optionsFrame)
-        guard let optionsTableView = optionsTableView else { return }
-        optionsTableView.dataSource = self
-        optionsTableView.backgroundColor = .clear
-        optionsTableView.separatorStyle = .none
-        optionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        //only apply the blur if the user hasn't disabled transparency effects
-        if !UIAccessibility.isReduceTransparencyEnabled {
-            // todo: make blur effect part of style context
-            let blurEffect = UIBlurEffect(style: .extraLight)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            //always fill the view
-            blurEffectView.frame = optionsFrame
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            
-            superview.addSubview(blurEffectView) //if you have more UIViews, use an insertSubview API to place it where needed
-        }else {
-            // todo: add behavior if blur is disabled.
-        }
-        
-        superview.addSubview(optionsTableView)
-        
-    }
-    
-    
-    // deprecated
-    func toggleShowOptions(){
-        
-        // todo: component should close all other UI open / edit states
-        // todo: find longest option and base size off that
-        
-        optionsShowing = !optionsShowing
-        optionsView?.isHidden = !optionsShowing
-        if optionsView != nil{
-            return
-        }
-        
-        guard let button = self.button,
-            let styleContext = self.styleContext else {
-                return
-        }
-        
-        var optionsFrame = CGRect.zero
-        optionsFrame.size.height = button.frame.height * CGFloat(options.count) + 10
-        optionsFrame.size.width = button.frame.width
-        optionsFrame.origin.y = button.frame.origin.y + button.frame.size.height
-        optionsFrame.origin.x = button.frame.origin.x
-        
-        let view = UIView(frame: optionsFrame)
-        view.backgroundColor = .white
-        view.layer.borderWidth = 1
-        
-        var count = 0
-        for opt in options {
-            var atts = [NSAttributedString.Key:Any]()
-            atts[NSAttributedString.Key.font] = styleContext.font
-            atts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
-            let optAttString = NSAttributedString(string: opt, attributes: atts)
-            var rect = CGRect.zero
-            rect.origin.x =  5
-            rect.origin.y = 0 + 5 + (CGFloat(count) * button.frame.height)
-            rect.size = optAttString.size()
-            let optButton = UIButton(frame: rect)
-            optButton.setAttributedTitle(optAttString, for: .normal)
-            view.addSubview(optButton)
-            count += 1
-        }
-        optionsView = view
-        
-        superview?.addSubview(view)        
-    }
-}
-
-extension MultiChoice: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return options.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let optString = options[indexPath.row]
-        cell.textLabel?.text = optString
-        cell.backgroundColor = .clear
-        cell.textLabel?.textAlignment = .center
-        
-        guard let styleContext = self.styleContext else { return cell }
-        var atts = [NSAttributedString.Key:Any]()
-        atts[NSAttributedString.Key.font] = styleContext.font
-        atts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
-        let optAttString = NSAttributedString(string: optString, attributes: atts)
-        cell.textLabel?.attributedText = optAttString
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.button?.frame.height ?? 30
-    }
-    
-}
-
-extension MultiChoice: UITableViewDelegate {
-    
 }

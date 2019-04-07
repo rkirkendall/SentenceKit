@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class FreeEntry: InputControl {
+    var editView: BlurOverlay { get{
+        return BlurOverlay()
+        }}
+    
     weak var delegate: InputControlDelegate?
     
     var stringValue = ""
