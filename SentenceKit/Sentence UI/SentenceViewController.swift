@@ -63,7 +63,15 @@ class SentenceViewController: ModernViewController {
         super.updateInterface()
         sentenceView.layoutComponents()
     }
-
-
 }
 
+extension SentenceViewController: InputControlDelegate {
+    func showEditModal() {
+        
+    }
+    
+    
+    func valueDidChange(control: InputControl, newValue: String) {
+        
+    }
+}

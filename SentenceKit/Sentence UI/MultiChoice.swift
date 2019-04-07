@@ -10,10 +10,9 @@ import Foundation
 import UIKit
 
 class MultiChoice: NSObject, InputControl {
-    var delegate: InputControlDelegate?
     
-    
-    weak var superview:UIView?
+    weak var delegate: InputControlDelegate?
+    weak var superview:UIView? // marked for removal
     var styleContext:StyleContext?
     var options: [String] = [String]()
     var stringValue:String {
@@ -40,7 +39,6 @@ class MultiChoice: NSObject, InputControl {
         attributes[NSAttributedString.Key.underlineStyle] =  NSUnderlineStyle.single.rawValue
         attributes[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
         let attString = NSMutableAttributedString(string: stringValue, attributes: attributes)
-        
         // construct arrow att string and append
         if styleContext.showsArrow {
             let arrowFontSize = CGFloat(styleContext.font.pointSize * 0.7)

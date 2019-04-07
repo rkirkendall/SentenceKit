@@ -13,7 +13,18 @@ import Modernistik
 public class SentenceView: ModernView, UITextViewDelegate {
     
     var textView = UITextView(autolayout: true)
-    var sentence: Sentence?
+    var sentence: Sentence? {
+        didSet {
+            guard let sentence = sentence else { return }
+            for c in sentence.components {
+                if c.isInput,
+                    var inputControl = c as? InputControl {
+                    inputControl.delegate = self
+                }
+            }
+        }
+    }
+    weak var delegate: InputControlDelegate?
     
     // todo: by default the font should autosize based the view's frame
     let paragraphStyle = NSMutableParagraphStyle()
@@ -168,4 +179,16 @@ public class SentenceView: ModernView, UITextViewDelegate {
     public override func updateInterface() {
         super.updateInterface()
     }
+}
+
+extension SentenceView: InputControlDelegate {
+    func showEditModal() {
+        
+    }
+    
+    func valueDidChange(control: InputControl, newValue: String) {
+        delegate?.valueDidChange(control: control, newValue: newValue)
+    }
+    
+    
 }

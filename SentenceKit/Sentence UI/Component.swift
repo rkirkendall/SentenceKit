@@ -32,7 +32,7 @@ protocol Component {
 }
 
 protocol InputControlDelegate: class {
-    func shouldEdit(control: InputControl) -> Bool
+    func showEditModal()
     func valueDidChange(control: InputControl, newValue: String)
 }
 

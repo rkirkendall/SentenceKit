@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class FreeEntry: InputControl {
+    weak var delegate: InputControlDelegate?
     
     var stringValue = ""
     var styleContext:StyleContext?
