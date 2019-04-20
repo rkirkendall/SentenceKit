@@ -15,8 +15,8 @@ extension UIButton {
         guard let labelText = titleLabel?.attributedText else {
             return false
         }
-        print("label width: \(labelText.size().width)")
-        print("frame width: \(frame.width)")
+        //print("label width: \(labelText.size().width)")
+        //print("frame width: \(frame.width)")
         return labelText.size().width > frame.width
     }
 }

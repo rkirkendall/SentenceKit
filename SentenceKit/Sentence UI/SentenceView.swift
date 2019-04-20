@@ -60,14 +60,68 @@ public class SentenceView: ModernView, UITextViewDelegate {
         addSubview(textView)
     }
     
-    func frameOfTextRange(range:NSRange) -> CGRect {
+    func framesOfTextRange(range: NSRange) -> [CGRect] {
         let beg = textView.beginningOfDocument
         
         guard let start = textView.position(from: beg, offset: range.location),
-        let end = textView.position(from: start, offset: range.length),
-        let textRange = textView.textRange(from: start, to: end) else { return CGRect.zero }
+            let end = textView.position(from: start, offset: range.length),
+            let textRange = textView.textRange(from: start, to: end) else { return [CGRect.zero] }
         
-        return textView.firstRect(for: textRange)
+        let ranges = textView.selectionRects(for: textRange)
+//        for r in ranges{
+//            print("possible range: \(r.debugDescription)")
+//        }
+        
+        let toReturn = textView.selectionRects(for: textRange).map { $0.rect }
+        //toReturn.size.width += 2 // padding
+        
+        return toReturn
+    }
+    
+    func frameOfTextRange(range:NSRange) -> CGRect {
+        return framesOfTextRange(range: range).first ?? CGRect.zero
+    }
+    
+    // experimental: what if we replaced spaces with "_" to keep the text components from being broken up
+    // across lines. if possible, this would prevent the logic needed to introduce line breaks
+    
+    func layoutComponentsSimple() {
+        guard let styleContext = self.styleContext,
+            let sentence = self.sentence else {
+                return
+        }
+        
+        // variables
+        let mutableAttString = NSMutableAttributedString()
+        var counter = 0
+        
+        for component in sentence.components {
+            
+            var attString:NSMutableAttributedString
+            
+            // form sentence text
+            var attributes = [NSAttributedString.Key : Any]()
+            attributes[NSAttributedString.Key.font] = styleContext.font
+            attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.blue : styleContext.textColor
+            attributes[NSAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
+            
+            if component.isInput{
+                guard let inputControl = component as? InputControl else {
+                    return
+                }
+                attString = inputControl.attributedString(styleContext: styleContext)
+                let wholeRange = NSRange(location: 0, length: attString.string.count)
+                attString.setAttributes(attributes, range: wholeRange)
+            }else{
+                attString = NSMutableAttributedString(string: component.stringValue, attributes: attributes)
+            }
+            
+            mutableAttString.append(attString)
+            counter += 1
+        }
+        
+        
+        
     }
     
     // recursive
@@ -95,7 +149,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
             // form sentence text
             var attributes = [NSAttributedString.Key : Any]()
             attributes[NSAttributedString.Key.font] = styleContext.font
-            attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.clear : styleContext.textColor
+            attributes[NSAttributedString.Key.foregroundColor] = component.isInput ? UIColor.blue : styleContext.textColor
             attributes[NSAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
             
             if component.isInput{
@@ -121,7 +175,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
         self.textView.attributedText = mutableAttString
         self.textView.layoutManager.ensureLayout(for: self.textView.textContainer)
         self.textView.layoutSubviews()
-        
+        //return
         // create controls
         counter = 0
         
@@ -131,7 +185,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
             var range:NSRange = NSRange()
             var rect:CGRect = CGRect.zero
             if (!component.isInput || counter < maxNewLine){
-                
+                print("skipping \(component.stringValue)")
                 counter += 1
                 continue
             }
@@ -139,13 +193,28 @@ public class SentenceView: ModernView, UITextViewDelegate {
             guard var inputControl = component as? InputControl else {
                 return
             }
+            print(inputControl.stringValue)
+            let cursorIx = self.textView.text.index(self.textView.text.startIndex, offsetBy: maxNewLine)
+            let remainingText = self.textView.text[cursorIx...]
             
-            range = styleContext.showsArrow ? (self.textView.text as NSString).range(of: component.stringValue + arrow) : (self.textView.text as NSString).range(of: component.stringValue)
+            range = styleContext.showsArrow ? (remainingText as NSString).range(of: component.stringValue + arrow) : (remainingText as NSString).range(of: component.stringValue)
             rect = self.frameOfTextRange(range: range)
+            
+            
+            
+            // todo: need to account for the "creamy cream" case:
+            // frameOfTextRange for "cream" will always return the first
+            // part of creamy, causing a collision
+            // solution is to keep track of component rects
+            // return all rects for range
+            // check to see if first one is used, go to next, etc
+            
+            
             
             // Remove line spacing from rect, save for last line
             // find last character y value
             let lastCharRange = NSRange(location: textView.text.count-1, length: 1)
+            
             let lastCharRect = self.frameOfTextRange(range: lastCharRange)
             let lastCharY = lastCharRect.origin.y
                         
@@ -161,16 +230,16 @@ public class SentenceView: ModernView, UITextViewDelegate {
                 print("\(component.stringValue) rect too big needs new line")
                 if counter-1 >= 0 {
                     newLines.add(counter-1)
-                    layoutComponents(newLines: &newLines)
-                    return
+                    return layoutComponents(newLines: &newLines)
+                    //return
                 }else{
                     print("first component does not fit on screen")
                 }
             }else{
                 // debugging
-                let v = UIView(frame: rect)
-                v.backgroundColor = UIColor.green.opacity(0.2)
-                self.textView.addSentenceComponentView(view: v)
+                //let v = UIView(frame: rect)
+                //v.backgroundColor = UIColor.green.opacity(0.2)
+                //self.textView.addSentenceComponentView(view: v)
                 self.textView.addSentenceComponentView(view: controlView)
                 inputControl.superview = self.textView
             }            

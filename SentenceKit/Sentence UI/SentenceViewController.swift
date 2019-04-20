@@ -13,27 +13,38 @@ class SentenceViewController: ModernViewController {
     
     let sentence = Sentence()
     let sentenceView = SentenceView(autolayout: true)
-    let nameDropdown = MultiChoice()
-    let addressDropdown = MultiChoice()
-    let visitReasonDropdown = MultiChoice()
-    let dateDropdown = MultiChoice()
+    let sizeChoice = MultiChoice()
+    let creamAmountChoice = MultiChoice()
+    let creamTypeChoice = MultiChoice()
+    let sweetnerAmountChoice = MultiChoice()
+    let sweetnerTypeChoice = MultiChoice()
+    let temperatureChoice = MultiChoice()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameDropdown.options = ["Ricky", "Tenny"]
-        addressDropdown.options = ["1755 Glendon Ave"]
-        visitReasonDropdown.options = ["annual physical", "sick visit"]
-        dateDropdown.options = ["Mar 13 at 4 PM"]
+        sizeChoice.options = ["Large", "Small"]
+        creamAmountChoice.options = ["Creamy", "Medium", "Light", "None"]
+        creamTypeChoice.options = ["Cream", "Whole Milk", "2% Milk", "Low-Fat Milk",
+        "Non-Fat Milk", "Almond Milk", "Soy Milk", "Vanilla Soy"]
+        sweetnerAmountChoice.options = ["Sweet", "Medium", "Light", "None"]
+        sweetnerTypeChoice.options = ["Sugar", "Honey", "Splenda", "Stevia", "Sweet'N Low", "Equal"]
+        temperatureChoice.options = ["Hot", "Iced"]
         
-        sentence += nameDropdown
-        sentence += " needs a doctor at "
-        sentence += addressDropdown
-        sentence += " for a "
-        sentence += visitReasonDropdown
-        sentence += " on "
-        sentence += dateDropdown
+        sentence += "I'll have a "
+        sentence += sizeChoice
+        sentence += ", with "
+        sentence += creamAmountChoice
+        sentence += " "
+        sentence += creamTypeChoice
+        sentence += " and "
+        sentence += sweetnerAmountChoice
+        sentence += " "
+        sentence += sweetnerTypeChoice
+        sentence += ", "
+        sentence += temperatureChoice
         sentence += "."
+        
         
         sentenceView.sentence = sentence
         sentenceView.delegate = self

@@ -25,6 +25,7 @@
 		E983ADFE221BD0B700BC526A /* SentenceKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADFD221BD0B700BC526A /* SentenceKitUITests.swift */; };
 		E9A1AB892238D5AE00EFF65E /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1AB882238D5AE00EFF65E /* Component.swift */; };
 		E9C588372236207F000349A6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C588362236207F000349A6 /* Extensions.swift */; };
+		E9C9EABE226A9DF0008F60E5 /* SentenceLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9EABD226A9DF0008F60E5 /* SentenceLinkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		E983ADFF221BD0B700BC526A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9A1AB882238D5AE00EFF65E /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		E9C588362236207F000349A6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E9C9EABD226A9DF0008F60E5 /* SentenceLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceLinkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				E93AADD222592E6600FD971C /* EditBaseController.swift */,
 				E93AADD4225986C600FD971C /* MultiChoiceEditView.swift */,
 				E93AAE1022599E9300FD971C /* Resolutions.swift */,
+				E9C9EABD226A9DF0008F60E5 /* SentenceLinkViewController.swift */,
 			);
 			path = "Sentence UI";
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */,
 				E93AAE1122599E9300FD971C /* Resolutions.swift in Sources */,
 				E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */,
+				E9C9EABE226A9DF0008F60E5 /* SentenceLinkViewController.swift in Sources */,
 				E983ADDE221BD0B600BC526A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
