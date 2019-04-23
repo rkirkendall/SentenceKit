@@ -24,10 +24,10 @@ class SentenceViewController: ModernViewController {
         super.viewDidLoad()
         
         sizeChoice.options = ["Large", "Small"]
-        creamAmtChoice.options = ["Creamy", "Medium", "Light", "None"]
+        creamAmtChoice.options = ["Creamy", "Medium", "Light", "None"].reversed()
         creamTypeChoice.options = ["Cream", "Whole Milk", "2% Milk", "Low-Fat Milk",
         "Non-Fat Milk", "Almond Milk", "Soy Milk", "Vanilla Soy"]
-        sweetnerAmtChoice.options = ["Sweet", "Medium", "Light", "None"]
+        sweetnerAmtChoice.options = ["Sweet", "Medium", "Light", "None"].reversed()
         sweetnerTypeChoice.options = ["Sugar", "Honey", "Splenda", "Stevia", "Sweet'N Low", "Equal"]
         temperatureChoice.options = ["Hot", "Iced"]
         

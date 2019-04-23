@@ -61,8 +61,9 @@ public class SentenceView: ModernView, UITextViewDelegate {
         textView.backgroundColor = .clear
         // todo: line spacing should be a function of font size
         paragraphStyle.lineSpacing = 20
+        paragraphStyle.alignment = .center
         if styleContext.isNil {
-            styleContext = StyleContext(font: UIFont.boldSystemFont(ofSize: 50),
+            styleContext = StyleContext(font: UIFont.boldSystemFont(ofSize: 40),
                                         controlColor: UIColor.blue,
                                         textColor: UIColor.black,
                                         paragraphStyle:paragraphStyle)

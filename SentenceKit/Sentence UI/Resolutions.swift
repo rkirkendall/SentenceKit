@@ -15,7 +15,3 @@ extension Resolutions {
         left.append(right)
     }
 }
-
-//var resolutions = [Resolution]()
-//resolutions += { if self.nameDropdown.stringValue == "Ricky" {/* change something}; change something else */ }
-//sentence.addResolutions(resolutions)
