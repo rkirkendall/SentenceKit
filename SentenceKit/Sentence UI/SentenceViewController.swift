@@ -44,8 +44,7 @@ class SentenceViewController: ModernViewController {
         sentence += ", "
         sentence += temperatureChoice
         sentence += "."
-        
-        
+                
         sentenceView.sentence = sentence
         sentenceView.delegate = self
         
@@ -66,22 +65,18 @@ class SentenceViewController: ModernViewController {
         view.addConstraints(layoutConstraints)
     }
     
-    override func updateInterface() {
-        super.updateInterface()
-        sentenceView.layoutComponents()
-    }
 }
 
 extension SentenceViewController: InputControlDelegate {
-    func showEditModal(control: InputControl) {
-        let editVC = control.editView
+    func showEditModal(control: ControlFragment) {
+        guard let editVC = control.editView else { return }
         editVC.styleContext = sentenceView.styleContext
         editVC.modalPresentationStyle = .overCurrentContext
         present(editVC, animated: false)
     }
     
     
-    func valueDidChange(control: InputControl, newValue: String) {
+    func valueDidChange(control: ControlFragment, newValue: String) {
         updateInterface()
     }
 }

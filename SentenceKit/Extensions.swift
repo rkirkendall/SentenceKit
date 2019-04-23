@@ -21,17 +21,14 @@ extension UIButton {
     }
 }
 
-extension String: Component {
-    var superview: UIView? {
-        get { return nil }
-        set {}
-    }
+extension String: Fragmentable {
     
     var stringValue: String {
         return self
     }
-    var isInput: Bool {
-        return false
+    
+    func attributedString(styleContext: StyleContext) -> NSMutableAttributedString {
+        return Fragment.attributedString(string: self, styleContext: styleContext)
     }
     
 }
