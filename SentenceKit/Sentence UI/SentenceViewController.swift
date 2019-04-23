@@ -14,9 +14,9 @@ class SentenceViewController: ModernViewController {
     let sentence = Sentence()
     let sentenceView = SentenceView(autolayout: true)
     let sizeChoice = MultiChoice()
-    let creamAmountChoice = MultiChoice()
+    let creamAmtChoice = MultiChoice()
     let creamTypeChoice = MultiChoice()
-    let sweetnerAmountChoice = MultiChoice()
+    let sweetnerAmtChoice = MultiChoice()
     let sweetnerTypeChoice = MultiChoice()
     let temperatureChoice = MultiChoice()
     
@@ -24,31 +24,31 @@ class SentenceViewController: ModernViewController {
         super.viewDidLoad()
         
         sizeChoice.options = ["Large", "Small"]
-        creamAmountChoice.options = ["Creamy", "Medium", "Light", "None"]
+        creamAmtChoice.options = ["Creamy", "Medium", "Light", "None"]
         creamTypeChoice.options = ["Cream", "Whole Milk", "2% Milk", "Low-Fat Milk",
         "Non-Fat Milk", "Almond Milk", "Soy Milk", "Vanilla Soy"]
-        sweetnerAmountChoice.options = ["Sweet", "Medium", "Light", "None"]
+        sweetnerAmtChoice.options = ["Sweet", "Medium", "Light", "None"]
         sweetnerTypeChoice.options = ["Sugar", "Honey", "Splenda", "Stevia", "Sweet'N Low", "Equal"]
         temperatureChoice.options = ["Hot", "Iced"]
         
         sentence += "I'll have a "
         sentence += sizeChoice
         sentence += ", with "
-        sentence += creamAmountChoice
+        sentence += creamAmtChoice
         sentence += " "
         sentence += creamTypeChoice
         sentence += " and "
-        sentence += sweetnerAmountChoice
+        sentence += sweetnerAmtChoice
         sentence += " "
         sentence += sweetnerTypeChoice
         sentence += ", "
         sentence += temperatureChoice
         sentence += "."
         
-        sentence.resolutions += { if self.sweetnerAmountChoice.stringValue == "None" { self.sweetnerAmountChoice.stringValue = "No"; self.sweetnerTypeChoice.stringValue = "Sugar" }}
-        sentence.resolutions += { if self.sweetnerAmountChoice.stringValue == "Sweet" { self.sweetnerAmountChoice.stringValue = "A lot of" }}
-        sentence.resolutions += { if self.creamAmountChoice.stringValue == "None" { self.creamAmountChoice.stringValue = "No"; self.creamTypeChoice.stringValue = "Cream" }}
-        sentence.resolutions += { if self.creamAmountChoice.stringValue == "Creamy" { self.creamAmountChoice.stringValue = "A lot of" }}
+        sentence.resolutions += { if self.sweetnerAmtChoice.stringValue == "None" { self.sweetnerAmtChoice.stringValue = "No"; self.sweetnerTypeChoice.stringValue = "Sugar" }}
+        sentence.resolutions += { if self.sweetnerAmtChoice.stringValue == "Sweet" { self.sweetnerAmtChoice.stringValue = "A lot of" }}
+        sentence.resolutions += { if self.creamAmtChoice.stringValue == "None" { self.creamAmtChoice.stringValue = "No"; self.creamTypeChoice.stringValue = "Cream" }}
+        sentence.resolutions += { if self.creamAmtChoice.stringValue == "Creamy" { self.creamAmtChoice.stringValue = "A lot of" }}
         
         sentenceView.sentence = sentence
         sentenceView.delegate = self

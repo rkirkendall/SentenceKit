@@ -44,7 +44,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
             for c in sentence.fragments {
                 if c is ControlFragment,
                     let inputControl = c as? ControlFragment {
-                    inputControl.delegate = self //deprecated  marked for deletion
+                    inputControl.delegate = self
                 }
             }
             updateInterface()
