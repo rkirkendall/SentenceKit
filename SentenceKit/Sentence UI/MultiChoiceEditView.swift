@@ -46,16 +46,24 @@ class MultiChoiceEditViewController: EditBaseController {
 }
 extension MultiChoiceEditViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let choices = choices,
-            let styleContext = self.styleContext else { return 48 }
-        let optString = choices[indexPath.row]
+    func rowHeight() -> CGFloat {
+        guard let styleContext = self.styleContext else { return 48 }
+        
         var atts = [NSAttributedString.Key:Any]()
         atts[NSAttributedString.Key.font] = styleContext.font
         atts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
-        let optAttString = NSAttributedString(string: optString, attributes: atts)
         
-        return optAttString.size().height + 6 // pad
+        let optAttString = NSAttributedString(string: "      ", attributes: atts)
+        
+        return optAttString.size().height + 6
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return rowHeight()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return rowHeight()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
