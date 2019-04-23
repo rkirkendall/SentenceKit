@@ -74,7 +74,6 @@ public class SentenceView: ModernView, UITextViewDelegate {
     }
     
     public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-//        UIApplication.shared.open(URL, options: [:])
         print("link tapped")
         let hashInt = Int(URL.absoluteString)
         guard let hash = hashInt,
