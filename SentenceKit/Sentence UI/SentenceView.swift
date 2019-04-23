@@ -40,6 +40,13 @@ public class SentenceView: ModernView, UITextViewDelegate {
     var textView = SentenceTextView(autolayout: true)
     var sentence: Sentence? {
         didSet {
+            guard let sentence = sentence else { return }
+            for c in sentence.fragments {
+                if c is ControlFragment,
+                    let inputControl = c as? ControlFragment {
+                    inputControl.delegate = self //deprecated  marked for deletion
+                }
+            }
             updateInterface()
         }
     }
@@ -62,7 +69,6 @@ public class SentenceView: ModernView, UITextViewDelegate {
         }
         
         textView.isEditable = false
-        //textView.isSelectable = false
         textView.delegate = self
         
         var linkAtts = [NSAttributedString.Key: Any]()
@@ -74,7 +80,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
     }
     
     public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        print("link tapped")
+
         let hashInt = Int(URL.absoluteString)
         guard let hash = hashInt,
             let controlFragment = sentence?.fragmentMap[hash] else { return false }
@@ -111,6 +117,7 @@ extension SentenceView: InputControlDelegate {
     }
     
     func valueDidChange(control: ControlFragment, newValue: String) {
+        updateInterface()
         delegate?.valueDidChange(control: control, newValue: newValue)
     }
     
