@@ -13,7 +13,7 @@ class SizableTableView: UITableView {
     var maxHeight: CGFloat = UIScreen.main.bounds.size.height
     
     override var intrinsicContentSize: CGSize {
-        let height = min(contentSize.height, maxHeight)
+        let height = min(contentSize.height + 20, maxHeight)
         
         return CGSize(width: UIScreen.main.bounds.size.width, height: height)
     }

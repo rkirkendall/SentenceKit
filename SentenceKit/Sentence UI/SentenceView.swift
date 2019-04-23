@@ -10,20 +10,36 @@ import Foundation
 import UIKit
 import Modernistik
 
-class SentenceTextView: UITextView {}
+class SentenceTextView: UITextView {
+    
+    override var canBecomeFirstResponder: Bool { return false }
+    
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        removeLongPress()
+    }
+    
+    private func removeLongPress() {
+        if let grs = gestureRecognizers {
+            for r in grs {
+                if r is UILongPressGestureRecognizer {
+                    r.isEnabled = false
+                }
+            }
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+}
 
 public class SentenceView: ModernView, UITextViewDelegate {
     
     var textView = SentenceTextView(autolayout: true)
     var sentence: Sentence? {
         didSet {
-            guard let sentence = sentence else { return }
-            for c in sentence.components {
-                if c is ControlFragment,
-                    let inputControl = c as? ControlFragment {
-                    inputControl.delegate = self
-                }
-            }
             updateInterface()
         }
     }
@@ -46,7 +62,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
         }
         
         textView.isEditable = false
-        textView.isSelectable = false
+        //textView.isSelectable = false
         textView.delegate = self
         
         var linkAtts = [NSAttributedString.Key: Any]()
@@ -59,6 +75,11 @@ public class SentenceView: ModernView, UITextViewDelegate {
     
     public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
 //        UIApplication.shared.open(URL, options: [:])
+        print("link tapped")
+        let hashInt = Int(URL.absoluteString)
+        guard let hash = hashInt,
+            let controlFragment = sentence?.fragmentMap[hash] else { return false }
+        showEditModal(control: controlFragment)
         return false
     }
     
@@ -78,7 +99,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
         
         textView.text = ""
         let attributedString = NSMutableAttributedString(string: "")
-        for fragment in sentence.components {
+        for fragment in sentence.fragments {
             attributedString.append(fragment.attributedString(styleContext: styleContext))
         }
         textView.attributedText = attributedString

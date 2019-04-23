@@ -12,7 +12,11 @@ import UIKit
 class MultiChoice: ControlFragment {
     
     var styleContext: StyleContext?
-    var options: [String] = [String]()
+    var options: [String] {
+        didSet {
+            _editViewController.choices = self.options
+        }
+    }
     private var _editViewController = MultiChoiceEditViewController()
     private var _stringValue: String?
     override var stringValue: String {
@@ -31,23 +35,12 @@ class MultiChoice: ControlFragment {
     private var optionsTableView: UITableView?
     
     override init() {
+        options = []
         super.init()
         _editViewController.choices = options
         _editViewController.delegate = self
         editView = _editViewController
     }
-    
-//    func attributedString(styleContext: StyleContext) -> NSMutableAttributedString {
-//        self.styleContext = styleContext
-//        var attributes = [NSAttributedString.Key:Any]()
-//        attributes[NSAttributedString.Key.font] = styleContext.font
-//        attributes[NSAttributedString.Key.underlineStyle] =  NSUnderlineStyle.single.rawValue
-//        attributes[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
-//        let attString = NSMutableAttributedString(string: stringValue, attributes: attributes)
-//        // construct arrow att string and append
-//
-//        return attString
-//    }
 }
 
 extension MultiChoice: EditVariableTextDelegate {

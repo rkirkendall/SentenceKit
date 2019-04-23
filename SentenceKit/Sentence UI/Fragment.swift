@@ -10,10 +10,17 @@ import Foundation
 import UIKit
 
 class Sentence {
-    var components:[Fragmentable] = [Fragmentable]()
-    
+    var fragments:[Fragmentable] = [Fragmentable]()
+    var fragmentMap = [Int: ControlFragment]()
+    func appendFragment(_ fragment: Fragmentable) {
+        fragments.append(fragment)
+        if fragment is ControlFragment {
+            guard let controlFragment = fragment as? ControlFragment else { return }
+            fragmentMap[controlFragment.hashValue] = controlFragment
+        }
+    }
     static func += (left: Sentence, right: Fragmentable) {
-        left.components.append(right)
+        left.appendFragment(right)
     }
 }
 
