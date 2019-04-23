@@ -103,6 +103,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
             let styleContext = styleContext else { return }
         
         textView.text = ""
+        sentence.resolve()
         let attributedString = NSMutableAttributedString(string: "")
         for fragment in sentence.fragments {
             attributedString.append(fragment.attributedString(styleContext: styleContext))

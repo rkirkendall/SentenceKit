@@ -52,7 +52,7 @@ class BlurOverlay: ModernViewController {
 }
 
 protocol EditVariableTextDelegate: class {
-    func stringValueDidChange(newStringValue: String)
+    func changeStringVariable(_ string: String)
 }
 
 class EditBaseController: BlurOverlay {

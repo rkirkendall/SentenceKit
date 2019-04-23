@@ -8,7 +8,14 @@
 
 import Foundation
 
-//typealias Resolution = () -> Void
+typealias Resolution = () -> Void
+typealias Resolutions = [Resolution]
+extension Resolutions {
+    static func += (left: inout Resolutions, right: @escaping Resolution) {
+        left.append(right)
+    }
+}
+
 //var resolutions = [Resolution]()
 //resolutions += { if self.nameDropdown.stringValue == "Ricky" {/* change something}; change something else */ }
 //sentence.addResolutions(resolutions)

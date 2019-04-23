@@ -44,7 +44,12 @@ class SentenceViewController: ModernViewController {
         sentence += ", "
         sentence += temperatureChoice
         sentence += "."
-                
+        
+        sentence.resolutions += { if self.sweetnerAmountChoice.stringValue == "None" { self.sweetnerAmountChoice.stringValue = "No"; self.sweetnerTypeChoice.stringValue = "Sugar" }}
+        sentence.resolutions += { if self.sweetnerAmountChoice.stringValue == "Sweet" { self.sweetnerAmountChoice.stringValue = "A lot of" }}
+        sentence.resolutions += { if self.creamAmountChoice.stringValue == "None" { self.creamAmountChoice.stringValue = "No"; self.creamTypeChoice.stringValue = "Cream" }}
+        sentence.resolutions += { if self.creamAmountChoice.stringValue == "Creamy" { self.creamAmountChoice.stringValue = "A lot of" }}
+        
         sentenceView.sentence = sentence
         sentenceView.delegate = self
         

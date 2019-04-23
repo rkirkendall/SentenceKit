@@ -12,6 +12,14 @@ import UIKit
 class Sentence {
     var fragments:[Fragmentable] = [Fragmentable]()
     var fragmentMap = [Int: ControlFragment]()
+    var resolutions = Resolutions()
+    
+    func resolve() {
+        for r in resolutions {
+            r()
+        }
+    }
+    
     func appendFragment(_ fragment: Fragmentable) {
         fragments.append(fragment)
         if fragment is ControlFragment {

@@ -44,9 +44,9 @@ class MultiChoice: ControlFragment {
 }
 
 extension MultiChoice: EditVariableTextDelegate {
-    func stringValueDidChange(newStringValue: String) {
-        _stringValue = newStringValue        
-        delegate?.valueDidChange(control: self, newValue: newStringValue)
+    func changeStringVariable(_ string: String) {
+        _stringValue = string
+        delegate?.valueDidChange(control: self, newValue: string)
     }
     
     

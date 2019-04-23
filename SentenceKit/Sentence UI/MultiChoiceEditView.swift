@@ -33,7 +33,6 @@ class MultiChoiceEditViewController: EditBaseController {
         tableView.separatorStyle = .none
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
-        
     }
     
     override func setupConstraints() {
@@ -92,7 +91,7 @@ extension MultiChoiceEditViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let choices = choices else { return }
         let optString = choices[indexPath.row]
-        delegate?.stringValueDidChange(newStringValue: optString)
+        delegate?.changeStringVariable(optString)
         dismiss(animated: false, completion: nil)
     }
     
