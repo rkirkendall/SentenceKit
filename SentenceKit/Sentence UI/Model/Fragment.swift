@@ -40,6 +40,23 @@ class ControlFragment: Fragment {
     weak var delegate: ControlFragmentDelegate?
     var editView: EditBaseController?
     let emptyPlaceholder = "      "
+    var identifier: String
+    
+    convenience init(_ identifier: String) {
+        self.init(identifier: identifier)
+    }
+    
+    init(identifier: String) {
+        self.identifier = identifier
+        super.init()
+    }
+    
+    override init() {
+        identifier = ""
+        super.init()
+    }
+    
+    
     override func attributedString(styleContext: StyleContext) -> NSMutableAttributedString {
         let superString = super.attributedString(styleContext: styleContext)
         superString.addAttribute(NSAttributedString.Key.link, value: String(hashValue), range: NSRange(location: 0, length: superString.string.count))
