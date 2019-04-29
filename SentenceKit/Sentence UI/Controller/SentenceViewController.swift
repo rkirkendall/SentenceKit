@@ -85,7 +85,6 @@ extension SentenceViewController: InputControlDelegate {
         present(editVC, animated: false)
     }
     
-    
     func valueDidChange(control: ControlFragment, newValue: String) {
         updateInterface()
     }

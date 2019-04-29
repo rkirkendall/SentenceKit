@@ -10,31 +10,6 @@ import Foundation
 import UIKit
 import Modernistik
 
-class SentenceTextView: UITextView {
-    
-    override var canBecomeFirstResponder: Bool { return false }
-    
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
-        super.init(frame: frame, textContainer: textContainer)
-        removeLongPress()
-    }
-    
-    private func removeLongPress() {
-        if let grs = gestureRecognizers {
-            for r in grs {
-                if r is UILongPressGestureRecognizer {
-                    r.isEnabled = false
-                }
-            }
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-}
-
 public class SentenceView: ModernView, UITextViewDelegate {
     
     var textView = SentenceTextView(autolayout: true)

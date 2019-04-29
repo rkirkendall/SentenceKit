@@ -35,7 +35,6 @@ class BlurOverlay: ModernViewController {
         view.addSubview(closeButton)
     }
     
-    
     @objc func closeTapped(){
         dismiss(animated: false)
     }
