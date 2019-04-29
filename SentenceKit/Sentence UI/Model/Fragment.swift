@@ -1,5 +1,5 @@
 //
-//  Component.swift
+//  Fragment.swift
 //  SentenceKit
 //
 //  Created by Ricky Kirkendall on 3/12/19.
