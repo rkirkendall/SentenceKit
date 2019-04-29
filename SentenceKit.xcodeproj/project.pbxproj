@@ -15,6 +15,8 @@
 		E93AAE1122599E9300FD971C /* Resolutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AAE1022599E9300FD971C /* Resolutions.swift */; };
 		E93B54B62274CEA400698735 /* FreeEntryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B54B52274CEA400698735 /* FreeEntryEditView.swift */; };
 		E93B54B82276B1F400698735 /* SentenceTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B54B72276B1F400698735 /* SentenceTextView.swift */; };
+		E93B54BE2276B5A800698735 /* PhilzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B54BD2276B5A800698735 /* PhilzViewController.swift */; };
+		E93B54C02276BBAE00698735 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B54BF2276BBAE00698735 /* Sentence.swift */; };
 		E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926B224B04BB00EA2EDB /* MultiChoice.swift */; };
 		E968926E224B04CC00EA2EDB /* SentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926D224B04CC00EA2EDB /* SentenceView.swift */; };
 		E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926F224B08DD00EA2EDB /* FreeEntry.swift */; };
@@ -61,6 +63,8 @@
 		E93AAE1022599E9300FD971C /* Resolutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolutions.swift; sourceTree = "<group>"; };
 		E93B54B52274CEA400698735 /* FreeEntryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeEntryEditView.swift; sourceTree = "<group>"; };
 		E93B54B72276B1F400698735 /* SentenceTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceTextView.swift; sourceTree = "<group>"; };
+		E93B54BD2276B5A800698735 /* PhilzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilzViewController.swift; sourceTree = "<group>"; };
+		E93B54BF2276BBAE00698735 /* Sentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentence.swift; sourceTree = "<group>"; };
 		E968926B224B04BB00EA2EDB /* MultiChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiChoice.swift; sourceTree = "<group>"; };
 		E968926D224B04CC00EA2EDB /* SentenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceView.swift; sourceTree = "<group>"; };
 		E968926F224B08DD00EA2EDB /* FreeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeEntry.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 				E93B54B42274CE6800698735 /* FreeEntry */,
 				E93B54B32274CE3800698735 /* MultiChoice */,
 				E9A1AB882238D5AE00EFF65E /* Fragment.swift */,
+				E93B54BF2276BBAE00698735 /* Sentence.swift */,
 				E93AAE1022599E9300FD971C /* Resolutions.swift */,
 			);
 			path = Model;
@@ -177,6 +182,14 @@
 				E93AADD222592E6600FD971C /* EditBaseController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E93B54BC2276B58200698735 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				E93B54BD2276B5A800698735 /* PhilzViewController.swift */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 		E983ADD1221BD0B600BC526A = {
@@ -236,6 +249,7 @@
 		E9A1AB872238D58B00EFF65E /* Sentence UI */ = {
 			isa = PBXGroup;
 			children = (
+				E93B54BC2276B58200698735 /* Example */,
 				E93B54BB2276B34B00698735 /* Controller */,
 				E93B54BA2276B33500698735 /* View */,
 				E93B54B92276B31D00698735 /* Model */,
@@ -471,6 +485,7 @@
 			files = (
 				E968926E224B04CC00EA2EDB /* SentenceView.swift in Sources */,
 				E9A1AB892238D5AE00EFF65E /* Fragment.swift in Sources */,
+				E93B54BE2276B5A800698735 /* PhilzViewController.swift in Sources */,
 				E93B54B82276B1F400698735 /* SentenceTextView.swift in Sources */,
 				E983ADE0221BD0B600BC526A /* SentenceViewController.swift in Sources */,
 				E9C588372236207F000349A6 /* Extensions.swift in Sources */,
@@ -480,6 +495,7 @@
 				E93B54B62274CEA400698735 /* FreeEntryEditView.swift in Sources */,
 				E93AAE1122599E9300FD971C /* Resolutions.swift in Sources */,
 				E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */,
+				E93B54C02276BBAE00698735 /* Sentence.swift in Sources */,
 				E983ADDE221BD0B600BC526A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

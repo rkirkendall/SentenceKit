@@ -13,6 +13,8 @@ import Modernistik
 public class SentenceView: ModernView, UITextViewDelegate {
     
     var textView = SentenceTextView(autolayout: true)
+    weak var delegate: ControlFragmentDelegate?
+    
     var sentence: Sentence? {
         didSet {
             guard let sentence = sentence else { return }
@@ -25,32 +27,30 @@ public class SentenceView: ModernView, UITextViewDelegate {
             updateInterface()
         }
     }
-    weak var delegate: InputControlDelegate?
     
-    // todo: by default the font should autosize based the view's frame
-    let paragraphStyle = NSMutableParagraphStyle()
-    var styleContext: StyleContext?
+    var styleContext: StyleContext? {
+        didSet {
+            updateInterface()
+        }
+    }
     
     public override func setupView() {
         super.setupView()
         textView.backgroundColor = .clear
         // todo: line spacing should be a function of font size
+        let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 20
         paragraphStyle.alignment = .center
         if styleContext.isNil {
             styleContext = StyleContext(font: UIFont.boldSystemFont(ofSize: 40),
                                         controlColor: UIColor.blue,
                                         textColor: UIColor.black,
+                                        underlineColor: UIColor.blue,
                                         paragraphStyle:paragraphStyle)
         }
         
         textView.isEditable = false
         textView.delegate = self
-        
-        var linkAtts = [NSAttributedString.Key: Any]()
-        linkAtts[NSAttributedString.Key.foregroundColor] = styleContext?.controlColor
-        linkAtts[NSAttributedString.Key.underlineStyle] = NSUnderlineStyle.single.rawValue
-        textView.linkTextAttributes = linkAtts
         
         addSubview(textView)
     }
@@ -85,10 +85,17 @@ public class SentenceView: ModernView, UITextViewDelegate {
             attributedString.append(fragment.attributedString(styleContext: styleContext))
         }
         textView.attributedText = attributedString
+        
+        var linkAtts = [NSAttributedString.Key: Any]()
+        linkAtts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
+        linkAtts[NSAttributedString.Key.underlineStyle] = NSUnderlineStyle.single.rawValue
+        linkAtts[NSMutableAttributedString.Key.underlineColor] = styleContext.underlineColor
+        textView.linkTextAttributes = linkAtts
+        
     }
 }
 
-extension SentenceView: InputControlDelegate {
+extension SentenceView: ControlFragmentDelegate {
     func showEditModal(control: ControlFragment) {
         delegate?.showEditModal(control: control)
     }

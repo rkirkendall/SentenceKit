@@ -7,37 +7,6 @@
 //
 
 import Foundation
-import UIKit
-
-class Sentence {
-    var fragments:[Fragmentable] = [Fragmentable]()
-    var fragmentMap = [Int: ControlFragment]()
-    var resolutions = Resolutions()
-    
-    func resolve() {
-        for r in resolutions {
-            r()
-        }
-    }
-    
-    func appendFragment(_ fragment: Fragmentable) {
-        fragments.append(fragment)
-        if fragment is ControlFragment {
-            guard let controlFragment = fragment as? ControlFragment else { return }
-            fragmentMap[controlFragment.hashValue] = controlFragment
-        }
-    }
-    static func += (left: Sentence, right: Fragmentable) {
-        left.appendFragment(right)
-    }
-}
-
-struct StyleContext {
-    let font: UIFont?
-    let controlColor: UIColor?
-    let textColor: UIColor?
-    let paragraphStyle: NSParagraphStyle?
-}
 
 protocol Fragmentable {
     var stringValue: String { get }
@@ -62,13 +31,13 @@ class Fragment: NSObject, Fragmentable {
     }
 }
 
-protocol InputControlDelegate: class {
+protocol ControlFragmentDelegate: class {
     func showEditModal(control: ControlFragment)
     func valueDidChange(control: ControlFragment, newValue: String)
 }
 
 class ControlFragment: Fragment {
-    weak var delegate: InputControlDelegate?
+    weak var delegate: ControlFragmentDelegate?
     var editView: EditBaseController?
     let emptyPlaceholder = "      "
     override func attributedString(styleContext: StyleContext) -> NSMutableAttributedString {
