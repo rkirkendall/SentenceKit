@@ -46,7 +46,7 @@ protocol Fragmentable {
 
 class Fragment: NSObject, Fragmentable {
     var stringValue: String = ""
-    
+    var styleContext: StyleContext?
     func attributedString(styleContext: StyleContext) -> NSMutableAttributedString {
         return Fragment.attributedString(string: stringValue, styleContext: styleContext)
     }
@@ -70,7 +70,7 @@ protocol InputControlDelegate: class {
 class ControlFragment: Fragment {
     weak var delegate: InputControlDelegate?
     var editView: EditBaseController?
-    
+    let emptyPlaceholder = "      "
     override func attributedString(styleContext: StyleContext) -> NSMutableAttributedString {
         let superString = super.attributedString(styleContext: styleContext)
         superString.addAttribute(NSAttributedString.Key.link, value: String(hashValue), range: NSRange(location: 0, length: superString.string.count))

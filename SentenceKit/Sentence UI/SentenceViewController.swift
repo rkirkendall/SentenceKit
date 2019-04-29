@@ -19,6 +19,7 @@ class SentenceViewController: ModernViewController {
     let sweetnerAmtChoice = MultiChoice()
     let sweetnerTypeChoice = MultiChoice()
     let temperatureChoice = MultiChoice()
+    let addlNotes = FreeEntry()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,8 @@ class SentenceViewController: ModernViewController {
         sweetnerAmtChoice.options = ["Sweet", "Medium", "Light", "None"].reversed()
         sweetnerTypeChoice.options = ["Sugar", "Honey", "Splenda", "Stevia", "Sweet'N Low", "Equal"]
         temperatureChoice.options = ["Hot", "Iced"]
+        
+        addlNotes.stringValue = "Additional Notes"
         
         sentence += "I'll have a "
         sentence += sizeChoice
@@ -43,10 +46,12 @@ class SentenceViewController: ModernViewController {
         sentence += sweetnerTypeChoice
         sentence += ", "
         sentence += temperatureChoice
-        sentence += "."
+        sentence += ".\n\n"
+        sentence += addlNotes
+        
         
         sentence.resolutions += { if self.sweetnerAmtChoice.stringValue == "None" { self.sweetnerAmtChoice.stringValue = "No"; self.sweetnerTypeChoice.stringValue = "Sugar" }}
-        sentence.resolutions += { if self.sweetnerAmtChoice.stringValue == "Sweet" { self.sweetnerAmtChoice.stringValue = "A lot of" }}
+        sentence.resolutions += { if self.sweetnerAmtChoice.stringValue == "Sweet" { self.sweetnerAmtChoice.stringValue = "a lot of" }}
         sentence.resolutions += { if self.creamAmtChoice.stringValue == "None" { self.creamAmtChoice.stringValue = "No"; self.creamTypeChoice.stringValue = "Cream" }}
         sentence.resolutions += { if self.creamAmtChoice.stringValue == "Creamy" { self.creamAmtChoice.stringValue = "A lot of" }}
         
@@ -65,7 +70,7 @@ class SentenceViewController: ModernViewController {
         super.setupConstraints()
         let views = ["sentenceView":sentenceView]
         var layoutConstraints = [NSLayoutConstraint]()
-        layoutConstraints += "H:|[sentenceView]|".constraints(views: views)
+        layoutConstraints += "H:|-30-[sentenceView]-30-|".constraints(views: views)
         layoutConstraints += "V:|[sentenceView]|".constraints(views: views)
         view.addConstraints(layoutConstraints)
     }

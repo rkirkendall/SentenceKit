@@ -13,6 +13,7 @@
 		E93AADD322592E6600FD971C /* EditBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AADD222592E6600FD971C /* EditBaseController.swift */; };
 		E93AADD5225986C600FD971C /* MultiChoiceEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AADD4225986C600FD971C /* MultiChoiceEditView.swift */; };
 		E93AAE1122599E9300FD971C /* Resolutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AAE1022599E9300FD971C /* Resolutions.swift */; };
+		E93B54B62274CEA400698735 /* FreeEntryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B54B52274CEA400698735 /* FreeEntryEditView.swift */; };
 		E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926B224B04BB00EA2EDB /* MultiChoice.swift */; };
 		E968926E224B04CC00EA2EDB /* SentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926D224B04CC00EA2EDB /* SentenceView.swift */; };
 		E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926F224B08DD00EA2EDB /* FreeEntry.swift */; };
@@ -57,6 +58,7 @@
 		E93AADD222592E6600FD971C /* EditBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBaseController.swift; sourceTree = "<group>"; };
 		E93AADD4225986C600FD971C /* MultiChoiceEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiChoiceEditView.swift; sourceTree = "<group>"; };
 		E93AAE1022599E9300FD971C /* Resolutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolutions.swift; sourceTree = "<group>"; };
+		E93B54B52274CEA400698735 /* FreeEntryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeEntryEditView.swift; sourceTree = "<group>"; };
 		E968926B224B04BB00EA2EDB /* MultiChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiChoice.swift; sourceTree = "<group>"; };
 		E968926D224B04CC00EA2EDB /* SentenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceView.swift; sourceTree = "<group>"; };
 		E968926F224B08DD00EA2EDB /* FreeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeEntry.swift; sourceTree = "<group>"; };
@@ -128,6 +130,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E93B54B32274CE3800698735 /* MultiChoice */ = {
+			isa = PBXGroup;
+			children = (
+				E968926B224B04BB00EA2EDB /* MultiChoice.swift */,
+				E93AADD4225986C600FD971C /* MultiChoiceEditView.swift */,
+			);
+			path = MultiChoice;
+			sourceTree = "<group>";
+		};
+		E93B54B42274CE6800698735 /* FreeEntry */ = {
+			isa = PBXGroup;
+			children = (
+				E968926F224B08DD00EA2EDB /* FreeEntry.swift */,
+				E93B54B52274CEA400698735 /* FreeEntryEditView.swift */,
+			);
+			path = FreeEntry;
+			sourceTree = "<group>";
+		};
 		E983ADD1221BD0B600BC526A = {
 			isa = PBXGroup;
 			children = (
@@ -185,13 +205,12 @@
 		E9A1AB872238D58B00EFF65E /* Sentence UI */ = {
 			isa = PBXGroup;
 			children = (
-				E968926B224B04BB00EA2EDB /* MultiChoice.swift */,
+				E93B54B42274CE6800698735 /* FreeEntry */,
+				E93B54B32274CE3800698735 /* MultiChoice */,
 				E968926D224B04CC00EA2EDB /* SentenceView.swift */,
-				E968926F224B08DD00EA2EDB /* FreeEntry.swift */,
 				E9A1AB882238D5AE00EFF65E /* Fragment.swift */,
 				E983ADDF221BD0B600BC526A /* SentenceViewController.swift */,
 				E93AADD222592E6600FD971C /* EditBaseController.swift */,
-				E93AADD4225986C600FD971C /* MultiChoiceEditView.swift */,
 				E93AAE1022599E9300FD971C /* Resolutions.swift */,
 			);
 			path = "Sentence UI";
@@ -430,6 +449,7 @@
 				E93AADD322592E6600FD971C /* EditBaseController.swift in Sources */,
 				E93AADD5225986C600FD971C /* MultiChoiceEditView.swift in Sources */,
 				E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */,
+				E93B54B62274CEA400698735 /* FreeEntryEditView.swift in Sources */,
 				E93AAE1122599E9300FD971C /* Resolutions.swift in Sources */,
 				E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */,
 				E983ADDE221BD0B600BC526A /* AppDelegate.swift in Sources */,

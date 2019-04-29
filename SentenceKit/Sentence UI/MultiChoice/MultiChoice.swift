@@ -11,7 +11,6 @@ import UIKit
 
 class MultiChoice: ControlFragment {
     
-    var styleContext: StyleContext?
     var options: [String] {
         didSet {
             _editViewController.choices = self.options
@@ -25,14 +24,9 @@ class MultiChoice: ControlFragment {
         }
         get {
             if let s = _stringValue { return s }
-            return options.count > 0 ? options[0] : "      "
+            return options.count > 0 ? options[0] : emptyPlaceholder
         }
     }
-    
-    private var optionsShowing = false
-    private var button: UIButton?
-    private var optionsView: UIView?
-    private var optionsTableView: UITableView?
     
     override init() {
         options = []
