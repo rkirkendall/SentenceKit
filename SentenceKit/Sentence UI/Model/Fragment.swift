@@ -39,14 +39,14 @@ class ControlFragment: Fragment {
     weak var delegate: ControlFragmentDelegate?
     var editView: EditBaseController?
     let emptyPlaceholder = "      "
-    var identifier: String
+    var tag: String
     
-    convenience init(_ identifier: String) {
-        self.init(identifier: identifier)
+    convenience init(_ tag: String) {
+        self.init(tag: tag)
     }
     
-    init(identifier: String) {
-        self.identifier = identifier
+    init(tag: String) {
+        self.tag = tag
         super.init()
     }
     
