@@ -10,13 +10,14 @@ import UIKit
 import Modernistik
 
 class PhilzViewController: SentenceViewController {
-    let sizeChoice = MultiChoice()
-    let creamAmtChoice = MultiChoice()
-    let creamTypeChoice = MultiChoice()
-    let sweetnerAmtChoice = MultiChoice()
-    let sweetnerTypeChoice = MultiChoice()
-    let temperatureChoice = MultiChoice()
-    let addlNotes = FreeEntry()
+    let sizeChoice = MultiChoice(tag: "size")
+    let cf = ControlFragment(tag: "d")
+    let creamAmtChoice = MultiChoice("creamAmt")
+    let creamTypeChoice = MultiChoice("creamType")
+    let sweetnerAmtChoice = MultiChoice("sweetnerAmt")
+    let sweetnerTypeChoice = MultiChoice("sweetnerType")
+    let temperatureChoice = MultiChoice("temp")
+    let addlNotes = FreeEntry("addlNotes")
     var controls = [ControlFragment]()
     
     override func viewDidLoad() {
@@ -54,7 +55,7 @@ class PhilzViewController: SentenceViewController {
         sweetnerTypeChoice.options = ["Sugar", "Honey", "Splenda", "Stevia", "Sweet'N Low", "Equal"]
         temperatureChoice.options = ["Hot", "Iced"]
         
-        addlNotes.stringValue = "Additional Notes"
+        //addlNotes.stringValue = "a    a"
         
         sentence += "I'll have a "
         sentence += sizeChoice
@@ -71,11 +72,11 @@ class PhilzViewController: SentenceViewController {
         sentence += ".\n\n"
         sentence += addlNotes
         
-        sentence.resolutions += { if self.sweetnerAmtChoice.stringValue == "None" { self.sweetnerAmtChoice.stringValue = "No"; self.sweetnerTypeChoice.stringValue = "Sugar" }}
-        sentence.resolutions += { if self.sweetnerAmtChoice.stringValue == "Sweet" { self.sweetnerAmtChoice.stringValue = "a lot of" }}
-        sentence.resolutions += { if self.creamAmtChoice.stringValue == "None" { self.creamAmtChoice.stringValue = "No"; self.creamTypeChoice.stringValue = "Cream" }}
-        sentence.resolutions += { if self.creamAmtChoice.stringValue == "Creamy" { self.creamAmtChoice.stringValue = "A lot of" }}
-        sentence.resolutions += { for c in self.controls { c.stringValue = c.stringValue.lowercased() } }
+        sentence.resolutions += { if self.sweetnerAmtChoice.string == "None" { self.sweetnerAmtChoice.string = "No"; self.sweetnerTypeChoice.string = "Sugar" }}
+        sentence.resolutions += { if self.sweetnerAmtChoice.string == "Sweet" { self.sweetnerAmtChoice.string = "a lot of" }}
+        sentence.resolutions += { if self.creamAmtChoice.string == "None" { self.creamAmtChoice.string = "No"; self.creamTypeChoice.string = "Cream" }}
+        sentence.resolutions += { if self.creamAmtChoice.string == "Creamy" { self.creamAmtChoice.string = "A lot of" }}
+        sentence.resolutions += { for c in self.controls { c.string = c.string.lowercased() } }
         
         sentenceView.styleContext = style
         sentenceView.sentence = sentence

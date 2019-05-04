@@ -9,14 +9,14 @@
 import Foundation
 
 protocol Fragmentable {
-    var stringValue: String { get }
+    var string: String { get }
     func attributedString(styleContext: Style) -> NSMutableAttributedString
 }
 
-class Fragment: NSObject, Fragmentable {
-    var stringValue: String = ""
+open class Fragment: NSObject, Fragmentable {
+    var string: String = ""
     func attributedString(styleContext: Style) -> NSMutableAttributedString {
-        return Fragment.attributedString(string: stringValue, styleContext: styleContext)
+        return Fragment.attributedString(string: string, styleContext: styleContext)
     }
     
     static func attributedString(string:String, styleContext: Style) -> NSMutableAttributedString {
@@ -35,17 +35,17 @@ protocol ControlFragmentDelegate: class {
     func valueDidChange(control: ControlFragment, newValue: String)
 }
 
-class ControlFragment: Fragment {
+open class ControlFragment: Fragment {
     weak var delegate: ControlFragmentDelegate?
     var editView: EditBaseController?
-    let emptyPlaceholder = "      "
+    var placeholder = "..."
     var tag: String
     
-    convenience init(_ tag: String) {
+    required convenience public init(_ tag: String) {
         self.init(tag: tag)
     }
     
-    init(tag: String) {
+    required public init(tag: String) {
         self.tag = tag
         super.init()
     }

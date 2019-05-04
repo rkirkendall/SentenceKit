@@ -10,7 +10,7 @@ import Foundation
 
 extension String: Fragmentable {
     
-    var stringValue: String {
+    var string: String {
         return self
     }
     

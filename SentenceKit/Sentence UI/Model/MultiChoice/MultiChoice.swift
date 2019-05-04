@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MultiChoice: ControlFragment {
+public class MultiChoice: ControlFragment {
     
     var options: [String] {
         didSet {
@@ -17,14 +17,14 @@ class MultiChoice: ControlFragment {
         }
     }
     private var _editViewController = MultiChoiceEditViewController()
-    private var _stringValue: String?
-    override var stringValue: String {
+    private var _string: String?
+    override var string: String {
         set {
-            self._stringValue = newValue
+            self._string = newValue
         }
         get {
-            if let s = _stringValue { return s }
-            return options.count > 0 ? options[0] : emptyPlaceholder
+            if let s = _string { return s }
+            return options.count > 0 ? options[0] : placeholder
         }
     }
     
@@ -35,13 +35,20 @@ class MultiChoice: ControlFragment {
         _editViewController.delegate = self
         editView = _editViewController
     }
+    
+    required public init(tag: String) {
+        options = []
+        super.init(tag: tag)
+        _editViewController.choices = options
+        _editViewController.delegate = self
+        editView = _editViewController
+    }
 }
 
 extension MultiChoice: EditVariableTextDelegate {
     func changeStringVariable(_ string: String) {
-        _stringValue = string
+        _string = string
         delegate?.valueDidChange(control: self, newValue: string)
     }
-    
     
 }
