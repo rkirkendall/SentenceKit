@@ -28,7 +28,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
         }
     }
     
-    var styleContext: StyleContext? {
+    var styleContext: Style? {
         didSet {
             updateInterface()
         }
@@ -42,7 +42,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
         paragraphStyle.lineSpacing = 20
         paragraphStyle.alignment = .center
         if styleContext.isNil {
-            styleContext = StyleContext(font: UIFont.boldSystemFont(ofSize: 40),
+            styleContext = Style(font: UIFont.boldSystemFont(ofSize: 40),
                                         controlColor: UIColor.blue,
                                         textColor: UIColor.black,
                                         underlineColor: UIColor.blue,

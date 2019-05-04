@@ -32,7 +32,7 @@ class Sentence {
     }
 }
 
-struct StyleContext {
+struct Style {
     let font: UIFont?
     let controlColor: UIColor?
     let textColor: UIColor?

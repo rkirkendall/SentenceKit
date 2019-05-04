@@ -10,17 +10,17 @@ import Foundation
 
 protocol Fragmentable {
     var stringValue: String { get }
-    func attributedString(styleContext: StyleContext) -> NSMutableAttributedString
+    func attributedString(styleContext: Style) -> NSMutableAttributedString
 }
 
 class Fragment: NSObject, Fragmentable {
     var stringValue: String = ""
-    var styleContext: StyleContext?
-    func attributedString(styleContext: StyleContext) -> NSMutableAttributedString {
+    var styleContext: Style?
+    func attributedString(styleContext: Style) -> NSMutableAttributedString {
         return Fragment.attributedString(string: stringValue, styleContext: styleContext)
     }
     
-    static func attributedString(string:String, styleContext: StyleContext) -> NSMutableAttributedString {
+    static func attributedString(string:String, styleContext: Style) -> NSMutableAttributedString {
         var atts = [NSMutableAttributedString.Key:Any]()
         
         atts[NSMutableAttributedString.Key.font] = styleContext.font
@@ -57,7 +57,7 @@ class ControlFragment: Fragment {
     }
     
     
-    override func attributedString(styleContext: StyleContext) -> NSMutableAttributedString {
+    override func attributedString(styleContext: Style) -> NSMutableAttributedString {
         let superString = super.attributedString(styleContext: styleContext)
         superString.addAttribute(NSAttributedString.Key.link, value: String(hashValue), range: NSRange(location: 0, length: superString.string.count))
         return superString

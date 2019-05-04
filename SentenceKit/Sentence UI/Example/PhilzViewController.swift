@@ -30,15 +30,15 @@ class PhilzViewController: SentenceViewController {
                     temperatureChoice,
                     addlNotes]
         
-        let avenirNextBoldFont = UIFont(name: "AvenirNext-Bold", size: 35)
+        let avenirNextBoldFont = UIFont(name: "AvenirNext-Bold", size: 42)
         let themeBrown = UIColor(red:0.25, green:0.15, blue:0.05, alpha:1.0)
         let transluscentTheme = themeBrown.opacity(0.65)
         let underlineColor = themeBrown.opacity(0.75)
         let backgroundColor = UIColor(red:0.46, green:0.81, blue:0.65, alpha:1.0)
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 20
+        paragraphStyle.lineSpacing = 4
         paragraphStyle.alignment = .center
-        let style = StyleContext(font: avenirNextBoldFont,
+        let style = Style(font: avenirNextBoldFont,
                                  controlColor: themeBrown,
                                  textColor: transluscentTheme,
                                  underlineColor: underlineColor,

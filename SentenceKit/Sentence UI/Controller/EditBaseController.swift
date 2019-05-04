@@ -55,6 +55,6 @@ protocol EditVariableTextDelegate: class {
 }
 
 class EditBaseController: BlurOverlay {
-    var styleContext:StyleContext?
+    var styleContext:Style?
     weak var delegate: EditVariableTextDelegate?
 }

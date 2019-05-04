@@ -157,11 +157,12 @@
 		E93B54B92276B31D00698735 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9C588362236207F000349A6 /* Extensions.swift */,
+				E9A1AB882238D5AE00EFF65E /* Fragment.swift */,
 				E93B54B42274CE6800698735 /* FreeEntry */,
 				E93B54B32274CE3800698735 /* MultiChoice */,
-				E9A1AB882238D5AE00EFF65E /* Fragment.swift */,
-				E93B54BF2276BBAE00698735 /* Sentence.swift */,
 				E93AAE1022599E9300FD971C /* Resolutions.swift */,
+				E93B54BF2276BBAE00698735 /* Sentence.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,7 +224,6 @@
 				E983ADE4221BD0B700BC526A /* Assets.xcassets */,
 				E983ADE6221BD0B700BC526A /* LaunchScreen.storyboard */,
 				E983ADE9221BD0B700BC526A /* Info.plist */,
-				E9C588362236207F000349A6 /* Extensions.swift */,
 			);
 			path = SentenceKit;
 			sourceTree = "<group>";
