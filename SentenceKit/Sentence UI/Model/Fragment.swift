@@ -51,7 +51,7 @@ class ControlFragment: Fragment {
     }
     
     override init() {
-        identifier = ""
+        tag = ""
         super.init()
     }
     
