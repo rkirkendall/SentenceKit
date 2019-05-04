@@ -37,5 +37,6 @@ struct Style {
     let controlColor: UIColor?
     let textColor: UIColor?
     let underlineColor: UIColor?
+    let backgroundColor: UIColor?
     let paragraphStyle: NSParagraphStyle?
 }

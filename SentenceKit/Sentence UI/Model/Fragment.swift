@@ -15,7 +15,6 @@ protocol Fragmentable {
 
 class Fragment: NSObject, Fragmentable {
     var stringValue: String = ""
-    var styleContext: Style?
     func attributedString(styleContext: Style) -> NSMutableAttributedString {
         return Fragment.attributedString(string: stringValue, styleContext: styleContext)
     }

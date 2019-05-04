@@ -43,9 +43,10 @@ public class SentenceView: ModernView, UITextViewDelegate {
         paragraphStyle.alignment = .center
         if styleContext.isNil {
             styleContext = Style(font: UIFont.boldSystemFont(ofSize: 40),
-                                        controlColor: UIColor.blue,
-                                        textColor: UIColor.black,
-                                        underlineColor: UIColor.blue,
+                                        controlColor: .blue,
+                                        textColor: .black,
+                                        underlineColor: .blue,
+                                        backgroundColor: .clear,
                                         paragraphStyle:paragraphStyle)
         }
         
