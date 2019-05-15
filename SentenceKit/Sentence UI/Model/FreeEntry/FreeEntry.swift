@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class FreeEntry: ControlFragment {
-    private var _editViewController = FreeEntryEditViewController()
+    private var editViewController = FreeEntryEditViewController()
     
     
     override var alias: String? {
@@ -26,14 +26,14 @@ class FreeEntry: ControlFragment {
     
     override init() {
         super.init()
-        _editViewController.delegate = self
-        editView = _editViewController
+        editViewController.delegate = self
+        editView = editViewController
     }
     
     required public init(tag: String) {
         super.init(tag: tag)
-        _editViewController.delegate = self
-        editView = _editViewController
+        editViewController.delegate = self
+        editView = editViewController
     }
 }
 
