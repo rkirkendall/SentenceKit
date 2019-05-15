@@ -21,10 +21,10 @@ class FreeEntryEditViewController: EditBaseController {
         textField.returnKeyType = .done
         textField.delegate = self
         
-        guard let styleContext = styleContext else { return }
+        guard let style = style else { return }
         
-        textField.font = styleContext.font
-        textField.textColor = styleContext.controlColor
+        textField.font = style.font
+        textField.textColor = style.controlColor
         
     }
     

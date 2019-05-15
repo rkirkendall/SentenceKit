@@ -46,11 +46,11 @@ class MultiChoiceEditViewController: EditBaseController {
 extension MultiChoiceEditViewController: UITableViewDataSource, UITableViewDelegate {
     
     func rowHeight() -> CGFloat {
-        guard let styleContext = self.styleContext else { return 48 }
+        guard let style = self.style else { return 48 }
         
         var atts = [NSAttributedString.Key:Any]()
-        atts[NSAttributedString.Key.font] = styleContext.font
-        atts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
+        atts[NSAttributedString.Key.font] = style.font
+        atts[NSAttributedString.Key.foregroundColor] = style.controlColor
         
         let optAttString = NSAttributedString(string: "      ", attributes: atts)
         
@@ -78,10 +78,10 @@ extension MultiChoiceEditViewController: UITableViewDataSource, UITableViewDeleg
         cell.backgroundColor = .clear
         cell.textLabel?.textAlignment = .center
         
-        guard let styleContext = self.styleContext else { return cell }
+        guard let style = self.style else { return cell }
         var atts = [NSAttributedString.Key:Any]()
-        atts[NSAttributedString.Key.font] = styleContext.font
-        atts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
+        atts[NSAttributedString.Key.font] = style.font
+        atts[NSAttributedString.Key.foregroundColor] = style.controlColor
         let optAttString = NSAttributedString(string: optString, attributes: atts)
         cell.textLabel?.attributedText = optAttString
         
