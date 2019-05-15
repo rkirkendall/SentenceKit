@@ -11,7 +11,6 @@ import Modernistik
 
 class PhilzViewController: SentenceViewController {
     let sizeChoice = MultiChoice(tag: "size")
-    let cf = ControlFragment(tag: "d")
     let creamAmtChoice = MultiChoice("creamAmt")
     let creamTypeChoice = MultiChoice("creamType")
     let sweetnerAmtChoice = MultiChoice("sweetnerAmt")
@@ -73,7 +72,7 @@ class PhilzViewController: SentenceViewController {
         sentence.resolutions += { if self.sweetnerAmtChoice.alias == "None" { self.sweetnerAmtChoice.alias = "No"; self.sweetnerTypeChoice.alias = "Sugar" }}
         sentence.resolutions += { if self.sweetnerAmtChoice.alias == "Sweet" { self.sweetnerAmtChoice.alias = "a lot of" }}
         sentence.resolutions += { if self.creamAmtChoice.alias == "None" { self.creamAmtChoice.alias = "No"; self.creamTypeChoice.alias = "Cream" }}
-        sentence.resolutions += { if self.creamAmtChoice.alias == "Creamy" { self.creamAmtChoice.alias = "A lot of" }}
+        sentence.resolutions += { if self.creamAmtChoice.alias == "Creamy" { self.creamAmtChoice.alias = "a lot of" }}
         sentence.resolutions += { for c in self.controls { c.alias = c.alias?.lowercased() } }
         
         sentenceView.style = style
