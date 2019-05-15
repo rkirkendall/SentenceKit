@@ -17,17 +17,16 @@ public class MultiChoice: ControlFragment {
         }
     }
     private var _editViewController = MultiChoiceEditViewController()
-    private var _string: String?
-    override var string: String {
-        set {
-            self._string = newValue
-        }
+    
+    override var alias: String? {
         get {
-            if let s = _string { return s }
-            return options.count > 0 ? options[0] : placeholder
+            return super.alias ?? (options.count > 0 ? options[0] : placeholder)
+        }
+        set {
+            super.alias = newValue
         }
     }
-    
+        
     override init() {
         options = []
         super.init()
@@ -47,7 +46,7 @@ public class MultiChoice: ControlFragment {
 
 extension MultiChoice: EditVariableTextDelegate {
     func changeStringVariable(_ string: String) {
-        _string = string
+        self.string = string
         delegate?.valueDidChange(control: self, newValue: string)
     }
     

@@ -55,8 +55,6 @@ class PhilzViewController: SentenceViewController {
         sweetnerTypeChoice.options = ["Sugar", "Honey", "Splenda", "Stevia", "Sweet'N Low", "Equal"]
         temperatureChoice.options = ["Hot", "Iced"]
         
-        //addlNotes.stringValue = "a    a"
-        
         sentence += "I'll have a "
         sentence += sizeChoice
         sentence += ", with "
@@ -72,13 +70,13 @@ class PhilzViewController: SentenceViewController {
         sentence += ".\n\n"
         sentence += addlNotes
         
-        sentence.resolutions += { if self.sweetnerAmtChoice.string == "None" { self.sweetnerAmtChoice.string = "No"; self.sweetnerTypeChoice.string = "Sugar" }}
-        sentence.resolutions += { if self.sweetnerAmtChoice.string == "Sweet" { self.sweetnerAmtChoice.string = "a lot of" }}
-        sentence.resolutions += { if self.creamAmtChoice.string == "None" { self.creamAmtChoice.string = "No"; self.creamTypeChoice.string = "Cream" }}
-        sentence.resolutions += { if self.creamAmtChoice.string == "Creamy" { self.creamAmtChoice.string = "A lot of" }}
-        sentence.resolutions += { for c in self.controls { c.string = c.string.lowercased() } }
+        sentence.resolutions += { if self.sweetnerAmtChoice.alias == "None" { self.sweetnerAmtChoice.alias = "No"; self.sweetnerTypeChoice.alias = "Sugar" }}
+        sentence.resolutions += { if self.sweetnerAmtChoice.alias == "Sweet" { self.sweetnerAmtChoice.alias = "a lot of" }}
+        sentence.resolutions += { if self.creamAmtChoice.alias == "None" { self.creamAmtChoice.alias = "No"; self.creamTypeChoice.alias = "Cream" }}
+        sentence.resolutions += { if self.creamAmtChoice.alias == "Creamy" { self.creamAmtChoice.alias = "A lot of" }}
+        sentence.resolutions += { for c in self.controls { c.alias = c.alias?.lowercased() } }
         
-        sentenceView.styleContext = style
+        sentenceView.style = style
         sentenceView.sentence = sentence
 
     }
@@ -86,6 +84,12 @@ class PhilzViewController: SentenceViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateInterface()
+    }
+    
+    override func updateInterface() {
+        super.updateInterface()
+        print("dictionary: ")
+        print(sentence.dictionary.debugDescription)
     }
     
     override func setupConstraints() {

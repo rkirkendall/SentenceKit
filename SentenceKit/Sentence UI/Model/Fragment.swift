@@ -9,22 +9,28 @@
 import Foundation
 
 protocol Fragmentable {
-    var string: String { get }
-    func attributedString(styleContext: Style) -> NSMutableAttributedString
+    var string: String { get set }
+    func attributedString(style: Style) -> NSMutableAttributedString
 }
 
 open class Fragment: NSObject, Fragmentable {
-    var string: String = ""
-    func attributedString(styleContext: Style) -> NSMutableAttributedString {
-        return Fragment.attributedString(string: string, styleContext: styleContext)
+    var alias: String?
+    var string: String = "" {
+        didSet {
+            alias = string
+        }
     }
     
-    static func attributedString(string:String, styleContext: Style) -> NSMutableAttributedString {
+    func attributedString(style: Style) -> NSMutableAttributedString {
+        return Fragment.attributedString(string: (alias ?? string), style: style)
+    }
+    
+    static func attributedString(string: String, style: Style) -> NSMutableAttributedString {
         var atts = [NSMutableAttributedString.Key:Any]()
         
-        atts[NSMutableAttributedString.Key.font] = styleContext.font
-        atts[NSMutableAttributedString.Key.foregroundColor] = styleContext.textColor
-        atts[NSMutableAttributedString.Key.paragraphStyle] = styleContext.paragraphStyle
+        atts[NSMutableAttributedString.Key.font] = style.font
+        atts[NSMutableAttributedString.Key.foregroundColor] = style.textColor
+        atts[NSMutableAttributedString.Key.paragraphStyle] = style.paragraphStyle
         
         return NSMutableAttributedString(string: string, attributes: atts)
     }
@@ -55,9 +61,8 @@ open class ControlFragment: Fragment {
         super.init()
     }
     
-    
-    override func attributedString(styleContext: Style) -> NSMutableAttributedString {
-        let superString = super.attributedString(styleContext: styleContext)
+    override func attributedString(style: Style) -> NSMutableAttributedString {
+        let superString = super.attributedString(style: style)
         superString.addAttribute(NSAttributedString.Key.link, value: String(hashValue), range: NSRange(location: 0, length: superString.string.count))
         return superString
     }
