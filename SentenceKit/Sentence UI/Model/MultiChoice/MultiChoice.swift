@@ -13,26 +13,26 @@ public class MultiChoice: ControlFragment {
     
     var options: [String] {
         didSet {
-            _editViewController.choices = self.options
+            editViewController.choices = self.options
             string = options.count > 0 ? options[0] : placeholder
         }
     }
-    private var _editViewController = MultiChoiceEditViewController()
+    private var editViewController = MultiChoiceEditViewController()
         
     override init() {
         options = []
         super.init()
-        _editViewController.choices = options
-        _editViewController.delegate = self
-        editView = _editViewController
+        editViewController.choices = options
+        editViewController.delegate = self
+        editView = editViewController
     }
     
     required public init(tag: String) {
         options = []
         super.init(tag: tag)
-        _editViewController.choices = options
-        _editViewController.delegate = self
-        editView = _editViewController
+        editViewController.choices = options
+        editViewController.delegate = self
+        editView = editViewController
     }
 }
 
