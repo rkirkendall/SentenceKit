@@ -49,7 +49,7 @@ extension FreeEntryEditViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         guard let text = textField.text else { return false }
-        delegate?.changeStringVariable(text)
+        delegate?.editController(self, didReturnWithValue: text)
         dismiss(animated: false, completion: nil)
         return false
     }

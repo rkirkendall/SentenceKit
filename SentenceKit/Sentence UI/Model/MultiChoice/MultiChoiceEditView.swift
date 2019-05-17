@@ -91,7 +91,7 @@ extension MultiChoiceEditViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let choices = choices else { return }
         let optString = choices[indexPath.row]
-        delegate?.changeStringVariable(optString)
+        delegate?.editController(self, didReturnWithValue: optString)
         dismiss(animated: false, completion: nil)
     }
     

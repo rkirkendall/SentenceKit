@@ -37,9 +37,9 @@ class FreeEntry: ControlFragment {
     }
 }
 
-extension FreeEntry: EditVariableTextDelegate {
-    func changeStringVariable(_ string: String) {
-        self.string = string
-        delegate?.controlFragment(self, stringDidChange: string)        
-    }
+extension FreeEntry: ControlFragmentEditControllerDelegate {
+    func editController(_ editController: EditBaseController, didReturnWithValue value: String) {
+        self.string = value
+        delegate?.controlFragment(self, stringDidChange: value)
+    }    
 }

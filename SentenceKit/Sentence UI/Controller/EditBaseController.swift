@@ -50,13 +50,11 @@ class BlurOverlay: ModernViewController {
     
 }
 
-// TODO: Improve this delegate protocol
-
-protocol EditVariableTextDelegate: class {
-    func changeStringVariable(_ string: String)
+protocol ControlFragmentEditControllerDelegate: class {
+    func editController(_ editController: EditBaseController, didReturnWithValue value: String)
 }
 
 class EditBaseController: BlurOverlay {
     var style:Style?
-    weak var delegate: EditVariableTextDelegate?
+    weak var delegate: ControlFragmentEditControllerDelegate?
 }
