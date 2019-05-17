@@ -39,7 +39,7 @@ public class MultiChoice: ControlFragment {
 extension MultiChoice: EditVariableTextDelegate {
     func changeStringVariable(_ string: String) {
         self.string = string
-        delegate?.valueDidChange(control: self, newValue: string)
+        delegate?.controlFragment(self, stringDidChange: string)        
     }
     
 }

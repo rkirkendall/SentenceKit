@@ -61,7 +61,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
         let hashInt = Int(URL.absoluteString)
         guard let hash = hashInt,
             let controlFragment = sentence?.fragmentMap[hash] else { return false }
-        showEditModal(control: controlFragment)
+        controlFragmentWillShowEditController(controlFragment)        
         return false
     }
     
@@ -97,14 +97,14 @@ public class SentenceView: ModernView, UITextViewDelegate {
 }
 
 extension SentenceView: ControlFragmentDelegate {
-    func showEditModal(control: ControlFragment) {
-        delegate?.showEditModal(control: control)
+    
+    func controlFragmentWillShowEditController(_ controlFragment: ControlFragment) {
+        delegate?.controlFragmentWillShowEditController(controlFragment)
     }
     
-    func valueDidChange(control: ControlFragment, newValue: String) {
+    func controlFragment(_ controlFragment: ControlFragment, stringDidChange string: String) {
         updateInterface()
-        delegate?.valueDidChange(control: control, newValue: newValue)
+        delegate?.controlFragment(controlFragment, stringDidChange: string)
     }
-    
     
 }
