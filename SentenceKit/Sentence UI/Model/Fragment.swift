@@ -37,8 +37,8 @@ open class Fragment: NSObject, Fragmentable {
 }
 
 protocol ControlFragmentDelegate: class {
-    func showEditModal(control: ControlFragment)
-    func valueDidChange(control: ControlFragment, newValue: String)
+    func controlFragmentWillShowEditController(_ controlFragment: ControlFragment)
+    func controlFragment(_ controlFragment: ControlFragment, stringDidChange string: String)
 }
 
 open class ControlFragment: Fragment {

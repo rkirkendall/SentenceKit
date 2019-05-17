@@ -32,14 +32,15 @@ class SentenceViewController: ModernViewController {
 
 extension SentenceViewController: ControlFragmentDelegate {
     
-    func showEditModal(control: ControlFragment) {
-        guard let editVC = control.editView else { return }
-        editVC.style = sentenceView.style
-        editVC.modalPresentationStyle = .overCurrentContext
-        present(editVC, animated: false)
+    func controlFragmentWillShowEditController(_ controlFragment: ControlFragment) {
+        guard let editController = controlFragment.editView else { return }
+        editController.style = sentenceView.style
+        editController.modalPresentationStyle = .overCurrentContext
+        present(editController, animated: false)
     }
     
-    func valueDidChange(control: ControlFragment, newValue: String) {
+    func controlFragment(_ controlFragment: ControlFragment, stringDidChange string: String) {
         updateInterface()
     }
+    
 }

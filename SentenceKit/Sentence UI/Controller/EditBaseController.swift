@@ -50,6 +50,8 @@ class BlurOverlay: ModernViewController {
     
 }
 
+// TODO: Improve this delegate protocol
+
 protocol EditVariableTextDelegate: class {
     func changeStringVariable(_ string: String)
 }
