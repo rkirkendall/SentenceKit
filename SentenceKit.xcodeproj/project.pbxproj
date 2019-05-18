@@ -20,6 +20,10 @@
 		E968926C224B04BB00EA2EDB /* MultiChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926B224B04BB00EA2EDB /* MultiChoice.swift */; };
 		E968926E224B04CC00EA2EDB /* SentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926D224B04CC00EA2EDB /* SentenceView.swift */; };
 		E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968926F224B08DD00EA2EDB /* FreeEntry.swift */; };
+		E96949C6228FDD93000BAE07 /* Jellee-Roman.otf in Resources */ = {isa = PBXBuildFile; fileRef = E96949C5228FDD93000BAE07 /* Jellee-Roman.otf */; };
+		E96949C8228FDE56000BAE07 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949C7228FDE56000BAE07 /* Styles.swift */; };
+		E96949CA228FE733000BAE07 /* SansSerifFLF-Demibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E96949C9228FE733000BAE07 /* SansSerifFLF-Demibold.otf */; };
+		E96949CC228FE8D3000BAE07 /* SansSerifExbFLF.otf in Resources */ = {isa = PBXBuildFile; fileRef = E96949CB228FE8D3000BAE07 /* SansSerifExbFLF.otf */; };
 		E983ADDE221BD0B600BC526A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADDD221BD0B600BC526A /* AppDelegate.swift */; };
 		E983ADE0221BD0B600BC526A /* SentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983ADDF221BD0B600BC526A /* SentenceViewController.swift */; };
 		E983ADE3221BD0B600BC526A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E983ADE1221BD0B600BC526A /* Main.storyboard */; };
@@ -68,6 +72,10 @@
 		E968926B224B04BB00EA2EDB /* MultiChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiChoice.swift; sourceTree = "<group>"; };
 		E968926D224B04CC00EA2EDB /* SentenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceView.swift; sourceTree = "<group>"; };
 		E968926F224B08DD00EA2EDB /* FreeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeEntry.swift; sourceTree = "<group>"; };
+		E96949C5228FDD93000BAE07 /* Jellee-Roman.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jellee-Roman.otf"; sourceTree = "<group>"; };
+		E96949C7228FDE56000BAE07 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		E96949C9228FE733000BAE07 /* SansSerifFLF-Demibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SansSerifFLF-Demibold.otf"; sourceTree = "<group>"; };
+		E96949CB228FE8D3000BAE07 /* SansSerifExbFLF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SansSerifExbFLF.otf; sourceTree = "<group>"; };
 		E983ADDA221BD0B600BC526A /* SentenceKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentenceKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E983ADDD221BD0B600BC526A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E983ADDF221BD0B600BC526A /* SentenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +201,25 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		E96949C3228FDCFA000BAE07 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				E96949C7228FDE56000BAE07 /* Styles.swift */,
+				E96949C4228FDD68000BAE07 /* fonts */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		E96949C4228FDD68000BAE07 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E96949C9228FE733000BAE07 /* SansSerifFLF-Demibold.otf */,
+				E96949CB228FE8D3000BAE07 /* SansSerifExbFLF.otf */,
+				E96949C5228FDD93000BAE07 /* Jellee-Roman.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		E983ADD1221BD0B600BC526A = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +276,7 @@
 		E9A1AB872238D58B00EFF65E /* Sentence UI */ = {
 			isa = PBXGroup;
 			children = (
+				E96949C3228FDCFA000BAE07 /* Styles */,
 				E93B54BC2276B58200698735 /* Example */,
 				E93B54BB2276B34B00698735 /* Controller */,
 				E93B54BA2276B33500698735 /* View */,
@@ -366,8 +394,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E983ADE8221BD0B700BC526A /* LaunchScreen.storyboard in Resources */,
+				E96949CC228FE8D3000BAE07 /* SansSerifExbFLF.otf in Resources */,
 				E983ADE5221BD0B700BC526A /* Assets.xcassets in Resources */,
+				E96949C6228FDD93000BAE07 /* Jellee-Roman.otf in Resources */,
 				E983ADE3221BD0B600BC526A /* Main.storyboard in Resources */,
+				E96949CA228FE733000BAE07 /* SansSerifFLF-Demibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +520,7 @@
 				E93B54B82276B1F400698735 /* SentenceTextView.swift in Sources */,
 				E983ADE0221BD0B600BC526A /* SentenceViewController.swift in Sources */,
 				E9C588372236207F000349A6 /* Extensions.swift in Sources */,
+				E96949C8228FDE56000BAE07 /* Styles.swift in Sources */,
 				E93AADD322592E6600FD971C /* EditBaseController.swift in Sources */,
 				E93AADD5225986C600FD971C /* MultiChoiceEditView.swift in Sources */,
 				E9689270224B08DD00EA2EDB /* FreeEntry.swift in Sources */,
