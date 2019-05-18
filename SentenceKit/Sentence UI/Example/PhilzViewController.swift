@@ -59,7 +59,7 @@ class PhilzViewController: SentenceViewController {
         sentence.resolutions += { if self.creamAmtChoice.alias == "Creamy" { self.creamAmtChoice.alias = "lots of" }}
         sentence.resolutions += { for c in self.controls { c.alias = c.alias?.lowercased() } }
         
-        let style = Style.MintMojito
+        let style = Style.Solstice
         sentenceView.style = style
         view.backgroundColor = style.backgroundColor
         sentenceView.sentence = sentence

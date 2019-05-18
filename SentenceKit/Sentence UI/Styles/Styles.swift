@@ -10,9 +10,9 @@ import UIKit
 extension Style {
     
     static var Solstice: Style {
-        let font = UIFont(name: "HelveticaNeue-Bold", size: 38)
+        let font = UIFont(name: "HelveticaNeue-Bold", size: 32)
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 1
+        paragraphStyle.lineSpacing = 10
         paragraphStyle.alignment = .left
         return Style(font: font,
                      controlColor: .white,
@@ -20,7 +20,8 @@ extension Style {
                      underlineColor: .white,
                      backgroundColor: .black,
                      paragraphStyle: paragraphStyle,
-                     kern: 8)
+                     kern: 8,
+                     textCase: .upper)
     }
     
     static var CityCheap: Style {
@@ -34,7 +35,8 @@ extension Style {
                      underlineColor: .red,
                      backgroundColor: .black,
                      paragraphStyle: paragraphStyle,
-                     kern: nil)
+                     kern: nil,
+                     textCase: nil)
     }
     
     static var CherryGordon: Style {
@@ -48,7 +50,8 @@ extension Style {
                      underlineColor: .white,
                      backgroundColor: UIColor(red:1.00, green:0.13, blue:0.36, alpha:1.0),
                      paragraphStyle: paragraphStyle,
-                     kern: nil)
+                     kern: nil,
+                     textCase: nil)
     }
     
     static var ForgottenDre: Style {
@@ -62,7 +65,8 @@ extension Style {
                      underlineColor: .clear,
                      backgroundColor: UIColor(red:0.13, green:0.13, blue:0.13, alpha:1.0),
                      paragraphStyle: paragraphStyle,
-                     kern: nil)
+                     kern: nil,
+                     textCase: nil)
     }
     
     static var MintMojito: Style {
@@ -79,6 +83,7 @@ extension Style {
                      underlineColor: underlineColor,
                      backgroundColor: UIColor(red:0.47, green:0.89, blue:0.61, alpha:1.0),
                      paragraphStyle: paragraphStyle,
-                     kern: nil)
+                     kern: nil,
+                     textCase: nil)
     }
 }
