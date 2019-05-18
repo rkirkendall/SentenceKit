@@ -9,11 +9,33 @@
 import Foundation
 import UIKit
 
+/// The main model object in Sentence UI's. Contains all sentence fragments and resolutions for fragment dependencies.
 class Sentence {
-    var fragments:[Fragmentable] = [Fragmentable]()
-    var fragmentMap = [Int: ControlFragment]()
-    var resolutions = Resolutions()
-    var dictionary: [String: Any] {
+    
+    internal var fragmentMap = [Int: ControlFragment]()
+    
+    /// Compositional fragments
+    public var fragments: [Fragmentable] = [Fragmentable]()    
+    
+    /// Resolutions to fragment dependencies
+    ///
+    /// Resolutions should be thought of as steps taken after the sentence has been composed from fragments.
+    /// A common use for resolutions is to "clean up" the sentence after a combination of fragment values render
+    /// the sentence gramatically incorrect or nonsensical. This can be done conditionally setting fragments' alias
+    /// value.
+    ///
+    /// `Resolutions` supports `+=` for appending `Resolution` blocks.
+    ///
+    /// For example, consider changing the ice descriptor in the following sentence from `crushed` to `none`:
+    ///
+    /// "I would like a mojito with __crushed__ ice."
+    ///
+    /// The following resolution could be used to alias `none` to `no` so the choice makes sense within the sentence.
+    ///
+    /// `sentence.resolutions += { if self.iceChoice.alias == "None" { self.iceChoice.alias = "No" } }`
+    public var resolutions = Resolutions()
+    
+    public var dictionary: [String: Any] {
         
         var dict = [String: Any]()
         for f in fragmentMap.values {
@@ -48,4 +70,9 @@ struct Style {
     let underlineColor: UIColor?
     let backgroundColor: UIColor?
     let paragraphStyle: NSParagraphStyle?
+    let kern: Double?
+    
+//    static func MintMojito -> Style {
+//        return Style(font: <#T##UIFont?#>, controlColor: <#T##UIColor?#>, textColor: <#T##UIColor?#>, underlineColor: <#T##UIColor?#>, backgroundColor: <#T##UIColor?#>, paragraphStyle: <#T##NSParagraphStyle?#>)
+//    }
 }

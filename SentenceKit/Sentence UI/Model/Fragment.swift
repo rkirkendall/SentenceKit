@@ -27,10 +27,10 @@ open class Fragment: NSObject, Fragmentable {
     
     static func attributedString(string: String, style: Style) -> NSMutableAttributedString {
         var atts = [NSMutableAttributedString.Key:Any]()
-        
-        atts[NSMutableAttributedString.Key.font] = style.font
-        atts[NSMutableAttributedString.Key.foregroundColor] = style.textColor
-        atts[NSMutableAttributedString.Key.paragraphStyle] = style.paragraphStyle
+        if !style.font.isNil { atts[NSMutableAttributedString.Key.font] = style.font }
+        if !style.textColor.isNil { atts[NSMutableAttributedString.Key.foregroundColor] = style.textColor }
+        if !style.paragraphStyle.isNil { atts[NSMutableAttributedString.Key.paragraphStyle] = style.paragraphStyle }
+        if !style.kern.isNil { atts[NSMutableAttributedString.Key.kern] = style.kern }
         
         return NSMutableAttributedString(string: string, attributes: atts)
     }

@@ -47,7 +47,8 @@ public class SentenceView: ModernView, UITextViewDelegate {
                                         textColor: .black,
                                         underlineColor: .blue,
                                         backgroundColor: .clear,
-                                        paragraphStyle:paragraphStyle)
+                                        paragraphStyle:paragraphStyle,
+                                        kern: nil)
         }
         
         textView.isEditable = false

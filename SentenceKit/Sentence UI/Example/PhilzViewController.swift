@@ -30,27 +30,11 @@ class PhilzViewController: SentenceViewController {
                     temperatureChoice,
                     addlNotes]
         
-        let avenirNextBoldFont = UIFont(name: "AvenirNext-Bold", size: 42)
-        let themeBrown = UIColor(red:0.25, green:0.15, blue:0.05, alpha:1.0)
-        let transluscentTheme = themeBrown.opacity(0.65)
-        let underlineColor = themeBrown.opacity(0.75)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 4
-        paragraphStyle.alignment = .center
-        let style = Style(font: avenirNextBoldFont,
-                                 controlColor: themeBrown,
-                                 textColor: transluscentTheme,
-                                 underlineColor: underlineColor,
-                                 backgroundColor: UIColor(red:0.46, green:0.81, blue:0.65, alpha:1.0),
-                                 paragraphStyle: paragraphStyle)
-        
-        view.backgroundColor = style.backgroundColor
-        
         sizeChoice.options = ["Large", "Small"]
-        creamAmtChoice.options = ["Creamy", "Medium", "Light", "None"].reversed()
+        creamAmtChoice.options = ["Creamy", "Medium", "Light", "None"]
         creamTypeChoice.options = ["Cream", "Whole Milk", "2% Milk", "Low-Fat Milk",
                                    "Non-Fat Milk", "Almond Milk", "Soy Milk", "Vanilla Soy"]
-        sweetnerAmtChoice.options = ["Sweet", "Medium", "Light", "None"].reversed()
+        sweetnerAmtChoice.options = ["Sweet", "Medium", "Light", "None"]
         sweetnerTypeChoice.options = ["Sugar", "Honey", "Splenda", "Stevia", "Sweet'N Low", "Equal"]
         temperatureChoice.options = ["Hot", "Iced"]
         
@@ -60,7 +44,7 @@ class PhilzViewController: SentenceViewController {
         sentence += creamAmtChoice
         sentence += " "
         sentence += creamTypeChoice
-        sentence += " and "
+        sentence += "\nand \n"
         sentence += sweetnerAmtChoice
         sentence += " "
         sentence += sweetnerTypeChoice
@@ -70,12 +54,14 @@ class PhilzViewController: SentenceViewController {
         sentence += addlNotes
         
         sentence.resolutions += { if self.sweetnerAmtChoice.alias == "None" { self.sweetnerAmtChoice.alias = "No"; self.sweetnerTypeChoice.alias = "Sugar" }}
-        sentence.resolutions += { if self.sweetnerAmtChoice.alias == "Sweet" { self.sweetnerAmtChoice.alias = "a lot of" }}
+        sentence.resolutions += { if self.sweetnerAmtChoice.alias == "Sweet" { self.sweetnerAmtChoice.alias = "lots of" }}
         sentence.resolutions += { if self.creamAmtChoice.alias == "None" { self.creamAmtChoice.alias = "No"; self.creamTypeChoice.alias = "Cream" }}
-        sentence.resolutions += { if self.creamAmtChoice.alias == "Creamy" { self.creamAmtChoice.alias = "a lot of" }}
+        sentence.resolutions += { if self.creamAmtChoice.alias == "Creamy" { self.creamAmtChoice.alias = "lots of" }}
         sentence.resolutions += { for c in self.controls { c.alias = c.alias?.lowercased() } }
         
+        let style = Style.MintMojito
         sentenceView.style = style
+        view.backgroundColor = style.backgroundColor
         sentenceView.sentence = sentence
 
     }
@@ -83,6 +69,11 @@ class PhilzViewController: SentenceViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateInterface()
+        
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
     }
     
     override func updateInterface() {
@@ -95,8 +86,8 @@ class PhilzViewController: SentenceViewController {
         super.setupConstraints()
         let views = ["sentenceView":sentenceView]
         var layoutConstraints = [NSLayoutConstraint]()
-        layoutConstraints += "H:|-50-[sentenceView]-50-|".constraints(views: views)
-        layoutConstraints += "V:|-130-[sentenceView]|".constraints(views: views)
+        layoutConstraints += "H:|-70-[sentenceView]-70-|".constraints(views: views)
+        layoutConstraints += "V:|-230-[sentenceView]|".constraints(views: views)
         view.addConstraints(layoutConstraints)
     }
 }

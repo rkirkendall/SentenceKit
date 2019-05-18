@@ -9,7 +9,6 @@
 import Foundation
 
 extension String: Fragmentable {
-    
     var string: String {
         get { return self }
         set { self = newValue }
