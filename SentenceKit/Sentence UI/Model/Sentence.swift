@@ -64,6 +64,12 @@ class Sentence {
 }
 
 struct Style {
+    
+    enum TextCase {
+        case upper
+        case lower
+    }
+    
     let font: UIFont?
     let controlColor: UIColor?
     let textColor: UIColor?
@@ -71,8 +77,5 @@ struct Style {
     let backgroundColor: UIColor?
     let paragraphStyle: NSParagraphStyle?
     let kern: Double?
-    
-//    static func MintMojito -> Style {
-//        return Style(font: <#T##UIFont?#>, controlColor: <#T##UIColor?#>, textColor: <#T##UIColor?#>, underlineColor: <#T##UIColor?#>, backgroundColor: <#T##UIColor?#>, paragraphStyle: <#T##NSParagraphStyle?#>)
-//    }
+    let textCase: TextCase?
 }
