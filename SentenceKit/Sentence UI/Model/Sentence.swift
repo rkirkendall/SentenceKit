@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 /// The main model object in Sentence UI's. Contains all sentence fragments and resolutions for fragment dependencies.
-class Sentence {
+public class Sentence {
     
     internal var fragmentMap = [Int: ControlFragment]()
     
-    /// Compositional fragments
+    /// Fragments are words and phrases that are concatenated together to form a sentence.
     public var fragments: [Fragmentable] = [Fragmentable]()    
     
     /// Resolutions to fragment dependencies
@@ -32,10 +32,12 @@ class Sentence {
     ///
     /// The following resolution could be used to alias `none` to `no` so the choice makes sense within the sentence.
     ///
-    /// `sentence.resolutions += { if self.iceChoice.alias == "None" { self.iceChoice.alias = "No" } }`
+    /// `sentence.resolutions += { if self.iceChoice.alias == "None" { self.iceChoice.alias = "no" } }`
     public var resolutions = Resolutions()
     
-    public var dictionary: [String: Any] {
+    
+    /// Dictionary of control tags mapped to user-set values
+    open var dictionary: [String: Any] {
         
         var dict = [String: Any]()
         for f in fragmentMap.values {
@@ -45,7 +47,7 @@ class Sentence {
         return dict
     }
     
-    func resolve() {
+    internal func resolve() {
         for r in resolutions {
             r()
         }
@@ -63,7 +65,7 @@ class Sentence {
     }
 }
 
-struct Style {
+public struct Style {
     
     enum TextCase {
         case upper

@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-public class MultiChoice: ControlFragment {
+open class MultiChoice: ControlFragment {
     
-    var options: [String] {
+    open var options: [String] {
         didSet {
             editViewController.choices = self.options
             string = options.count > 0 ? options[0] : placeholder
         }
     }
-    private var editViewController = MultiChoiceEditViewController()
+    open var editViewController = MultiChoiceEditViewController()
         
     override init() {
         options = []
@@ -37,7 +37,7 @@ public class MultiChoice: ControlFragment {
 }
 
 extension MultiChoice: ControlFragmentEditControllerDelegate {
-    func editController(_ editController: EditBaseController, didReturnWithValue value: String) {
+    open func editController(_ editController: EditBaseController, didReturnWithValue value: String) {
         self.string = value
         delegate?.controlFragment(self, stringDidChange: value)
     }

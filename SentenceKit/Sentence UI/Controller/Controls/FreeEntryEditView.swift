@@ -9,11 +9,11 @@
 import UIKit
 import Foundation
 
-class FreeEntryEditViewController: EditBaseController {
+open class FreeEntryEditViewController: EditBaseController {
     
     let textField = UITextField(autolayout: true)
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(textField)
         textField.backgroundColor = .clear
@@ -28,13 +28,13 @@ class FreeEntryEditViewController: EditBaseController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         textField.selectAll(self)
         textField.becomeFirstResponder()
     }
     
-    override func setupConstraints() {
+    override open func setupConstraints() {
         super.setupConstraints()
         
         let layoutConstraints = [textField.widthAnchor.constraint(equalTo: view.widthAnchor),
@@ -46,7 +46,7 @@ class FreeEntryEditViewController: EditBaseController {
 
 extension FreeEntryEditViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         guard let text = textField.text else { return false }
         delegate?.editController(self, didReturnWithValue: text)

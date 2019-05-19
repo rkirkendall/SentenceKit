@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-public class SentenceView: BaseView, UITextViewDelegate {
+open class SentenceView: BaseView {
     
-    var textView = SentenceTextView(autolayout: true)
-    weak var delegate: ControlFragmentDelegate?
+    private var textView = SentenceTextView(autolayout: true)
+    open weak var delegate: ControlFragmentDelegate?
     
-    var sentence: Sentence? {
+    open var sentence: Sentence? {
         didSet {
             guard let sentence = sentence else { return }
             for c in sentence.fragments {
@@ -27,13 +27,13 @@ public class SentenceView: BaseView, UITextViewDelegate {
         }
     }
     
-    var style: Style? {
+    open var style: Style? {
         didSet {
             updateInterface()
         }
     }
     
-    public override func setupView() {
+    open override func setupView() {
         super.setupView()
         textView.backgroundColor = .clear
         // todo: line spacing should be a function of font size
@@ -57,16 +57,7 @@ public class SentenceView: BaseView, UITextViewDelegate {
         addSubview(textView)
     }
     
-    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-
-        let hashInt = Int(URL.absoluteString)
-        guard let hash = hashInt,
-            let controlFragment = sentence?.fragmentMap[hash] else { return false }
-        controlFragmentWillShowEditController(controlFragment)        
-        return false
-    }
-    
-    public override func setupConstraints() {
+    open override func setupConstraints() {
         super.setupConstraints()
         let views = ["textView":textView]
         var constraints = [NSLayoutConstraint]()
@@ -75,7 +66,7 @@ public class SentenceView: BaseView, UITextViewDelegate {
         addConstraints(constraints)
     }
     
-    public override func updateInterface() {
+    open override func updateInterface() {
         super.updateInterface()
         guard let sentence = sentence,
             let style = style else { return }
@@ -97,13 +88,24 @@ public class SentenceView: BaseView, UITextViewDelegate {
     }
 }
 
+extension SentenceView: UITextViewDelegate {
+    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        let hashInt = Int(URL.absoluteString)
+        guard let hash = hashInt,
+            let controlFragment = sentence?.fragmentMap[hash] else { return false }
+        controlFragmentWillShowEditController(controlFragment)
+        return false
+    }
+}
+
 extension SentenceView: ControlFragmentDelegate {
     
-    func controlFragmentWillShowEditController(_ controlFragment: ControlFragment) {
+    open func controlFragmentWillShowEditController(_ controlFragment: ControlFragment) {
         delegate?.controlFragmentWillShowEditController(controlFragment)
     }
     
-    func controlFragment(_ controlFragment: ControlFragment, stringDidChange string: String) {
+    open func controlFragment(_ controlFragment: ControlFragment, stringDidChange string: String) {
         updateInterface()
         delegate?.controlFragment(controlFragment, stringDidChange: string)
     }

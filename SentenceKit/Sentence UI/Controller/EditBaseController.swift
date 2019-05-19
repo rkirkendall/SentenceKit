@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class BlurOverlay: BaseViewController {
+open class BlurOverlay: BaseViewController {
     
     let closeButton = UIButton(autolayout: true)
     var blurEffect = UIBlurEffect(style: .extraLight)
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
         if !UIAccessibility.isReduceTransparencyEnabled {
@@ -39,7 +39,7 @@ class BlurOverlay: BaseViewController {
         dismiss(animated: false)
     }
 
-    override func setupConstraints() {
+    override open func setupConstraints() {
         super.setupConstraints()
         let views = ["close": closeButton]
         var layoutConstraints = [NSLayoutConstraint]()
@@ -50,11 +50,11 @@ class BlurOverlay: BaseViewController {
     
 }
 
-protocol ControlFragmentEditControllerDelegate: class {
+public protocol ControlFragmentEditControllerDelegate: class {
     func editController(_ editController: EditBaseController, didReturnWithValue value: String)
 }
 
-class EditBaseController: BlurOverlay {
+open class EditBaseController: BlurOverlay {
     var style:Style?
     weak var delegate: ControlFragmentEditControllerDelegate?
 }

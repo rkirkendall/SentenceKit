@@ -8,10 +8,10 @@
 
 import Foundation
 
-typealias Resolution = () -> Void
-typealias Resolutions = [Resolution]
+public typealias Resolution = () -> Void
+public typealias Resolutions = [Resolution]
 extension Resolutions {
-    static func += (left: inout Resolutions, right: @escaping Resolution) {
+    public static func += (left: inout Resolutions, right: @escaping Resolution) {
         left.append(right)
     }
 }
