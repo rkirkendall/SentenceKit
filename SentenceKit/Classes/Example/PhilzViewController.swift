@@ -68,11 +68,6 @@ class PhilzViewController: SentenceViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateInterface()
-        
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
     }
     
     override func updateInterface() {
@@ -85,8 +80,8 @@ class PhilzViewController: SentenceViewController {
         super.setupConstraints()
         let views = ["sentenceView": sentenceView]
         var layoutConstraints = [NSLayoutConstraint]()
-        layoutConstraints += "H:|-70-[sentenceView]-70-|".constraints(views: views)
-        layoutConstraints += "V:|-230-[sentenceView]|".constraints(views: views)
+        layoutConstraints += "H:|-20-[sentenceView]-20-|".constraints(views: views)
+        layoutConstraints += "V:|-30-[sentenceView]|".constraints(views: views)
         view.addConstraints(layoutConstraints)
     }
 }

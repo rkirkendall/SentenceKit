@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SentenceKit_Example' do
+  pod 'SentenceKit', :path => '../'
+
+  target 'SentenceKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
