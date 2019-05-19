@@ -43,7 +43,7 @@ class PhilzViewController: SentenceViewController {
         sentence += creamAmtChoice
         sentence += " "
         sentence += creamTypeChoice
-        sentence += "\nand \n"
+        sentence += " and "
         sentence += sweetnerAmtChoice
         sentence += " "
         sentence += sweetnerTypeChoice
