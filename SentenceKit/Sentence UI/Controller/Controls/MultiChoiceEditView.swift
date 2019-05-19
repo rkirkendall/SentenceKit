@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Modernistik
+import UIKit
 
 class SizableTableView: UITableView {
     var maxHeight: CGFloat = UIScreen.main.bounds.size.height

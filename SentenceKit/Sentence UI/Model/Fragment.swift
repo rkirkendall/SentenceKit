@@ -28,10 +28,10 @@ open class Fragment: NSObject, Fragmentable {
     static func attributedString(string: String, style: Style) -> NSMutableAttributedString {
         var atts = [NSMutableAttributedString.Key:Any]()
         var mutableString = string
-        if !style.font.isNil { atts[NSMutableAttributedString.Key.font] = style.font }
-        if !style.textColor.isNil { atts[NSMutableAttributedString.Key.foregroundColor] = style.textColor }
-        if !style.paragraphStyle.isNil { atts[NSMutableAttributedString.Key.paragraphStyle] = style.paragraphStyle }
-        if !style.kern.isNil { atts[NSMutableAttributedString.Key.kern] = style.kern }
+        if style.font != nil { atts[NSMutableAttributedString.Key.font] = style.font }
+        if style.textColor != nil { atts[NSMutableAttributedString.Key.foregroundColor] = style.textColor }
+        if style.paragraphStyle != nil { atts[NSMutableAttributedString.Key.paragraphStyle] = style.paragraphStyle }
+        if style.kern != nil { atts[NSMutableAttributedString.Key.kern] = style.kern }
         if let textCase = style.textCase {
             switch textCase {
             case .upper:

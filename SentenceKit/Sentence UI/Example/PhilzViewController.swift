@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Modernistik
 
 class PhilzViewController: SentenceViewController {
     let sizeChoice = MultiChoice(tag: "size")
@@ -59,7 +58,7 @@ class PhilzViewController: SentenceViewController {
         sentence.resolutions += { if self.creamAmtChoice.alias == "Creamy" { self.creamAmtChoice.alias = "lots of" }}
         sentence.resolutions += { for c in self.controls { c.alias = c.alias?.lowercased() } }
         
-        let style = Style.Solstice
+        let style = Style.MintMojito
         sentenceView.style = style
         view.backgroundColor = style.backgroundColor
         sentenceView.sentence = sentence
@@ -84,7 +83,7 @@ class PhilzViewController: SentenceViewController {
     
     override func setupConstraints() {
         super.setupConstraints()
-        let views = ["sentenceView":sentenceView]
+        let views = ["sentenceView": sentenceView]
         var layoutConstraints = [NSLayoutConstraint]()
         layoutConstraints += "H:|-70-[sentenceView]-70-|".constraints(views: views)
         layoutConstraints += "V:|-230-[sentenceView]|".constraints(views: views)

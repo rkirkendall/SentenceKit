@@ -39,7 +39,7 @@ extension Style {
                      textCase: nil)
     }
     
-    static var CherryGordon: Style {
+    static var Cherry: Style {
         let font = UIFont(name: "AvenirNext-DemiBold", size: 38)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 0
@@ -72,8 +72,8 @@ extension Style {
     static var MintMojito: Style {
         let font = UIFont(name: "Jellee-Roman", size: 38)
         let themeBrown = UIColor(red:0.20, green:0.10, blue:0.05, alpha:1.0)
-        let transluscentTheme = themeBrown.opacity(0.66)
-        let underlineColor = themeBrown.opacity(0.75)
+        let transluscentTheme = themeBrown.withAlphaComponent(0.66)
+        let underlineColor = themeBrown.withAlphaComponent(0.75)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 5
         paragraphStyle.alignment = .center
