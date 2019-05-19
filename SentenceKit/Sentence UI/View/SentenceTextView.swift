@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SentenceTextView: UITextView {
+internal class SentenceTextView: UITextView {
     
     override var canBecomeFirstResponder: Bool { return false }
     

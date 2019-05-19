@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SentenceViewController: BaseViewController {
+open class SentenceViewController: BaseViewController {
     
     let sentence = Sentence()
     let sentenceView = SentenceView(autolayout: true)
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         sentenceView.sentence = sentence
@@ -22,7 +22,7 @@ class SentenceViewController: BaseViewController {
         view.addSubview(sentenceView)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateInterface()
     }
@@ -31,14 +31,14 @@ class SentenceViewController: BaseViewController {
 
 extension SentenceViewController: ControlFragmentDelegate {
     
-    func controlFragmentWillShowEditController(_ controlFragment: ControlFragment) {
+    open func controlFragmentWillShowEditController(_ controlFragment: ControlFragment) {
         guard let editController = controlFragment.editView else { return }
         editController.style = sentenceView.style
         editController.modalPresentationStyle = .overCurrentContext
         present(editController, animated: false)
     }
     
-    func controlFragment(_ controlFragment: ControlFragment, stringDidChange string: String) {
+    open func controlFragment(_ controlFragment: ControlFragment, stringDidChange string: String) {
         updateInterface()
     }
     

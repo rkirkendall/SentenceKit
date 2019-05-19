@@ -319,10 +319,12 @@
 					};
 					E983ADED221BD0B700BC526A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = E983ADD9221BD0B600BC526A;
 					};
 					E983ADF8221BD0B700BC526A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = E983ADD9221BD0B600BC526A;
 					};
 				};
@@ -619,7 +621,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandbox.SentenceKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SentenceKit.app/SentenceKit";
 			};
@@ -640,7 +642,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandbox.SentenceKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SentenceKit.app/SentenceKit";
 			};
@@ -660,7 +662,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandbox.SentenceKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SentenceKit;
 			};
@@ -680,7 +682,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandbox.SentenceKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SentenceKit;
 			};

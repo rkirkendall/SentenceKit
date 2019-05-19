@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-class FreeEntry: ControlFragment {
-    private var editViewController = FreeEntryEditViewController()
+open class FreeEntry: ControlFragment {
+    open var editViewController = FreeEntryEditViewController()    
     
-    
-    override var alias: String? {
+    override open var alias: String? {
         get {
             if let a = super.alias,
                 a.trimmingCharacters(in: .whitespacesAndNewlines).count > 0 {
@@ -38,7 +37,7 @@ class FreeEntry: ControlFragment {
 }
 
 extension FreeEntry: ControlFragmentEditControllerDelegate {
-    func editController(_ editController: EditBaseController, didReturnWithValue value: String) {
+    open func editController(_ editController: EditBaseController, didReturnWithValue value: String) {
         self.string = value
         delegate?.controlFragment(self, stringDidChange: value)
     }    

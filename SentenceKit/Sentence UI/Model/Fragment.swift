@@ -8,24 +8,24 @@
 
 import Foundation
 
-protocol Fragmentable {
+public protocol Fragmentable {
     var string: String { get set }
     func attributedString(style: Style) -> NSMutableAttributedString
 }
 
 open class Fragment: NSObject, Fragmentable {
-    var alias: String?
-    var string: String = "" {
+    open var alias: String?
+    open var string: String = "" {
         didSet {
             alias = string
         }
     }
     
-    func attributedString(style: Style) -> NSMutableAttributedString {
+    open func attributedString(style: Style) -> NSMutableAttributedString {
         return Fragment.attributedString(string: (alias ?? string), style: style)
     }
     
-    static func attributedString(string: String, style: Style) -> NSMutableAttributedString {
+    internal static func attributedString(string: String, style: Style) -> NSMutableAttributedString {
         var atts = [NSMutableAttributedString.Key:Any]()
         var mutableString = string
         if style.font != nil { atts[NSMutableAttributedString.Key.font] = style.font }
@@ -45,7 +45,7 @@ open class Fragment: NSObject, Fragmentable {
     }
 }
 
-protocol ControlFragmentDelegate: class {
+public protocol ControlFragmentDelegate: class {
     func controlFragmentWillShowEditController(_ controlFragment: ControlFragment)
     func controlFragment(_ controlFragment: ControlFragment, stringDidChange string: String)
 }
@@ -70,7 +70,7 @@ open class ControlFragment: Fragment {
         super.init()
     }
     
-    override func attributedString(style: Style) -> NSMutableAttributedString {
+    override open func attributedString(style: Style) -> NSMutableAttributedString {
         let superString = super.attributedString(style: style)
         superString.addAttribute(NSAttributedString.Key.link, value: String(hashValue), range: NSRange(location: 0, length: superString.string.count))
         return superString
