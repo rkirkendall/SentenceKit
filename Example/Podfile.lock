@@ -1,5 +1,5 @@
 PODS:
-  - SentenceKit (0.1.0)
+  - SentenceKit (0.3.0)
 
 DEPENDENCIES:
   - SentenceKit (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SentenceKit: f8d855f263a373aed9def2578705a14f92e9b28b
+  SentenceKit: 2047cf23d78a77e52585c7de1140913193653c44
 
 PODFILE CHECKSUM: f12450797d757616379c97cbd3870a7f6cfba2fe
 

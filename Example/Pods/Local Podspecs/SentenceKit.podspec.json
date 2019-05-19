@@ -1,6 +1,6 @@
 {
   "name": "SentenceKit",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "summary": "A framework for building sentence-based user interfaces in native Swift.",
   "description": "SentenceKit is an iOS framework for building user interfaces with natural language. This type of UI has been used successfully by apps like Beats by Dre (pre Apple Music) and Philz Coffee.",
   "homepage": "https://github.com/rkirkendall/SentenceKit",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/rkirkendall/SentenceKit.git",
-    "tag": "0.1.0"
+    "tag": "0.3.0"
   },
   "social_media_url": "https://twitter.com/rickykirkendall",
   "platforms": {

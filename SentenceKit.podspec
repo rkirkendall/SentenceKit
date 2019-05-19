@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SentenceKit'
-  s.version          = '0.1.0'
+  s.version          = '0.3.0'
   s.summary          = 'A framework for building sentence-based user interfaces in native Swift.'
 
 # This description is used to generate tags and improve search results.
