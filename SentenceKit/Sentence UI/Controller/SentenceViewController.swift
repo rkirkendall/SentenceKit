@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Modernistik
 
-class SentenceViewController: ModernViewController {
+class SentenceViewController: BaseViewController {
     
     let sentence = Sentence()
     let sentenceView = SentenceView(autolayout: true)

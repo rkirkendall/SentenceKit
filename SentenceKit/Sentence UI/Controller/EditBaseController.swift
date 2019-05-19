@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import Modernistik
+import UIKit
 
-class BlurOverlay: ModernViewController {
+class BlurOverlay: BaseViewController {
     
     let closeButton = UIButton(autolayout: true)
     var blurEffect = UIBlurEffect(style: .extraLight)

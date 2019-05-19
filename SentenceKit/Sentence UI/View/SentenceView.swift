@@ -8,9 +8,8 @@
 
 import Foundation
 import UIKit
-import Modernistik
 
-public class SentenceView: ModernView, UITextViewDelegate {
+public class SentenceView: BaseView, UITextViewDelegate {
     
     var textView = SentenceTextView(autolayout: true)
     weak var delegate: ControlFragmentDelegate?
@@ -41,7 +40,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 20
         paragraphStyle.alignment = .center
-        if style.isNil {
+        if style == nil {
             style = Style(font: UIFont.boldSystemFont(ofSize: 40),
                                         controlColor: .blue,
                                         textColor: .black,
