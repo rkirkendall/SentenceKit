@@ -207,13 +207,12 @@
 		E983ADDC221BD0B600BC526A /* SentenceKit */ = {
 			isa = PBXGroup;
 			children = (
-				E9A1AB872238D58B00EFF65E /* Sentence UI */,
-				E920426E2291EB330067DEB3 /* DesignPatterns.swift */,
 				E983ADDD221BD0B600BC526A /* AppDelegate.swift */,
 				E983ADE1221BD0B600BC526A /* Main.storyboard */,
 				E983ADE4221BD0B700BC526A /* Assets.xcassets */,
 				E983ADE6221BD0B700BC526A /* LaunchScreen.storyboard */,
 				E983ADE9221BD0B700BC526A /* Info.plist */,
+				E9A1AB872238D58B00EFF65E /* Classes */,
 			);
 			path = SentenceKit;
 			sourceTree = "<group>";
@@ -236,16 +235,17 @@
 			path = SentenceKitUITests;
 			sourceTree = "<group>";
 		};
-		E9A1AB872238D58B00EFF65E /* Sentence UI */ = {
+		E9A1AB872238D58B00EFF65E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E920426E2291EB330067DEB3 /* DesignPatterns.swift */,
 				E96949C3228FDCFA000BAE07 /* Styles */,
 				E93B54BC2276B58200698735 /* Example */,
 				E93B54BB2276B34B00698735 /* Controller */,
 				E93B54BA2276B33500698735 /* View */,
 				E93B54B92276B31D00698735 /* Model */,
 			);
-			path = "Sentence UI";
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
