@@ -69,17 +69,17 @@
 		1662F2DAFC8A984BB4A63D909C749130 /* Pods-SentenceKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SentenceKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		18E08A89946F020C98AE8533F2D55330 /* EditBaseController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EditBaseController.swift; sourceTree = "<group>"; };
 		26929B7E8E95EBE1D9289F7410AE7868 /* ResourceBundle-SentenceKit-SentenceKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-SentenceKit-SentenceKit-Info.plist"; sourceTree = "<group>"; };
-		2F1F5D37A86F55CE2926740D041D107C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		3730B6F63B7EF27BF7566C472E473A78 /* Pods_SentenceKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentenceKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		39E4F2CCEAC8C4A4C9B91C0E07A66E40 /* Pods_SentenceKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentenceKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3730B6F63B7EF27BF7566C472E473A78 /* Pods_SentenceKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SentenceKit_Example.framework; path = "Pods-SentenceKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39E4F2CCEAC8C4A4C9B91C0E07A66E40 /* Pods_SentenceKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SentenceKit_Tests.framework; path = "Pods-SentenceKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41E2493CBAE05390DD9E1A7F718A9C42 /* SentenceKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SentenceKit-Info.plist"; sourceTree = "<group>"; };
 		446EE058C55B9A26D6CC8BBF71EEAD6A /* Pods-SentenceKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SentenceKit_Example-Info.plist"; sourceTree = "<group>"; };
 		49C366B5ECEEC2543B730FCED42EA45C /* Pods-SentenceKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SentenceKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4A13B7723266E59C961D313460842F98 /* SentenceKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SentenceKit.xcconfig; sourceTree = "<group>"; };
 		5302DB978B245BC92EBDAC1A90EF9856 /* Pods-SentenceKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SentenceKit_Example.modulemap"; sourceTree = "<group>"; };
+		56C97E641C43308FBB1E4F2AA51C742F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		5937E160E641B55DC42084E954292A8D /* Pods-SentenceKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SentenceKit_Tests.modulemap"; sourceTree = "<group>"; };
-		5BDFEC8B382DE405B8CE023176C36E0E /* SansSerifExbFLF.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = SansSerifExbFLF.otf; path = SentenceKit/Assets/fonts/SansSerifExbFLF.otf; sourceTree = "<group>"; };
-		62C2A10AC388F4C92C74E199AF8437AA /* Jellee-Roman.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "Jellee-Roman.otf"; path = "SentenceKit/Assets/fonts/Jellee-Roman.otf"; sourceTree = "<group>"; };
+		5BDFEC8B382DE405B8CE023176C36E0E /* SansSerifExbFLF.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = SansSerifExbFLF.otf; path = SentenceKit/Assets/fonts/SansSerifExbFLF.otf; sourceTree = "<group>"; };
+		62C2A10AC388F4C92C74E199AF8437AA /* Jellee-Roman.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Jellee-Roman.otf"; path = "SentenceKit/Assets/fonts/Jellee-Roman.otf"; sourceTree = "<group>"; };
 		6B8CC1B435EAB84DC9ECEF4854CDB648 /* PhilzViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PhilzViewController.swift; sourceTree = "<group>"; };
 		6C9B5B9367B6BA808C4E207868BE90C6 /* SentenceView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SentenceView.swift; sourceTree = "<group>"; };
 		7DE54FEAE780B10D5070655690DC3C04 /* MultiChoiceEditView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MultiChoiceEditView.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 		921018482A652D2F13F2E4797A1F2008 /* Pods-SentenceKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SentenceKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		96D7AF2A37024C91D2105BD4E014C621 /* Resolutions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Resolutions.swift; sourceTree = "<group>"; };
 		9BEBB6DB447195DAEC29859C8512DEC3 /* Pods-SentenceKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SentenceKit_Tests-umbrella.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F5455B24A6AADCF897ACD3BB2B9F72A /* Pods-SentenceKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SentenceKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A89913E17D78D2201CAD12074D74C87A /* Pods-SentenceKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SentenceKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		BEA7641AAC9BAC383EAF9BDA45E2A615 /* Pods-SentenceKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SentenceKit_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -99,18 +99,18 @@
 		C3591D3BDD7ADA6271ADC4CF8E4B9CFD /* FreeEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FreeEntry.swift; sourceTree = "<group>"; };
 		C93FD742B153552D4CA49FE1120F3002 /* SentenceKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SentenceKit-umbrella.h"; sourceTree = "<group>"; };
 		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CC411D0AA0945CD69C0F0186A5CEB4FF /* README-old.md */ = {isa = PBXFileReference; includeInIndex = 1; path = "README-old.md"; sourceTree = "<group>"; };
 		CC7440AB2515BDD98EE654A39576A609 /* SentenceKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SentenceKit.modulemap; sourceTree = "<group>"; };
+		CD71C1B81DC21916897AA571B493C771 /* SentenceKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = SentenceKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D390A124D9E1A260BF6492E5A4456B93 /* SentenceKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SentenceKit-dummy.m"; sourceTree = "<group>"; };
 		D5964A5EBD49F81BEF3EF034270ED0AC /* DesignPatterns.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignPatterns.swift; path = SentenceKit/Classes/DesignPatterns.swift; sourceTree = "<group>"; };
 		D5BB16C783145E1326A37E7DC17AA638 /* Pods-SentenceKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SentenceKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D6BBB851BA0F384C32ED386266074BCE /* Pods-SentenceKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SentenceKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		DA7B09017BF83E21FEE212224ABE56D3 /* Styles.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		DC7C448702181C3EA017841B3719F2BA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E170D86297E4EED8E394A6ECBA66E5D4 /* SentenceTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SentenceTextView.swift; sourceTree = "<group>"; };
-		E5DA4E54647BA7A13BC4D4F1AED3CC0F /* SentenceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SentenceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8F314486524A8966849C09EC0B96FB7 /* SansSerifFLF-Demibold.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "SansSerifFLF-Demibold.otf"; path = "SentenceKit/Assets/fonts/SansSerifFLF-Demibold.otf"; sourceTree = "<group>"; };
-		E9CA11B006FD3ACBAED5145919FD189C /* SentenceKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SentenceKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		F633F488D5B215D291127BDF7D3A682A /* SentenceKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SentenceKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5DA4E54647BA7A13BC4D4F1AED3CC0F /* SentenceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SentenceKit.framework; path = SentenceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8F314486524A8966849C09EC0B96FB7 /* SansSerifFLF-Demibold.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "SansSerifFLF-Demibold.otf"; path = "SentenceKit/Assets/fonts/SansSerifFLF-Demibold.otf"; sourceTree = "<group>"; };
+		F633F488D5B215D291127BDF7D3A682A /* SentenceKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SentenceKit.bundle; path = "SentenceKit-SentenceKit.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F699E19DBA977CEDA1B4312B177ACD82 /* Fragment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Fragment.swift; sourceTree = "<group>"; };
 		FA67A3086EBEE0273097267E75DFE4D3 /* SentenceKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SentenceKit-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +150,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1584CD8C155B9999CDBE9613305715AE /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				56C97E641C43308FBB1E4F2AA51C742F /* LICENSE */,
+				CC411D0AA0945CD69C0F0186A5CEB4FF /* README-old.md */,
+				CD71C1B81DC21916897AA571B493C771 /* SentenceKit.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		30A9A180AB63D00E15F1913BBC3176C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +186,7 @@
 				C3591D3BDD7ADA6271ADC4CF8E4B9CFD /* FreeEntry.swift */,
 				8E6AFA0F695FF0FCA785E0C9CFE4F1EA /* MultiChoice.swift */,
 			);
+			name = Controls;
 			path = Controls;
 			sourceTree = "<group>";
 		};
@@ -223,7 +234,7 @@
 				EC5BE3C2506854E952CEAD21D43AA030 /* Controller */,
 				8546A446664CD1D9021BEDFD0765C2C2 /* Example */,
 				553A7D577E1840FD2ECEDE6B2F4BC5A6 /* Model */,
-				CC7E40874F10C0458C391B911F82BA1A /* Pod */,
+				1584CD8C155B9999CDBE9613305715AE /* Pod */,
 				49B066DFDE0ADF8AA49FA7480380D1EC /* Resources */,
 				6E5F46B4D3F3D626E27903B8E8D393E7 /* Styles */,
 				7F997D3804ED29F3C9851083AEE74AFF /* Support Files */,
@@ -284,16 +295,6 @@
 				8363EFD10FB334F8C05788B6BBC87608 /* SentenceKit */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		CC7E40874F10C0458C391B911F82BA1A /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				DC7C448702181C3EA017841B3719F2BA /* LICENSE */,
-				2F1F5D37A86F55CE2926740D041D107C /* README.md */,
-				E9CA11B006FD3ACBAED5145919FD189C /* SentenceKit.podspec */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -357,6 +358,7 @@
 				05906F1DEC91534CD531D4A73F930844 /* FreeEntryEditView.swift */,
 				7DE54FEAE780B10D5070655690DC3C04 /* MultiChoiceEditView.swift */,
 			);
+			name = Controls;
 			path = Controls;
 			sourceTree = "<group>";
 		};
@@ -478,7 +480,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -653,7 +654,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
