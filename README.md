@@ -4,6 +4,9 @@ SentenceKit is an iOS framework for building user interfaces with natural langua
 
 The goal in designing the SentenceKit API was to remove as much overhead as possible from the process of turning those user stories in to a functional UI while still allowing for customization and extension.
 
+## Install
+CocoaPods `pod 'SentenceKit'`
+
 ## Example
 Here's an example of how you could build out the drink selection view from the Philz Coffee app with SentenceKit. Check out my [Medium post](https://medium.com/@rickykirkendall/philz-app-review-a8efa508fd42) for a more in-depth case study on Philz UX.
 ![Example screenshot](https://i.imgur.com/5836LkK.png)
