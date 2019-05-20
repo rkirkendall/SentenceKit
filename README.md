@@ -5,7 +5,7 @@ SentenceKit is an iOS framework for building user interfaces with natural langua
 The goal in designing the SentenceKit API was to remove as much overhead as possible from the process of turning those user stories in to a functional UI while still allowing for customization and extension.
 
 ## Example
-[Example screenshot](https://i.imgur.com/5836LkK.png)
+![Example screenshot](https://i.imgur.com/5836LkK.png)
 
 ```Swift
 
