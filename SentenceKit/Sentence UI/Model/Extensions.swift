@@ -11,11 +11,12 @@ import Foundation
 extension String: Fragmentable {
     
     var string: String {
-        return self
+        get { return self }
+        set { self = newValue }
     }
     
-    func attributedString(styleContext: Style) -> NSMutableAttributedString {
-        return Fragment.attributedString(string: self, styleContext: styleContext)
+    func attributedString(style: Style) -> NSMutableAttributedString {
+        return Fragment.attributedString(string: self, style: style)
     }
     
 }

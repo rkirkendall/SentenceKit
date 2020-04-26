@@ -13,6 +13,15 @@ class Sentence {
     var fragments:[Fragmentable] = [Fragmentable]()
     var fragmentMap = [Int: ControlFragment]()
     var resolutions = Resolutions()
+    var dictionary: [String: Any] {
+        
+        var dict = [String: Any]()
+        for f in fragmentMap.values {
+            dict[f.tag] = f.string
+        }
+        
+        return dict
+    }
     
     func resolve() {
         for r in resolutions {

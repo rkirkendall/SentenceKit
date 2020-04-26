@@ -34,7 +34,7 @@ extension SentenceViewController: ControlFragmentDelegate {
     
     func showEditModal(control: ControlFragment) {
         guard let editVC = control.editView else { return }
-        editVC.styleContext = sentenceView.styleContext
+        editVC.styleContext = sentenceView.style
         editVC.modalPresentationStyle = .overCurrentContext
         present(editVC, animated: false)
     }

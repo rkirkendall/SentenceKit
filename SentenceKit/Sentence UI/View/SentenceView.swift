@@ -28,7 +28,7 @@ public class SentenceView: ModernView, UITextViewDelegate {
         }
     }
     
-    var styleContext: Style? {
+    var style: Style? {
         didSet {
             updateInterface()
         }
@@ -41,8 +41,8 @@ public class SentenceView: ModernView, UITextViewDelegate {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 20
         paragraphStyle.alignment = .center
-        if styleContext.isNil {
-            styleContext = Style(font: UIFont.boldSystemFont(ofSize: 40),
+        if style.isNil {
+            style = Style(font: UIFont.boldSystemFont(ofSize: 40),
                                         controlColor: .blue,
                                         textColor: .black,
                                         underlineColor: .blue,
@@ -77,20 +77,20 @@ public class SentenceView: ModernView, UITextViewDelegate {
     public override func updateInterface() {
         super.updateInterface()
         guard let sentence = sentence,
-            let styleContext = styleContext else { return }
+            let style = style else { return }
         
         textView.text = ""
         sentence.resolve()
         let attributedString = NSMutableAttributedString(string: "")
         for fragment in sentence.fragments {
-            attributedString.append(fragment.attributedString(styleContext: styleContext))
+            attributedString.append(fragment.attributedString(style: style))
         }
         textView.attributedText = attributedString
         
         var linkAtts = [NSAttributedString.Key: Any]()
-        linkAtts[NSAttributedString.Key.foregroundColor] = styleContext.controlColor
+        linkAtts[NSAttributedString.Key.foregroundColor] = style.controlColor
         linkAtts[NSAttributedString.Key.underlineStyle] = NSUnderlineStyle.single.rawValue
-        linkAtts[NSMutableAttributedString.Key.underlineColor] = styleContext.underlineColor
+        linkAtts[NSMutableAttributedString.Key.underlineColor] = style.underlineColor
         textView.linkTextAttributes = linkAtts
         
     }

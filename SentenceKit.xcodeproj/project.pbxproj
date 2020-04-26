@@ -161,8 +161,8 @@
 				E9A1AB882238D5AE00EFF65E /* Fragment.swift */,
 				E93B54B42274CE6800698735 /* FreeEntry */,
 				E93B54B32274CE3800698735 /* MultiChoice */,
-				E93AAE1022599E9300FD971C /* Resolutions.swift */,
 				E93B54BF2276BBAE00698735 /* Sentence.swift */,
+				E93AAE1022599E9300FD971C /* Resolutions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

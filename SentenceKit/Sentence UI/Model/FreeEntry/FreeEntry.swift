@@ -11,17 +11,17 @@ import UIKit
 
 class FreeEntry: ControlFragment {
     private var _editViewController = FreeEntryEditViewController()
-    private var _string: String?
-    override var string: String {
-        set {
-            self._string = newValue
-        }
+    
+    
+    override var alias: String? {
         get {
-            if let s = _string, s.trimmingCharacters(in: .whitespacesAndNewlines).count != 0 {
-                return s
+            if let a = super.alias,
+                a.trimmingCharacters(in: .whitespacesAndNewlines).count > 0 {
+                return a
             }
             return placeholder
         }
+        set { super.alias = newValue }
     }
     
     override init() {
@@ -39,7 +39,7 @@ class FreeEntry: ControlFragment {
 
 extension FreeEntry: EditVariableTextDelegate {
     func changeStringVariable(_ string: String) {
-        _string = string
+        self.string = string
         delegate?.valueDidChange(control: self, newValue: string)
     }
 }
