@@ -1,6 +1,0 @@
-framework module SentenceKit {
-  umbrella header "SentenceKit-umbrella.h"
-
-  export *
-  module * { export * }
-}
