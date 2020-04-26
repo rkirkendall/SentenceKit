@@ -1,3 +1,1 @@
-struct SentenceKit {
-    var text = "Hello, World!"
-}
+struct SentenceKit {}
