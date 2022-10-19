@@ -1,7 +1,7 @@
-# SentenceKit
-
 ## DEPRECATED
 This project is no longer maintained. Please use the updated SwiftUI version, [SentenceUI](https://github.com/rkirkendall/SentenceUI)
+
+# SentenceKit
 
 SentenceKit is an iOS framework for building user interfaces with natural language. This type of UI has been used successfully by apps like Beats by Dre (pre Apple Music) and Philz Coffee; both of which served as inspirations for this project. Natural language interfaces enjoy the advantage of feeling instantly familiar to users. If you can read, you already know how to use it. NLI's can also help to provide structure to the UX, as sentences are inherently narrative. They're fun to develop with, too, because you have to step into the user's story in order to compose the sentences about what they're doing inside of your application. 
 
